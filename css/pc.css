@@ -84,7 +84,7 @@
     #main .main_tit.active+.btn_in::before {transform:scale(0);}
     
     .cont_tit {margin-bottom: 4rem;font-size: 2.6rem;}
-    .cont_tit strong {display: block;margin-right: 2rem;font-size: 3.7rem;font-family: 'Montserrat';font-weight: 900;line-height: 1;}
+    .cont_tit strong {display: block;margin-right: 2rem;font-size: 4rem;font-family: 'Montserrat';font-weight: 900;line-height: 1;}
 
     /*black ver*/
     #wrapper.black {background:#000;height: 100vh;}
@@ -96,16 +96,16 @@
 
     /*about*/
     .intro_me {display:flex;justify-content: space-between;flex-direction: row-reverse;}
-    .intro_txt {font-size:2rem;line-height: 1.5;color: #333;}
-    .intro_me .me {text-align:center;}
-    .intro_me .me .img {width: 20rem;height: 20rem;margin-bottom: 2rem;border-radius: 50%;background: #ddd;}
+    .intro_txt {font-size:2rem;line-height: 1.5;color: #333;word-break: keep-all;}
+    .intro_me .me {text-align:center;margin-left: 1rem;}
+    .intro_me .me .img {width: 35rem;height: 25rem;margin-bottom: 2rem;border-radius: 50%;background: url(../images/main/me.jpg) no-repeat 61% 50%;background-size: 100% auto;border: 0.8rem solid #000;}
     .intro_me .me .name {display:block;font-size:2rem;font-weight:900;}
     .intro_me .me .birth {font-size:1.5rem;}
-    .intro_word {display: flex;flex-wrap: wrap;margin-top: 7rem;}
+    .intro_word {display: flex;flex-wrap: wrap;margin: 30rem 0 20rem;}
     .intro_word > li {width: 50%;margin-top: 4rem;}
     .intro_word > li:first-child,
     .intro_word > li:nth-child(2) {margin-top:0;}
-    .intro_word > li > strong {font-family: 'Montserrat';font-size: 2.3rem;font-weight:900;color: #00417d;}
+    .intro_word > li > strong {font-family: 'Montserrat';font-size: 3rem;font-weight:900;color: #ff0052;}
     .intro_word .word_list {margin-top: 1.3rem;}
     .intro_word .word_list li {position: relative;padding-left: 1.5rem;font-size: 1.6rem;line-height: 1;margin-bottom: 1rem;color: #333;}
     .intro_word .word_list li::before {content:"";position:absolute;left:0;top:50%;transform:translateY(-50%);width: 0.8rem;height: 0.1rem;background: #000;}
@@ -125,7 +125,7 @@
     .work_tit h3 {font-size: 1.8rem;}
 
     /*contact*/
-    section#contact {padding: 15rem 0;background: #414141;color: #fff;}
+    section#contact {padding: 15rem 0;background: #000;color: #fff;}
     .contact_txt {margin: 3rem 0;font-size: 2rem;}
     .contact_way {}
     .contact_way li {display: inline-block;}
@@ -136,10 +136,12 @@
     .contact_way li.mail a {background: url(../images/main/i_email.svg) no-repeat 0 100%;background-size: auto 100%;}
     .contact_way li.call a {background: url(../images/main/i_call.svg) no-repeat 0 100%;background-size: auto 100%;}
 
-    
-    @media only screen and (max-width : 1445px){
+    /*1025부터 1400까지*/
+    @media only screen and (max-width : 1400px){
         #content > section {padding: 10rem 2rem 10rem 12.5rem;}
         .cont_wrap {width:100%;}
+        .work_list li {margin-right:5rem;}
+        .work_img {width: 50rem;height: 28rem;}
     }
 }
 
