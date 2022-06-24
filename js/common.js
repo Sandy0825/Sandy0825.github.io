@@ -37,6 +37,7 @@ function response(){
     }else{
     //mobile만        
         mMenu(); 
+        mHeight();
     }    
      
 }
@@ -64,6 +65,14 @@ function mMenu(){
     //gnb on/off
     $('.js-btn-gnb').on('click',function(){
         $('#header').toggleClass('on');
+    });
+}
+function mHeight(){
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh',`${vh}px`);
+    window.addEventListener('resize', () => {
+      let vh = window.innerHeight * 0.01
+      document.documentElement.style.setProperty('--vh', `${vh}px`)
     });
 }
 
