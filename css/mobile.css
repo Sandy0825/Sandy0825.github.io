@@ -45,7 +45,7 @@
     .gnb li a {position: relative;display:inline-block;width: 100%;font-size: 2.8rem;font-weight: 900;letter-spacing: -0.08rem;}
 
 
-    #header.on .gnb_wrap {height: 100vh;background:#ddd;}
+    #header.on .gnb_wrap {height: 100vh;height: calc(var(--vh, 1vh) * 100);background:#ddd;}
     #header.on #gnb_area {display:block;}
     #header.on .btn_gnb > div {position:absolute;top: 1rem;}
     #header.on .btn_gnb .bar01 {transform: rotate(45deg);}
@@ -84,10 +84,10 @@
     .cont_tit strong {display: block;margin-right: 2rem;font-size: 3rem;font-family: 'Montserrat';font-weight: 900;line-height: 1;}
 
     /*black ver*/
-    #wrapper.black {background:#000;height: 100vh;}
+    #wrapper.black {background:#000;height: 100vh;height: calc(var(--vh, 1vh) * 100);}
     #wrapper.black .gnb_wrap {display:none;}
     #wrapper.black #header .logo a {background: url(../images/common/m_logo_wm.png) no-repeat;}
-    #wrapper.black #content {margin-top:100vh;z-index:2;}
+    #wrapper.black #content {margin-top:100vh;height: calc(var(--vh, 1vh) * 100);z-index:2;}
     #wrapper.black #main {transform:scale(1);}
     #wrapper.black .main_tit .i_hand {display:inline-block;}
 
