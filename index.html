@@ -18,51 +18,8 @@
 
 	<script type="text/javascript">
 	
-		
 		$(function(){
-			//*header쪽 효과*
-			//메뉴이동
-			$('.gnb li a').on('click',function(){
-				$('html, body').animate({scrollTop:$(this.hash).offset().top},600);
-			});
-			//gnb on/off
-			$('.js-btn-gnb').on('click',function(e){
-				$(this).toggleClass('on');
-				$('#header').toggleClass('on');
-				$('#gnb_area').toggleClass('on');
-				if($('#header').hasClass('on')){
-					$(this).off('hover');
-				}else{
-					$(this).trigger('hover');
-				}
-				
-			});
-			//컨텐츠 클릭시 off처리
-			$('#container').on('click',function(){
-				if($('#header').hasClass('on')){
-					$('#header').removeClass('on');
-					$('#gnb_area').removeClass('on');
-					$('.js-btn-gnb').removeClass('on');
-				}				
-			});
-
-			//home
-			$('.btn_in').hover(function(){
-				$(this).css('animation','none');
-			},function(){
-				$(this).css('animation','btnIn 1.2s linear infinite');
-			});
-			$('.btn_in').on('click',function(){
-				$('#wrapper').removeClass('black');
-				setTimeout(workSlide2,1000);
-			});
-
-			$(window).load(function(){
-				$('.main_tit').addClass('active');
-			});
-
 			
-
 		});
 
 	</script>
@@ -108,7 +65,10 @@
 	        <div id="content">
 	        	<section id="introduce">
 	        		<div class="cont_wrap">
-	        			<h2 class="cont_tit"><strong>WHO AM I</strong>저에 대해서 살짝 소개해볼게요.</h2>
+	        			<h2 class="cont_tit">
+	        				<strong>WHO AM I</strong>
+	        				<p>저에 대해서 살짝 소개해볼게요.</p>
+	        			</h2>
 		        		<div class="intro_me">
 		        			<div class="me">
 		        				<div class="img"></div>
@@ -125,7 +85,7 @@
 			        			무한한 웹의 세계에 저도 계속 함께하고 싶습니다.
 			        		</p>
 		        		</div>
-		        		<ul class="intro_word">
+		        		<ul class="intro_word" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="500">
 		        			<li>
 		        				<strong>#SKILL</strong>
 		        				<ul class="word_list">
@@ -160,7 +120,7 @@
 		        		</ul>
 	        		</div>
 	        	</section>
-	        	<section id="work">
+	        	<section id="work" data-aos="fade-up" data-aos-anchor-placement="top-bottom" data-aos-duration="500">
 	        		<div class="cont_wrap">
 	        			<h2 class="cont_tit"><strong>MY WORK</strong>웹퍼블리셔로 진행했던 프로젝트를 소개합니다.</h2>
 		        		<ul class="work_list">
@@ -170,7 +130,7 @@
 		        						<img src="images/work/bg_work01.jpg" alt="K-POP 한류문화재단">
 		        						<div class="hover_box">
 		        							<strong>퍼블리싱 참여도 : 100%</strong>
-		        							<span>#반응형</span>
+		        							<span>#반응형 #랜딩페이지</span>
 		        						</div>
 		        					</a>
 		        				</div>
@@ -180,10 +140,11 @@
 		        			</li>
 		        			<li>
 		        				<div class="work_img">
-		        					<a href="#">
+		        					<a href="../2112_BSG/index.html" target="_blank">
 		        						<img src="images/work/bg_work02.jpg" alt="BSG PARTNERS">
 		        						<div class="hover_box">
 		        							<strong>퍼블리싱 참여도 : 100%</strong>
+		        							<span>#반응형 #랜딩페이지 #리뉴얼</span>
 		        						</div>
 		        					</a>
 		        				</div>
@@ -193,11 +154,11 @@
 		        			</li>
 		        			<li>
 		        				<div class="work_img">
-		        					<a href="#">
+		        					<a href="../2111_한글박물관/main_kor.html" onclick="mobileView(this.href);return false;">
 		        						<img src="images/work/bg_work03.jpg" alt="국립한글박물관">
 		        						<div class="hover_box">
 		        							<strong>퍼블리싱 참여도 : 100%</strong>
-		        							<span>#모바일</span>
+		        							<span>#모바일 #APP</span>
 		        						</div>
 		        					</a>
 		        				</div>
@@ -210,7 +171,7 @@
 		        					<a href="http://www.jcep.or.kr/frt/main.do" target="_blank">
 		        						<img src="images/work/bg_work04.jpg" alt="전남콘텐츠 기업육성센터">
 		        						<div class="hover_box">
-		        							<strong>퍼블리싱 참여도 : 100%</strong>
+		        							<strong>퍼블리싱 참여도 : 90%</strong>
 		        							<span>#반응형</span>
 		        						</div>
 		        					</a>
@@ -221,10 +182,11 @@
 		        			</li>
 		        			<li>
 		        				<div class="work_img">
-		        					<a href="#">
+		        					<a href="../2110_분산전원/index.html" target="_blank">
 		        						<img src="images/work/bg_work05.jpg" alt="분산전원관리시스템">
 		        						<div class="hover_box">
 		        							<strong>퍼블리싱 참여도 : 100%</strong>
+		        							<span>#PC #정보형</span>
 		        						</div>
 		        					</a>
 		        				</div>
@@ -238,7 +200,7 @@
 		        						<img src="images/work/bg_work06.jpg" alt="에너지수비대">
 		        						<div class="hover_box">
 		        							<strong>퍼블리싱 참여도 : 100%</strong>
-		        							<span>#모바일</span>
+		        							<span>#반응형</span>
 		        						</div>
 		        					</a>
 		        				</div>
@@ -248,11 +210,11 @@
 		        			</li>
 		        			<li>
 		        				<div class="work_img">
-		        					<a href="#">
-		        						<img src="images/work/bg_work07.jpg" alt="KCA상황판">
+		        					<a href="#" target="_blank">
+		        						<img src="images/work/bg_work07.jpg" alt="전파관리플랫폼">
 		        						<div class="hover_box">
-		        							<strong>퍼블리싱 참여도 : 100%</strong>
-		        							<span>#모바일</span>
+		        							<strong>퍼블리싱 참여도 : 80%</strong>
+		        							<span>#PC #시스템 #보안</span>
 		        						</div>
 		        					</a>
 		        				</div>
@@ -266,7 +228,7 @@
 		        						<img src="images/work/bg_work08.jpg" alt="온라인법인설립시스템">
 		        						<div class="hover_box">
 		        							<strong>퍼블리싱 참여도 : 100%</strong>
-		        							<span>#모바일</span>
+		        							<span>#반응형 #메인페이지</span>
 		        						</div>
 		        					</a>
 		        				</div>
@@ -276,11 +238,25 @@
 		        			</li>
 		        			<li>
 		        				<div class="work_img">
+		        					<a href="http://xn--6-482fq5fy8gs7i6jc.com/" target="_blank">
+		        						<img src="images/work/bg_work17.jpg" alt="충북농촌융복합 산업지원센터">
+		        						<div class="hover_box">
+		        							<strong>퍼블리싱 참여도 : 100%</strong>
+		        							<span>#반응형 #메인 #그누보드</span>
+		        						</div>
+		        					</a>
+		        				</div>
+		        				<div class="work_tit">
+		        					<h3>충북농촌융복합산업지원센터</h3>
+		        				</div>
+		        			</li>
+		        			<li>
+		        				<div class="work_img">
 		        					<a href="https://www.spectrum-sharing.or.kr/ft/main.do" target="_blank">
 		        						<img src="images/work/bg_work09.jpg" alt="RAPA 주파수">
 		        						<div class="hover_box">
-		        							<strong>퍼블리싱 참여도 : 100%</strong>
-		        							<span>#모바일</span>
+		        							<strong>퍼블리싱 참여도 : 90%</strong>
+		        							<span>#PC</span>
 		        						</div>
 		        					</a>
 		        				</div>
@@ -290,11 +266,11 @@
 		        			</li>
 		        			<li>
 		        				<div class="work_img">
-		        					<a href="#">
+		        					<a href="#" target="_blank">
 		        						<img src="images/work/bg_work10.jpg" alt="VOC시스템">
 		        						<div class="hover_box">
 		        							<strong>퍼블리싱 참여도 : 100%</strong>
-		        							<span>#모바일</span>
+		        							<span>#PC #시스템 #보안</span>
 		        						</div>
 		        					</a>
 		        				</div>
@@ -304,11 +280,11 @@
 		        			</li>
 		        			<li>
 		        				<div class="work_img">
-		        					<a href="#">
+		        					<a href="../1908_한전FMS/index.html" target="_blank">
 		        						<img src="images/work/bg_work11.jpg" alt="한전 FMS(주)">
 		        						<div class="hover_box">
 		        							<strong>퍼블리싱 참여도 : 100%</strong>
-		        							<span>#모바일</span>
+		        							<span>#반응형</span>
 		        						</div>
 		        					</a>
 		        				</div>
@@ -318,11 +294,11 @@
 		        			</li>
 		        			<li>
 		        				<div class="work_img">
-		        					<a href="#">
+		        					<a href="#" target="_blank">
 		        						<img src="images/work/bg_work12.jpg" alt="전력거래소 계통운영현황모니터링시스템">
 		        						<div class="hover_box">
 		        							<strong>퍼블리싱 참여도 : 100%</strong>
-		        							<span>#모바일</span>
+		        							<span>#PC #대시보드 #보안</span>
 		        						</div>
 		        					</a>
 		        				</div>
@@ -332,11 +308,11 @@
 		        			</li>
 		        			<li>
 		        				<div class="work_img">
-		        					<a href="#">
+		        					<a href="../1905_한전MCS/html/index.html" target="_blank">
 		        						<img src="images/work/bg_work13.jpg" alt="한전 MCS(주)">
 		        						<div class="hover_box">
-		        							<strong>퍼블리싱 참여도 : 100%</strong>
-		        							<span>#모바일</span>
+		        							<strong>퍼블리싱 참여도 : 80%</strong>
+		        							<span>#반응형</span>
 		        						</div>
 		        					</a>
 		        				</div>
@@ -346,11 +322,11 @@
 		        			</li>
 		        			<li>
 		        				<div class="work_img">
-		        					<a href="#">
+		        					<a href="../1904_송변전/index.html" target="_blank">
 		        						<img src="images/work/bg_work14.jpg" alt="송변전통합정보시스템">
 		        						<div class="hover_box">
 		        							<strong>퍼블리싱 참여도 : 100%</strong>
-		        							<span>#모바일</span>
+		        							<span>#PC #시스템 #drag&drop</span>
 		        						</div>
 		        					</a>
 		        				</div>
@@ -360,11 +336,11 @@
 		        			</li>
 		        			<li>
 		        				<div class="work_img">
-		        					<a href="#">
+		        					<a href="#" target="_blank">
 		        						<img src="images/work/bg_work15.png" alt="한전KDN_AMI 종합관리시스템">
 		        						<div class="hover_box">
-		        							<strong>퍼블리싱 참여도 : 100%</strong>
-		        							<span>#모바일</span>
+		        							<strong>퍼블리싱 참여도 : 80%</strong>
+		        							<span>#PC #Android App</span>
 		        						</div>
 		        					</a>
 		        				</div>
@@ -374,11 +350,11 @@
 		        			</li>
 		        			<li>
 		        				<div class="work_img">
-		        					<a href="#">
+		        					<a href="#" target="_blank">
 		        						<img src="images/work/bg_work16.png" alt="농업용공공관정">
 		        						<div class="hover_box">
-		        							<strong>퍼블리싱 참여도 : 100%</strong>
-		        							<span>#모바일</span>
+		        							<strong>퍼블리싱 참여도 : 40%</strong>
+		        							<span>#반응형 #메인페이지</span>
 		        						</div>
 		        					</a>
 		        				</div>

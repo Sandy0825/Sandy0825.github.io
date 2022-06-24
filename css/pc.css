@@ -10,6 +10,7 @@
     50% {width:100%}
     100% {right:0;width:0;}
 }
+
 @-webkit-keyframes btnIn{
     0% {bottom: 5rem;}
     50% {bottom: 5.5rem;}
@@ -21,6 +22,32 @@
     100% {bottom: 5rem;}
 }
 
+@-webkit-keyframes flip{
+    0% {transform: scaleX(1);}
+    25% {transform: scaleX(0);}
+    50% {transform: scaleX(-1);}
+    75% {transform: scaleX(0);}
+    100% {transform: scaleX(1);}
+}
+@keyframes flip{
+    0% {transform: scaleX(1);}
+    25% {transform: scaleX(0);}
+    50% {transform: scaleX(-1);}
+    75% {transform: scaleX(0);}
+    100% {transform: scaleX(1);}
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: orange }
+}
+
 @media only screen and (min-width: 1025px) {
 
     html{font-size:10px;}
@@ -29,38 +56,37 @@
     #skipnavi a {display:block;overflow:hidden;height:0px;width:0px;margin:-1px -1px -1px 0;*margin:-5px -1px -1px 0;font-size:0;line-height:0;text-align:center;}
     #skipnavi:focus {overflow:hidden;height:100px;background:#0d2f51;font-size:12px;font-weight:500;line-height:1.4;}
     #skipnavi a:focus, #skipnavi a:hover, #skipnavi a:active {width:auto;height:20px;margin:0;padding:8px 0 0 15px;background:#0d2f51;font-size:12px;font-weight:500;line-height:1.4;color:#fff;}
-    #wrapper {overflow: hidden;min-height: 100%;background: #fff;transition: 0.4s ease;}
+    #wrapper {overflow: hidden;min-height: 100%;background: #fff;transition: 0.4s ease-out;}
 
     /*header*/
     #header {position: fixed;top: 0;left: 0;height: 100%;z-index: 10;transition:0.4s ease;}
-    #header.on {/* background: #89a7d4; */}
-    #header:hover {background: #89a7d4;}
     #header .logo {position: absolute;top: 3rem;left: 4rem;width:4.5rem;height: 25rem;z-index: 12;}
     #header .logo a {display:inline-block;width: 100%;height: 100%;background: url(../images/common/logo_b.png) no-repeat;}
     
     .gnb_wrap {position:absolute;left: 3.5rem;bottom: 2rem;width: 5.6rem;height: 5.6rem;border: 0.1rem solid #000;transition: 0.3s ease;overflow: hidden;border-radius: 2.8rem;}
-    #header.on .gnb_wrap {height: 16rem;}
     .btn_gnb {position: absolute;bottom: 0;padding: 1.8rem 1.2rem;width: 5.6rem;height: 5.6rem;margin: 0 auto;cursor: pointer;border-radius: 50%;transition:0.4s ease;z-index: 12;}
     .btn_gnb:hover {transform:rotate(360deg);}
     .btn_gnb > div {width: 3rem;height: 0.3rem;margin-bottom:0.6rem;background: #000;transition:0.2s ease;}
     .btn_gnb > .bar03 {margin-bottom:0;}
-    .btn_gnb.on > div {position:absolute;top: 2.5rem;}
-    .btn_gnb.on .bar01 {transform: rotate(45deg);}
-    .btn_gnb.on .bar02 {display: none;}
-    .btn_gnb.on .bar03 {transform: rotate(135deg);}
-    #gnb_area {display: none;}    
-    #gnb_area.on {display: block;bottom: 5.6rem;margin-top: 2rem;}
+    
+    #gnb_area {display: none;}  
     .gnb li {margin:0.5rem 0;text-align: center;}
     .gnb li a {position: relative;display:inline-block;/* width: 100%; */text-align: center;font-size: 1.2rem;font-weight: 700;letter-spacing: -0.08rem;}
     .gnb li a::after {content:'';position: absolute;left: 50%;bottom: 0;width: 0;height: 1rem;background: rgb(189 225 255 / 80%);transform: translateX(-50%);z-index: -1;transition: 0.3s ease;}
     .gnb li:hover a::after {width:100%;}
     
+    #header.on .gnb_wrap {height: 16rem;}
+    #header.on #gnb_area {display: block;bottom: 5.6rem;margin-top: 2rem;}
+    #header.on .btn_gnb > div {position:absolute;top: 2.5rem;}
+    #header.on .btn_gnb .bar01 {transform: rotate(45deg);}
+    #header.on .btn_gnb .bar02 {display: none;}
+    #header.on .btn_gnb .bar03 {transform: rotate(135deg);}
+
     /*footer*/
     #footer {position: fixed;right: 2rem;top: 50%;text-align: center;font-size: 1.3rem;color: #666;transform: rotate(270deg) translateX(50%);transform-origin: top right;z-index: 3;}
     
     /*container*/
-    #container {/* width: calc(100% - 12.5rem); *//* margin-left: 12.5rem; */}
-    #content {position: relative;background: #fff;transition: 1s ease;transition-delay: 0.3s;z-index: 3;}
+    #content {position: relative;background: #fff;transition: 1.3s cubic-bezier(0.42, 0, 0.6, 1.16);transition-delay: 0.3s;z-index: 3;}
     #content > section {padding: 10rem 12.5rem;}
     .cont_wrap {width:130rem;margin:0 auto;}
 
@@ -84,7 +110,7 @@
     #main .main_tit.active+.btn_in::before {transform:scale(0);}
     
     .cont_tit {margin-bottom: 4rem;font-size: 2.6rem;}
-    .cont_tit strong {display: block;margin-right: 2rem;font-size: 4rem;font-family: 'Montserrat';font-weight: 900;line-height: 1;}
+    .cont_tit strong {display: block;font-size: 4rem;font-family: 'Montserrat';font-weight: 900;line-height: 1;}
 
     /*black ver*/
     #wrapper.black {background:#000;height: 100vh;}
@@ -99,9 +125,10 @@
     .intro_txt {font-size:2rem;line-height: 1.5;color: #333;word-break: keep-all;}
     .intro_me .me {text-align:center;margin-left: 1rem;}
     .intro_me .me .img {width: 35rem;height: 25rem;margin-bottom: 2rem;border-radius: 50%;background: url(../images/main/me.jpg) no-repeat 61% 50%;background-size: 100% auto;border: 0.8rem solid #000;}
+    #content.on .intro_me .me .img {animation: flip 1s 1s ease-out;}
     .intro_me .me .name {display:block;font-size:2rem;font-weight:900;}
     .intro_me .me .birth {font-size:1.5rem;}
-    .intro_word {display: flex;flex-wrap: wrap;margin: 30rem 0 20rem;}
+    .intro_word {display: flex;flex-wrap: wrap;margin: 15rem 0;}
     .intro_word > li {width: 50%;margin-top: 4rem;}
     .intro_word > li:first-child,
     .intro_word > li:nth-child(2) {margin-top:0;}
@@ -135,6 +162,10 @@
     .contact_way li:hover a::before {width: calc(100% - 3rem);}
     .contact_way li.mail a {background: url(../images/main/i_email.svg) no-repeat 0 100%;background-size: auto 100%;}
     .contact_way li.call a {background: url(../images/main/i_call.svg) no-repeat 0 100%;background-size: auto 100%;}
+
+    /*작업상세*/
+    section#workView {padding:8rem 12.5rem;}
+    .view_tit {font-size: 4rem;font-weight: 900;letter-spacing: -0.3rem;}
 
     /*1025부터 1400까지*/
     @media only screen and (max-width : 1400px){
