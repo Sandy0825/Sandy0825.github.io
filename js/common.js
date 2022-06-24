@@ -65,6 +65,14 @@ function mMenu(){
     $('.js-btn-gnb').on('click',function(){
         $('#header').toggleClass('on');
     });
+    $('.gnb li a').on('click',function(){
+        if($('#header').hasClass('on')){
+            $('#header').removeClass('on');
+        } 
+    });
+
+    
+
 }
 function mHeight(){
     let vh = window.innerHeight * 0.01;
