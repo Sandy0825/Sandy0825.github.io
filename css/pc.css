@@ -52,16 +52,16 @@
 
     html{font-size:10px;}
     body{font-size:1.6rem;}
-    #skipnavi {position:relative;width:100%;z-index:2;*height:0px;display: n;}
+    #skipnavi {position:relative;width:100%;z-index:2;*height:0px;display: none;}
     #skipnavi a {display:block;overflow:hidden;height:0px;width:0px;margin:-1px -1px -1px 0;*margin:-5px -1px -1px 0;font-size:0;line-height:0;text-align:center;}
     #skipnavi:focus {overflow:hidden;height:100px;background:#0d2f51;font-size:12px;font-weight:500;line-height:1.4;}
     #skipnavi a:focus, #skipnavi a:hover, #skipnavi a:active {width:auto;height:20px;margin:0;padding:8px 0 0 15px;background:#0d2f51;font-size:12px;font-weight:500;line-height:1.4;color:#fff;}
-    #wrapper {overflow: hidden;min-height: 100%;background: #fff;transition: 0.4s ease-out;}
+    #wrapper {overflow: hidden;min-height: 100%;background: #fff;transition: 0.3s ease-out;}
 
     /*header*/
     #header {position: fixed;top: 0;left: 0;height: 100%;z-index: 10;transition:0.4s ease;}
     #header .logo {position: absolute;top: 3rem;left: 4rem;width:4.5rem;height: 25rem;z-index: 12;}
-    #header .logo a {display:inline-block;width: 100%;height: 100%;background: url(../images/common/logo_b.png) no-repeat;}
+    #header .logo a {display:inline-block;width: 100%;height: 100%;background: url(../images/common/logo_b.png) no-repeat;text-indent: -9999rem;}
     
     .gnb_wrap {position:absolute;left: 3.5rem;bottom: 2rem;width: 5.6rem;height: 5.6rem;border: 0.1rem solid #000;transition: 0.3s ease;overflow: hidden;border-radius: 2.8rem;}
     .btn_gnb {position: absolute;bottom: 0;padding: 1.8rem 1.2rem;width: 5.6rem;height: 5.6rem;margin: 0 auto;cursor: pointer;border-radius: 50%;transition:0.4s ease;z-index: 12;}
@@ -91,7 +91,7 @@
     .cont_wrap {width:130rem;margin:0 auto;}
 
     /*main*/
-    #main {position: fixed;top: 0;display:flex;width: 100%;height: 100vh;margin: 0 auto;flex-wrap: wrap;align-content: center;justify-content: center;transform:scale(0);transition:0.8s ease-out;z-index: 1;}
+    #main {display:flex;width: 100%;height: 0;margin: 0 auto;flex-wrap: wrap;align-content: center;justify-content: center;transform:scale(0);transition:0.8s ease-out;z-index: 1;}
     #main .main_tit {font-size: 4rem;font-weight: 700;line-height: 1.7;color: #fff;}
     #main .main_tit .i_hand {display:none;}
     #main .main_tit > span {position:relative;line-height: 1.2;}
@@ -113,11 +113,11 @@
     .cont_tit strong {display: block;font-size: 4rem;font-family: 'Montserrat';font-weight: 900;line-height: 1;}
 
     /*black ver*/
-    #wrapper.black {background:#000;height: 100vh;}
+    #wrapper.black {height:100vh;background:#000;}
     #wrapper.black .gnb_wrap {display:none;}
     #wrapper.black #header .logo a {background:url(../images/common/logo_w.png) no-repeat;}
-    #wrapper.black #content {margin-top:100vh;z-index:2;}
-    #wrapper.black #main {transform:scale(1);}
+    #wrapper.black #content {z-index:2;}
+    #wrapper.black #main {height:100vh;transform:scale(1);}
     #wrapper.black .main_tit .i_hand {display:inline-block;}
 
     /*about*/
@@ -128,7 +128,7 @@
     #content.on .intro_me .me .img {animation: flip 1s 1s ease-out;}
     .intro_me .me .name {display:block;font-size:2rem;font-weight:900;}
     .intro_me .me .birth {font-size:1.5rem;}
-    .intro_word {display: flex;flex-wrap: wrap;margin: 15rem 0;}
+    .intro_word {display: flex;flex-wrap: wrap;margin-top: 15rem;}
     .intro_word > li {width: 50%;margin-top: 4rem;}
     .intro_word > li:first-child,
     .intro_word > li:nth-child(2) {margin-top:0;}
@@ -140,16 +140,24 @@
 
     /*작업물*/
     .work_list {display: flex;flex-wrap: nowrap;}
-    .work_list li {margin-bottom: 5rem;margin-right: 10rem;}
+    .work_list li {margin-right: 10rem;}
     .work_img {width: 60rem;height: 34rem;border: 0.1rem solid #333;overflow: hidden;}
     .work_img a {position: relative;display: block;height: 100%;}
     .work_img img {position: absolute;left: 50%;top: 0;width: 100%;min-height: 100%;transform: translateX(-50%);transition: 0.4s ease;}
     .work_img:hover img {transform: translateX(-50%) scale(1.1);}
+    .work_img img.work15, .work_img img.work16 {padding-top:2rem;}
     .work_img .hover_box {display: flex;position: absolute;bottom: 0;width: 100%;height: 100%;transition: 0.4s ease;background: rgba(0,0,0,0.6);text-align: center;align-content: center;justify-content: center;flex-wrap: wrap;color: #fff;transform: scale(0);}
     .work_img:hover .hover_box {transform: scale(1);}
     .work_img .hover_box strong {width: 100%;font-weight: 500;}
     .work_tit {margin-top:1.5rem;}
     .work_tit h3 {font-size: 1.8rem;}
+    .layer_pop {display:none;width: 50rem;height: 30rem;background: #ffd5e2;border: 0.2rem solid #ff6a98;box-shadow: 0.5rem 0.5rem 1rem rgba(0,0,0,0.3);z-index: 10;}
+    .work_pop {position:relative;display: flex;align-content: center;justify-content: center;width: 100%;height: 100%;text-align:center;flex-wrap: wrap;}
+    .work_pop strong {margin-bottom: 1rem;width: 100%;font-size: 3rem;}
+    .work_pop p {width: 100%;font-size: 2rem;}
+    .work_pop .btn_close {position: absolute;top: 1rem;right: 1rem;width: 3rem;height: 4rem;background: url(../images/main/i_close.svg) no-repeat;background-size: contain;text-indent: -9999rem;border: 0;}
+    .work_pop .btn_chk {margin-top: 3rem;padding: 0.5rem 2rem;font-size: 1.7rem;font-weight: 700;background: #333;color:#fff;border: 0.15rem solid #333;border-radius: 0.6rem;transition: 0.3s ease;}
+    .work_pop .btn_chk:hover {color: #333;background: #fff;}
 
     /*contact*/
     section#contact {padding: 15rem 0;background: #000;color: #fff;}
@@ -158,15 +166,12 @@
     .contact_way li {display: inline-block;}
     .contact_way li.mail {margin-right:3rem;}
     .contact_way li a {position: relative;display: inline-block;padding-left: 3.2rem;font-size: 2.5rem;line-height: 1;z-index: 1;}
-    .contact_way li a::before {content:'';position:absolute;bottom: 0;width: 0;height: 1rem;background: #000000;z-index: -1;transition: 0.3s ease;}
+    .contact_way li a::before {content:'';position:absolute;bottom: 0;width: 0;height: 1rem;background: #ff0052;z-index: -1;transition: 0.3s ease;}
     .contact_way li:hover a::before {width: calc(100% - 3rem);}
     .contact_way li.mail a {background: url(../images/main/i_email.svg) no-repeat 0 100%;background-size: auto 100%;}
     .contact_way li.call a {background: url(../images/main/i_call.svg) no-repeat 0 100%;background-size: auto 100%;}
 
-    /*작업상세*/
-    section#workView {padding:8rem 12.5rem;}
-    .view_tit {font-size: 4rem;font-weight: 900;letter-spacing: -0.3rem;}
-
+    
     /*1025부터 1400까지*/
     @media only screen and (max-width : 1400px){
         #content > section {padding: 10rem 2rem 10rem 12.5rem;}

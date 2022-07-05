@@ -30,7 +30,7 @@
     /*header*/
     #header {position: fixed;top: 0;left: 0;width: 100%;height: 5rem;z-index: 10;}
     #header .logo {position: absolute;top: 1.5rem;left: 1rem;width: 15rem;height: 2.8rem;z-index: 12;}
-    #header .logo a {display:inline-block;width: 100%;height: 100%;background: url(../images/common/m_logo_b.png) no-repeat;background-size: 100% auto !important;}
+    #header .logo a {display:inline-block;width: 100%;height: 100%;background: url(../images/common/m_logo_b.png) no-repeat;background-size: 100% auto !important;text-indent: -9999rem;}
 
     .gnb_wrap {position: relative;width: 100%;height: 0;overflow: hidden;transition: 0.4s ease;}
     .btn_gnb {position:fixed;top: 1.5rem;right: 1.5rem;width: 2.5rem;height: 2.5rem;cursor: pointer;}
@@ -100,7 +100,7 @@
     .intro_me .me .name {display:block;font-size: 1.5rem;font-weight:900;}
     .intro_me .me .birth {font-size: 1.3rem;}
     .intro_word {display: flex;flex-wrap: wrap;margin: 5rem 0;}
-    .intro_word > li {margin-top: 4rem;}
+    .intro_word > li {width: 100%;margin-top: 4rem;}
     .intro_word > li > strong {font-family: 'Montserrat';font-size: 2rem;font-weight:900;color: #ff0052;}
     .intro_word .word_list {margin-top: 1rem;}
     .intro_word .word_list li {position: relative;padding-left: 1.2rem;font-size: 1.3rem;line-height: 1.2;margin-bottom: 0.6rem;color: #333;}
@@ -119,13 +119,21 @@
     .work_img .hover_box strong {width: 100%;font-weight: 500;}
     .work_tit {margin-top: 1rem;}
     .work_tit h3 {font-size: 1.5rem;}
+    .layer_pop {display:none;width: calc(100% - 3.6rem);height: 20rem;background: #ffd5e2;border: 0.2rem solid #ff6a98;box-shadow: 0.5rem 0.5rem 1rem rgba(0,0,0,0.3);z-index: 10;}
+    .work_pop {position:relative;display: flex;align-content: center;justify-content: center;width: 100%;height: 100%;text-align:center;flex-wrap: wrap;}
+    .work_pop strong {margin-bottom: 1rem;width: 100%;font-size: 2rem;}
+    .work_pop p {width: 100%;font-size: 1.5rem;}
+    .work_pop .btn_close {position: absolute;top: 1rem;right: 1rem;width: 2rem;height: 2rem;background: url(../images/main/i_close.svg) no-repeat;background-size: contain;text-indent: -9999rem;border: 0;}
+    .work_pop .btn_chk {margin-top: 1.5rem;padding: 0.2rem 1rem;font-size: 1.3rem;font-weight: 700;background: #333;color:#fff;border: 0.15rem solid #333;border-radius: 0.6rem;transition: 0.3s ease;}
+    .work_pop .btn_chk:hover {color: #333;background: #fff;}
+
 
     /*contact*/
     section#contact {padding: 5rem 2rem;background: #000;color: #fff;}
     .contact_txt {margin: 3rem 0;font-size: 1.3rem;}
     .contact_way li {display: inline-block;}
     .contact_way li.mail {margin-bottom: 1rem;}
-    .contact_way li a {position: relative;display: inline-block;padding-left: 2.7rem;font-size: 2rem;line-height: 1;z-index: 1;}
+    .contact_way li a {position: relative;display: inline-block;padding-left: 2.7rem;font-size: 1.8rem;line-height: 1;z-index: 1;}
     .contact_way li a::before {content:'';position:absolute;bottom: 0;width: 0;height: 1rem;background: #000000;z-index: -1;transition: 0.3s ease;}
     .contact_way li:hover a::before {width: calc(100% - 3rem);}
     .contact_way li.mail a {background: url(../images/main/i_email.svg) no-repeat 0 100%;background-size: auto 100%;}
@@ -169,5 +177,8 @@
 /* ipad 세로*/
 @media only screen and (min-width : 768px) and (max-width: 1024px){
     html{font-size:13px;}
- 
+
+    .intro_me .me .img {width:35rem;height: 23rem;}
+    .work_list li {width: 49%;}
+    
 }
