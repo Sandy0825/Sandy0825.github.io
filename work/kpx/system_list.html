@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<title>바이텍</title>
+	<!-- 공통파일링크 -->
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+</head>
+<body>
+	<div id="wrapper">
+		<div id="header">
+			<h1><a href="index.html"><span></span><strong>계통운영상황</strong> 모니터링 시스템</a></h1>
+			<div class="util_box">
+				<span class="setting"></span>
+				<span class="alarm"></span>
+				<span class="user"></span>
+			</div>
+		</div>
+		<div class="content_wrap">
+			<div class="lnb js-lnb">
+				<span class="btn_logout"><a href="login.html">Logout</a></span>
+				<ul class="lnb_menu">
+					<li><a href="index.html">메인화면</a></li>
+					<li class="has_sub">
+						<a href="#">실시간 모니터링</a>
+						<ul>
+							<li><a href="realtime_img.html">실시간 모니터링</a></li>
+							<li><a href="realtime_log.html">전력계통 신뢰도지수</a></li>
+							<li><a href="#">발전기차단 고장파급장치</a></li>
+							<li><a href="#">부하차단 고장파급장치</a></li>
+							<li><a href="#">발전기/차단기 Alarm</a></li>
+							<li><a href="#">송변전 계통 차단기 Alarm</a></li>
+							<li><a href="#">융통선로 Alarm</a></li>
+						</ul>
+					</li>
+					<li><a href="acquirement.html">취득상태</a></li>
+					<li class="has_sub">
+						<a href="#">이력 모니터링</a>
+						<ul>
+							<li><a href="monitor_img.html">PSHI</a></li>
+							<li><a href="monitor_log.html">SPS-발전기차단</a></li>
+							<li><a href="#">SPS-부하차단</a></li>
+							<li><a href="#">발전기/차단기 알람로그</a></li>
+							<li><a href="#">송변전 계통 차단기 Alarm</a></li>
+							<li><a href="#">융통선로 Alarm</a></li>
+						</ul>
+					</li>
+					<li class="has_sub open active">
+						<a href="#">시스템 관리</a>
+						<ul>
+							<li class="active"><a href="system_list.html">사용자관리</a></li>
+							<li><a href="system_form.html">권한관리</a></li>
+							<li><a href="system_view.html">메뉴관리</a></li>
+							<li><a href="menu_tree.html">권한별 메뉴관리</a></li>
+							<li><a href="#">상위코드관리</a></li>
+							<li><a href="#">하위코드관리</a></li>
+							<li><a href="#">데이터 삭제주기</a></li>
+						</ul>
+					</li>
+				</ul>
+				<div class="lnb_footer">Copyright &nbsp;KOREA&nbsp; POWER&nbsp; EXCHANGE(KPX).<br>All&nbsp; Rights&nbsp; Reserved</div>
+				<span class="btn_lnb"></span>
+			</div>
+			<div id="contents">
+				<h2 class="menu_tit">사용자 관리 _ 목록</h2>
+				<div class="search_box">
+				    <fieldset>
+				        <legend>검색</legend>
+				        <strong class="search_tit">구분</strong>
+				        <div class="fake_select js-fake-select open">
+						    <span class="ctrl"><span class="arrow"></span></span>
+						    <button type="button" class="my_value js-my-value">아이디</button>
+						    <ul class="a_list">
+						        <li><a href="#1">아이디1</a></li>
+						        <li><a href="#2">아이디2</a></li>
+						        <li><a href="#3">아이디3</a></li>
+						    </ul>
+						</div>
+						<span class="mar_l10"><input type="text" class="text" placeholder="검색어를 입력하세요" style="width:345px;"></span>
+				        <button type="button" class="btn btn_search">조회</button>
+				    </fieldset>
+				</div>
+				<span class="status abnormal"><span class="i_circle"></span>비정상 2019-07-15 19:00:05</span>
+				<div class="tbl_wrap">
+					<table class="tbl_col_type04">
+						<caption></caption>
+						<colgroup>
+							<col style="width: 10%;">
+							<col style="width: 15%;">
+							<col>
+							<col>
+							<col>
+							<col>
+							<col>
+							<col>
+						</colgroup>
+						<thead>
+							<tr>
+								<th scope="col">NO</th>
+								<th scope="col">사용자아이디</th>
+								<th scope="col">사용자명</th>
+								<th scope="col">권한명</th>
+								<th scope="col">사용여부</th>
+								<th scope="col">수정</th>
+								<th scope="col">상세</th>
+								<th scope="col">삭제</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>10</td>
+								<td>Admin1</td>
+								<td>홍길동1</td>
+								<td>관리자</td>
+								<td>사용</td>
+								<td><a href="#" class="btn btn_mdl02 btn_rewrite">수정</a></td>
+								<td><a href="#" class="btn btn_mdl02 btn_detail">상세</a></td>
+								<td><a href="#" class="btn btn_mdl02 btn_del">삭제</a></td>
+							</tr>
+							<tr>
+								<td>9</td>
+								<td>Admin12</td>
+								<td>홍길동12</td>
+								<td>관리자</td>
+								<td>사용</td>
+								<td><a href="#" class="btn btn_mdl02 btn_rewrite">수정</a></td>
+								<td><a href="#" class="btn btn_mdl02 btn_detail">상세</a></td>
+								<td><a href="#" class="btn btn_mdl02 btn_del">삭제</a></td>
+							</tr>
+							<tr>
+								<td>8</td>
+								<td>Admin13</td>
+								<td>홍길동13</td>
+								<td>관리자</td>
+								<td>사용</td>
+								<td><a href="#" class="btn btn_mdl02 btn_rewrite">수정</a></td>
+								<td><a href="#" class="btn btn_mdl02 btn_detail">상세</a></td>
+								<td><a href="#" class="btn btn_mdl02 btn_del">삭제</a></td>
+							</tr>
+							<tr>
+								<td>7</td>
+								<td>Admin14</td>
+								<td>홍길동14</td>
+								<td>관리자</td>
+								<td>사용</td>
+								<td><a href="#" class="btn btn_mdl02 btn_rewrite">수정</a></td>
+								<td><a href="#" class="btn btn_mdl02 btn_detail">상세</a></td>
+								<td><a href="#" class="btn btn_mdl02 btn_del">삭제</a></td>
+							</tr>
+							<tr>
+								<td>6</td>
+								<td>Admin15</td>
+								<td>홍길동15</td>
+								<td>관리자</td>
+								<td>사용</td>
+								<td><a href="#" class="btn btn_mdl02 btn_rewrite">수정</a></td>
+								<td><a href="#" class="btn btn_mdl02 btn_detail">상세</a></td>
+								<td><a href="#" class="btn btn_mdl02 btn_del">삭제</a></td>
+							</tr>
+							<tr>
+								<td>5</td>
+								<td>Admin16</td>
+								<td>홍길동16</td>
+								<td>관리자</td>
+								<td>사용</td>
+								<td><a href="#" class="btn btn_mdl02 btn_rewrite">수정</a></td>
+								<td><a href="#" class="btn btn_mdl02 btn_detail">상세</a></td>
+								<td><a href="#" class="btn btn_mdl02 btn_del">삭제</a></td>
+							</tr>
+							<tr>
+								<td>4</td>
+								<td>Admin17</td>
+								<td>홍길동17</td>
+								<td>관리자</td>
+								<td>사용</td>
+								<td><a href="#" class="btn btn_mdl02 btn_rewrite">수정</a></td>
+								<td><a href="#" class="btn btn_mdl02 btn_detail">상세</a></td>
+								<td><a href="#" class="btn btn_mdl02 btn_del">삭제</a></td>
+							</tr>
+							<tr>
+								<td>3</td>
+								<td>Admin18</td>
+								<td>홍길동18</td>
+								<td>관리자</td>
+								<td>사용</td>
+								<td><a href="#" class="btn btn_mdl02 btn_rewrite">수정</a></td>
+								<td><a href="#" class="btn btn_mdl02 btn_detail">상세</a></td>
+								<td><a href="#" class="btn btn_mdl02 btn_del">삭제</a></td>
+							</tr>
+							<tr>
+								<td>2</td>
+								<td>Admin19</td>
+								<td>홍길동19</td>
+								<td>관리자</td>
+								<td>사용</td>
+								<td><a href="#" class="btn btn_mdl02 btn_rewrite">수정</a></td>
+								<td><a href="#" class="btn btn_mdl02 btn_detail">상세</a></td>
+								<td><a href="#" class="btn btn_mdl02 btn_del">삭제</a></td>
+							</tr>
+							<tr>
+								<td>1</td>
+								<td>Admin20</td>
+								<td>홍길동20</td>
+								<td>관리자</td>
+								<td>사용</td>
+								<td><a href="#" class="btn btn_mdl02 btn_rewrite">수정</a></td>
+								<td><a href="#" class="btn btn_mdl02 btn_detail">상세</a></td>
+								<td><a href="#" class="btn btn_mdl02 btn_del">삭제</a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="paging_wrap">
+					<div class="paging">
+						<a class="btn_page first">목록 처음으로 이동</a>
+						<a class="btn_page prev">이전 페이지로 이동</a>
+						<strong class="page_num">1</strong>
+						<a href="#">2</a>
+						<a href="#">3</a>
+						<a href="#">4</a>
+						<a href="#">5</a>
+						<a href="#">6</a>
+						<a href="#">7</a>
+						<a href="#">8</a>
+						<a href="#">9</a>
+						<a href="#">10</a>
+						<a class="btn_page next">다음 페이지로 이동</a>
+						<a class="btn_page last">목록 마지막으로 이동</a>
+					</div>
+					<div class="btn_right">
+						<a href="#" class="btn btn_mdl btn_write">신규</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</body>
+</html>

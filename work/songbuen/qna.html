@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>EZONE 송변전통합정보시스템</title>
+    <link rel="stylesheet" href="css/sub.css">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui-1.12.1.custom.css">
+    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/jquery-ui-1.12.1.custom.js"></script>
+    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+</head>
+<body>
+	<div id="wrapper" class="sub_bg">
+		<!-- header -->
+        <header id="header">
+            <h1 class="logo"><a href="index.html"><img src="images/common/logo.png" alt="EZONE 송변전통합정보시스템"></a></h1>
+            <span class="call">시스템문의:0910-7440, 7449, 7442, 7443</span>
+        </header>
+        <!-- //header -->
+        <!-- search area-->
+        <div class="search_area">
+            <div class="search_select js-search-select">
+                <label for="selec01">시스템선택</label>
+                <select id="selec01">
+                    <option selected>시스템선택</option>
+                    <option>옵션1</option>
+                    <option>옵션2</option>
+                </select>
+            </div>
+            <div class="search">
+                <input type="text" class="text" placeholder="검색어를 입력하세요"><button type="button" class="btn btn_search" onclick="location.href='search.html'">검색</button>
+            </div>
+            <div class="util">
+                <strong class="user"><span>홍길동님</span> 개선요청</strong>
+                <span class="util_count01">접수중<a href="#">12</a></span>
+                <span class="util_count02">채택<a href="#">7</a></span>
+            </div>
+        </div>
+        <!-- //search area-->
+        <div id="container">
+        	<div id="sub_content">
+        		<div class="content_area">
+        			<h2 class="page_title">질문과 답변</h2>
+        			<!-- tbl_top -->
+					<div class="tbl_top">
+					    <p class="tbl_left">총 <strong>2</strong> 건</p>
+					    <!-- 검색 -->
+					    <div class="search_form">
+					        <form method="post" action="#">
+					            <fieldset>
+					                <legend>목록 검색</legend>
+					                    <div class="search_select js-search-select">
+					                        <label for="sel01">전체</label>
+					                        <select id="sel01">
+					                            <option selected>전체</option>
+					                            <option>제목</option>
+					                            <option>작성자</option>
+					                        </select>
+					                    </div>
+					                    <span class="search_input">
+					                        <label for="keyword" class="hidden">검색어 입력</label>
+					                        <input type="text" id="keyword" name="keyword">
+					                        <button type="button" class="btn btn_search"></button>
+					                    </span>
+					            </fieldset>
+					        </form>
+					    </div>
+					    <!--// 검색 -->
+					</div>
+					<!-- //tbl_top -->
+					<!-- tbl -->
+					<div class="tbl_wrap">
+					    <table class="tbl_col_type01">
+					        <caption>목록(번호,제목,첨부,작성자,작성일,조회 로 구성)</caption>
+					        <colgroup>
+					            <col style="width:10%;">
+					            <col>
+					            <col style="width:6%;">
+					            <col style="width:10%;">
+					            <col style="width:10%;">
+					            <col style="width:10%;">
+					        </colgroup>
+					        <thead>
+					            <tr>
+					                <th scope="col">번호</th>
+					                <th scope="col" class="subject">제목</th>
+					                <th scope="col">첨부</th>
+					                <th scope="col">작성자</th>
+					                <th scope="col">작성일</th>
+					                <th scope="col">답변여부</th>
+					            </tr>
+					        </thead>
+					        <tbody>
+					        	<tr>
+					                <td>10</td>
+					                <td class="subject"><a href="qna_view.html">제목입니다.<img src="images/sub/i_new.png" alt="새로운 글"></a></td>
+					                <td><a href="#" title="다운로드"><img src="images/sub/i_attfile.png" alt="hwp 파일"></a></td>
+					                <td>관리자</td>
+					                <td>2017-02-14</td>
+					                <td><span class="answer answer_type01">채택</span></td>
+					            </tr>
+					            <tr>
+					                <td>9</td>
+					                <td class="subject"><a href="#">제목입니다.</a></td>
+					                <td><a href="#" title="다운로드"><img src="images/sub/i_attfile.png" alt="hwp 파일"></a></td>
+					                <td>관리자</td>
+					                <td>2017-02-14</td>
+					                <td><span class="answer answer_type02">접수중</span></td>
+					            </tr>
+					            <tr>
+					                <td>8</td>
+					                <td class="subject"><a href="#">제목입니다.</a></td>
+					                <td><a href="#" title="다운로드"><img src="images/sub/i_attfile.png" alt="hwp 파일"></a></td>
+					                <td>관리자</td>
+					                <td>2017-02-14</td>
+					                <td></td>					                
+					            </tr>
+					            <tr>
+					                <td>7</td>
+					                <td class="subject"><a href="#">제목입니다.</a></td>
+					                <td><a href="#" title="다운로드"><img src="images/sub/i_attfile.png" alt="hwp 파일"></a></td>
+					                <td>관리자</td>
+					                <td>2017-02-14</td>
+					                <td></td>					                
+					            </tr>
+					            <tr>
+					                <td>6</td>
+					                <td class="subject"><a href="#">제목입니다.</a></td>				                
+					                <td><a href="#" title="다운로드"><img src="images/sub/i_attfile.png" alt="hwp 파일"></a></td>
+					                <td>관리자</td>
+					                <td>2017-02-14</td>
+					                <td></td>					                
+					            </tr>
+					            <tr>
+					                <td>5</td>
+					                <td class="subject"><a href="#">제목입니다.</a></td>
+					                <td><a href="#" title="다운로드"><img src="images/sub/i_attfile.png" alt="hwp 파일"></a></td>
+					                <td>관리자</td>
+					                <td>2017-02-14</td>
+					                <td></td>					                
+					            </tr>
+					            <tr>
+					                <td>4</td>
+					                <td class="subject"><a href="#">제목입니다.</a></td>
+					                <td><a href="#" title="다운로드"><img src="images/sub/i_attfile.png" alt="hwp 파일"></a></td>
+					                <td>관리자</td>
+					                <td>2017-02-14</td>
+					                <td></td>					                
+					            </tr>
+					            <tr>
+					                <td>3</td>
+					                <td class="subject"><a href="#">제목입니다.</a></td>
+					                <td><a href="#" title="다운로드"><img src="images/sub/i_attfile.png" alt="hwp 파일"></a></td>
+					                <td>관리자</td>
+					                <td>2017-02-14</td>
+					                <td></td>					                
+					            </tr>
+					            <tr>
+					                <td>2</td>
+					                <td class="subject"><a href="#">제목입니다.</a></td>
+					                <td><a href="#" title="다운로드"><img src="images/sub/i_attfile.png" alt="hwp 파일"></a></td>
+					                <td>관리자</td>
+					                <td>2017-02-14</td>
+					                <td></td>					                
+					            </tr>
+					            <tr>
+					                <td>1</td>
+					                <td class="subject"><a href="#">제목입니다.</a></td>
+					                <td><a href="#" title="다운로드"><img src="images/sub/i_attfile.png" alt="hwp 파일"></a></td>
+					                <td>관리자</td>
+					                <td>2017-02-14</td>	
+					                <td></td>				                
+					            </tr>
+					        </tbody>
+					    </table>
+					</div>
+					<!-- //tbl -->
+					<!-- paging -->
+					<div class="paging_wrap">
+					    <div class="paging">
+					        <a href="#" class="btn_page first">목록 처음으로 이동</a>
+					        <a href="#" class="btn_page prev">이전 페이지로 이동</a>
+					        <strong class="page_num">1</strong>
+					        <a href="#">2</a>
+					        <a href="#">3</a>
+					        <a href="#">4</a>
+					        <a href="#">5</a>
+					        <a href="#" class="btn_page next">다음 페이지로 이동</a>
+					        <a href="#" class="btn_page last">목록 마지막으로 이동</a>
+					    </div>
+					    <div class="btn_right">
+					    	<a href="qna_form.html" class="btn btn_mdl btn_write">등록</a>
+					    	<a href="#" class="btn btn_mdl btn_cancel">취소</a>
+					    </div>
+					</div>
+					<!-- //paging -->
+	        	</div>
+        	</div>        		
+        </div>
+	</div>
+</body>
+</html>

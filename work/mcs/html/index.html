@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="kr">
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<meta id="mobileMeta" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<meta property="og:type" content="website">
+	<meta property="og:title" content="한전엠씨에스 주식회사">
+	<meta property="og:description" content="전력량계검침, 전기요금청구서 송달, 전기요금체납관리 및 고객서비스">
+	<meta property="og:image" content="http://www.mysite.com/myimage.jpg">
+	<meta property="og:url" content="http://www.mysite.com">
+	<title>한전엠씨에스 주식회사</title>
+	<meta name="description" content="전력량계검침, 전기요금청구서 송달, 전기요금체납관리 및 고객서비스">
+	<link rel="stylesheet" href="../css/fullpage.min.css" />
+	<link rel="stylesheet" href="../css/style.css" />
+	<script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="../js/fullpage.js"></script>
+	<script type="text/javascript" src="../js/jquery.bxslider.js"></script>
+	<script type="text/javascript" src="../js/common.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			if(document.cookie.indexOf('map') > -1){
+				$(".popup_slider_area").attr("style","display:none");
+			}
+		});
+		
+		function setCookie(name, value, expiredays){
+			var todayDate = new Date();   
+			 todayDate = new Date(parseInt(todayDate.getTime() / 86400000) * 86400000 + 54000000);  
+			 if ( todayDate > new Date() )      {  
+				 expiredays = expiredays - 1;  
+			 }  
+			 todayDate.setDate( todayDate.getDate() + expiredays );   
+			 document.cookie = name + "=" + escape( value ) + "; path=/; expires=" + todayDate.toGMTString() + ";"   
+		}
+	
+		$(function(){ 
+			onePage();
+		    $(document).on('click', '#moveTo', function(){
+		      fullpage_api.moveTo('business', 2);
+		    });
+		    $(document).on('click', '#moveTo1', function(){
+			      fullpage_api.moveTo('community',3);
+			    });
+		    $(document).on('click', '#moveTo2', function(){
+			      fullpage_api.moveTo('place', 4); 
+			    });
+		    popClose(); 
+			popSlider();
+			visualSlider();
+			maintab();
+			tabSlider();
+			borderSlider();
+			mainLite();
+			mainResponse();
+			setInterval('scrollBox()',4000);
+			setInterval('scrollBox1()',4000);
+			setInterval('scrollBox2()',4000);
+			shootingStar1();
+			shootingStar2();
+			shootingStar3();
+		}); 
+
+		function mainResponse(){
+			if($(window).width() < 1199){
+				popMobile();
+			}else{
+				popPC(); 
+				mapColor(); 
+				loading(); 
+			}
+		}
+		function shootingStar1(){
+			setInterval(function(){
+				$('.star_1').addClass('rain');
+				setTimeout(function(){
+					$('.star_1').removeClass('rain');
+				},3000);
+			},10000);
+		}
+		function shootingStar2(){
+			setInterval(function(){
+				$('.star_2').addClass('rain');
+				setTimeout(function(){
+					$('.star_2').removeClass('rain');
+				},3000);
+			},20000);
+		}
+		function shootingStar3(){
+			$('.star_3').addClass('rain');
+			setTimeout(function(){
+				$('.star_3').removeClass('rain');	
+			},3000)
+			setInterval(function(){
+				$('.star_3').addClass('rain');
+				setTimeout(function(){
+					$('.star_3').removeClass('rain');
+				},3000);
+			},15000); 
+		}
+		//페이지 로딩 후 보이게
+		function loading(){
+			window.onload = function(){
+				$('.planet').show();
+			}
+		}
+		
+		function popClose(){
+			$('.btn_popclose').on('click',function(){
+				$('.header_area').removeClass('pop');
+				$('.main_visual').removeClass('pop'); 
+				$('.anchor_wrap').removeClass('pop');
+				$('.popup_slider_area').slideUp(); 
+				$('.main_visual .slider_img').css('height','100vh');
+				$('.main_visual .img_sea').css('height','100vh');
+				$('.main_visual .bx-viewport').css('height','100%');
+				if($(window).width() < 1199){
+					$('.main_visual').css('height','100vh');
+				}else{
+					$('.main_visual').css('height','100%');
+				}
+				if($("input[id='today']").is(":checked") ==true){
+					setCookie("map", "map", 1);
+			    }
+			});
+		}
+		
+		//창크기에 따른 스크립트
+		function popMobile(){
+			if($('.popup_slider_area').css('display') == 'block'){
+				$('.header_area').addClass('pop');
+		        $('.main_visual').addClass('pop');
+			}else{
+				$('.header_area').removeClass('pop');
+				$('.main_visual').removeClass('pop'); 
+			}
+		}
+		$(window).resize(popMobile); 
+		 
+		function popPC(){
+			//팝업슬라이드 있을 때 페이지 영역높이설정
+			if($('.popup_slider_area').css('display') == 'block'){
+				var pageHeight = $('.main_visual .slider_img').outerHeight();
+				var popHeight = $('.header_area').outerHeight();
+				pageHeight = pageHeight - popHeight;
+				$('.header_area').addClass('pop');
+				$('.anchor_wrap').addClass('pop');
+				$('.main_visual .slider_img').css('height',pageHeight);
+				$('.main_visual .img_sea').css('height',pageHeight);
+				$('.main_visual').css('height',pageHeight);
+			}
+		}
+		$(window).resize(popPC);  
+		
+		//popSlider
+		function popSlider(){
+			var popslideOp = {
+				infiniteLoop: true,
+		        controls:true,
+				pager: false, 
+		        autoControls: false,
+		        pause: 3000
+			}
+			var popSlider1 = $('#js-popSlider1').bxSlider(popslideOp);
+			$(window).on('resize load', function(e){
+			  width = $(this).width();
+			  if (width <= 1199) {
+				  popslideOp.touchEnabled = true;
+			  } else {
+				  popslideOp.touchEnabled = false;
+			  }
+			  //popSlider1.reloadSlider(); 
+			});
+		}
+		 
+		//main_visual Slider
+		function visualSlider(){
+			var sliderOptions = { 
+				mode:'fade',
+				auto: true,
+				pager: true,
+				controls:false,
+				autoControls: true,
+				autoControlsCombine:true,
+				pause: 8000,	  
+				speed: 1200,   
+				stopAutoOnClick:true,
+				useCSS:false,
+				touchEnabled:false,
+				onSlideAfter: function (currentSlideNumber, totalSlideQty, currentSlideHtmlObject) {
+					$('.active-slide').removeClass('active-slide');
+					$('#js-slider > li').eq(currentSlideHtmlObject).addClass('active-slide');
+				},
+				onSliderLoad: function () {
+					$(".slider_img").css("visibility", "visible").animate({opacity:1});
+					setTimeout(function(){
+						$('#js-slider > li').eq(0).addClass('active-slide')
+					}, 1000);
+				}
+			}
+			var bxSlider =  $('#js-slider').bxSlider(sliderOptions);
+			$(window).on('resize load', function(e){
+			  width = $(this).width();
+			  if (width <= 1199) {
+				 sliderOptions.touchEnabled = false;
+				 sliderOptions.pager= true;
+				 sliderOptions.preloadImages = 'all';
+			  } else {
+				 sliderOptions.touchEnabled = false;
+				 sliderOptions.pager= true;
+			  }
+			  bxSlider.reloadSlider(); 
+			});
+			
+		}
+		//main scrollbox
+		function scrollBox(){
+			$("#moveTo .line_t").animate({"width":'100%'},100,function(){
+			   $("#moveTo .line_r").animate({"height":'100%'},100,function(){
+				   $('#moveTo .line_b').animate({'width':'100%'},100,function(){
+					   $('#moveTo .line_l').animate({'height':'100%'},100,function(){
+						   setTimeout(function(){
+							   $("#moveTo .line_t").animate({"width":'0'},100,function(){
+								   $('#moveTo .line_l').animate({'height':'0'},100,function(){
+										$('#moveTo .line_b').animate({'width':'0'},100,function(){
+											$('#moveTo .line_r').animate({'height':'0'},100);	
+										});				   
+								   });
+							   });
+					        }, 2000);
+					   });
+				   });
+			   });
+		   	});
+		}
+		function scrollBox1(){
+			$("#moveTo1 .line_t").animate({"width":'100%'},100,function(){
+			   $("#moveTo1 .line_r").animate({"height":'100%'},100,function(){
+				   $('#moveTo1 .line_b').animate({'width':'100%'},100,function(){
+					   $('#moveTo1 .line_l').animate({'height':'100%'},100,function(){
+						   setTimeout(function(){
+							   $("#moveTo1 .line_t").animate({"width":'0'},100,function(){
+								   $('#moveTo1 .line_l').animate({'height':'0'},100,function(){
+										$('#moveTo1 .line_b').animate({'width':'0'},100,function(){
+											$('#moveTo1 .line_r').animate({'height':'0'},100);	
+										});				   
+								   });
+							   });
+					        }, 2000);
+					   });
+				   });
+			   });
+		   	});
+		}
+		function scrollBox2(){
+			$("#moveTo2 .line_t").animate({"width":'100%'},100,function(){
+			   $("#moveTo2 .line_r").animate({"height":'100%'},100,function(){
+				   $('#moveTo2 .line_b').animate({'width':'100%'},100,function(){
+					   $('#moveTo2 .line_l').animate({'height':'100%'},100,function(){
+						   setTimeout(function(){
+							   $("#moveTo2 .line_t").animate({"width":'0'},100,function(){
+								   $('#moveTo2 .line_l').animate({'height':'0'},100,function(){
+										$('#moveTo2 .line_b').animate({'width':'0'},100,function(){
+											$('#moveTo2 .line_r').animate({'height':'0'},100);	
+										});				   
+								   });
+							   });
+					        }, 2000);
+					   });
+				   });
+			   });
+		   	});
+		}
+		//tab
+		function maintab(){
+			$(".js-tab-content").hide();
+		    $(".js-tab-content:first").show();
+			$("#js-tab a").click(function(event) {
+				event.preventDefault(); //주소에 #숨김
+				$(this).parent().addClass("current");
+				$(this).parent().siblings().removeClass("current");
+				var tab = $(this).attr("href");
+				$(".js-tab-content").not(tab).css("display", "none");
+				$(tab).fadeIn();
+			});
+		}
+		
+		//tab in slider
+		function tabSlider(){
+		    var sliderObj = { 
+		      controls:false,
+		      infiniteLoop:true,
+			  pager: false,
+		      autoControls: false, 
+		      pause: 3000,
+		      auto: true,
+		      touchEnabled:false
+		    }
+		    var bxSlider1 = $('#js-tabSlider1').bxSlider(sliderObj);
+		    var bxSlider2 = $('#js-tabSlider2').bxSlider(sliderObj);
+		    var bxSlider3 = $('#js-tabSlider3').bxSlider(sliderObj);
+		    var bxSlider4 = $('#js-tabSlider4').bxSlider(sliderObj);
+		    $(".js-slider-tab1").click(function(){
+		        bxSlider1.redrawSlider();
+		        bxSlider2.stop();
+		        bxSlider3.stop();
+		        bxSlider4.stop();
+		    });
+		    $(".js-slider-tab2").click(function(){
+		        bxSlider2.reloadSlider();
+		        bxSlider1.stop();
+		        bxSlider3.stop();
+		        bxSlider4.stop();
+		    });
+		    $(".js-slider-tab3").click(function(){
+		        bxSlider3.reloadSlider();
+		        bxSlider1.stop();
+		        bxSlider2.stop();
+		        bxSlider4.stop();
+		    });
+		    $(".js-slider-tab4").click(function(){ 
+		        bxSlider4.reloadSlider();
+		        bxSlider1.stop();
+		        bxSlider2.stop();
+		        bxSlider3.stop();
+		    });
+		}
+		//board slider
+		function borderSlider(){
+			var touchDevice = false;
+			if (navigator.userAgent.match(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/)) {
+			      touchDevice = true;
+			}
+
+			var bdSlider1 = $('#js-boardSlier1');			
+			bdSlider1.bxSlider({		
+				infiniteLoop: true,
+				controls:true,
+				pager: false,
+				autoControls: false,				
+				maxSlides: 1,
+	            pause: 3000,	
+	            touchEnabled: touchDevice,
+				onSliderLoad:function(){
+					var slideQty = bdSlider1.getSlideCount();
+					if (slideQty <= 1){
+						$("#boardSlier1 .bx-controls").hide();
+						bdSlider1.destroySlider();	
+					}
+				}
+			
+			});	
+			
+			var bdSlider2 = $('#js-boardSlier2');			
+			bdSlider2.bxSlider({		
+				infiniteLoop: true,
+				controls:true,
+				pager: false,
+				autoControls: false,				
+				maxSlides: 1,
+	            pause: 3000,	
+	            touchEnabled: touchDevice,
+				onSliderLoad:function(){
+					var slideQty2 = bdSlider2.getSlideCount();
+					if (slideQty2 <= 1){
+						$("#boardSlier2 .bx-controls").hide();
+						bdSlider2.destroySlider();	
+					}
+				}
+			
+			});	
+			
+			$(window).on('resize', function(e){				
+				setTimeout(function(){
+	               bdSlider1.reloadSlider();
+	               bdSlider2.reloadSlider();
+	            }, 1000); 
+			});
+        }
+		
+		function mapSel(i){
+			$("#offSel").val(i);
+			$("#searchCondition").val(i);
+			fncPageBoard('addList','addList.do','1');
+		}
+		
+		function offselect(i){
+			$("#searchCondition").val(i);
+			fncPageBoard('addList','addList.do','1');
+		}
+		
+		function offView(i){
+			$("#seq").val(i);
+			$("#defaultFrm").attr({"action" : "/ft/off/ftoff01/view.do", "method" : "post", "target" : "_self", "onsubmit" : ""}).submit();//상세
+		}
+	</script>
+</head>
+<body>
+	<div id="skipnavi">
+		<a href="#container">▶본문 바로가기</a> <a href="#gnb_area">▶주메뉴 바로가기</a>
+	</div>
+	<!-- wrapper -->
+	<div id="wrapper" class="main_wrapper">
+		<!-- anchor_menu -->
+		<div class="anchor_wrap">
+			<ul id="anchor_menu">
+				<li data-menuanchor="main"><a href="#main"><span>메인</span></a></li>
+				<li data-menuanchor="business"><a href="#business"><span>Business</span></a></li>
+				<li data-menuanchor="community"><a href="#community"><span>Service</span></a></li>
+				<li data-menuanchor="place"><a href="#place"><span>Map</span></a></li>
+			</ul>
+		</div>
+		<!-- header  -->
+    	<div class="header_area">
+			<header id="header">
+				<div class="gnb_bg"><span class="gnb_thum"></span></div>
+				<div class="header_box">
+					<h1 class="logo"><a href="index.html">한전엠씨에스(주)</a></h1>
+					<!-- pc gnb -->
+					<div id="gnb_area">
+						<nav id="gnb">
+							<ul class="depth2 clear">
+								<li class="depth1_1">
+									<a href="pr/pr01.html"><span>회사소개</span></a>
+									<ul class="depthBox">
+										<li><a href="pr/pr01.html">CEO인사말</a></li>
+										<li><a href="pr/pr02.html">경영방침</a></li>
+										<li><a href="pr/pr09.html">이사회</a></li>
+										<li><a href="pr/pr03.html">회사연혁</a></li>
+										<li><a href="pr/pr04.html">조직도</a></li>
+										<li><a href="pr/pr05.html">CI</a></li>
+										<li><a href="pr/pr08.html">찾아오시는길</a></li>
+									</ul>
+								</li>
+								<li class="depth1_2">
+									<a href="pa/pa01.html"><span>사업분야</span></a>
+									<ul class="depthBox">
+										<li><a href="pa/pa01.html">전기검침사업</a></li>
+									</ul>
+								</li>
+								<li class="depth1_3">
+									<a href="off/ftoff01.html"><span>사업소 현황</span></a>
+									<ul class="depthBox">
+										<li><a href="off/ftoff01.html">전국사업소 소개</a></li>
+									</ul>
+								</li>
+								<li class="depth1_4">
+									<a href="ft/ftbd01.html"><span>한전MCS소식</span></a>
+									<ul class="depthBox">
+										<li><a href="ft/ftbd01.html">공지사항</a></li>
+										<li><a href="ft/ftbd01.html">언론보도자료</a></li>
+										<li><a href="ft/ftbd01.html">사회공헌활동</a></li>
+										<li><a href="ft/ftbd04.html">채용정보</a></li>
+									</ul>
+								</li>
+								<li class="depth1_5">
+									<a href="cs/cs01.html"><span>고객센터</span></a>
+									<ul class="depthBox">
+										<li><a href="cs/cs01.html">고객문의</a></li>
+										<li><a href="http://www.kpx.or.kr/www/contents.do?key=216" target="_blank">전력정보</a></li>
+										<li><a href="http://home.kepco.co.kr/kepco/KO/A/A/KOAAHP00101.do?menuCd=FN05" target="_blank">전기상식</a></li>
+									</ul>
+								</li>
+							</ul>
+						</nav>
+					</div> 
+					<span class="btn_group"> 
+						<a href="http://gw.kepcomcs.co.kr/gw/uat/uia/egovLoginUsr.do" target="_blank">그룹웨어</a>
+					</span>
+					<!-- //pc gnb -->
+					<div class="btn_menu">
+						<a href="#" class="m_gnb"><span class="bar">메뉴</span></a>
+					</div>
+				</div>
+			</header>
+			<!-- all menu & mobile menu -->
+			<div class="menu_area">
+				<div class="all_menu_bg"></div>
+				<div class="menu_box">
+					<div class="go_box"><div class="go_login"><a href="tel:061-820-6114"><span class="i_lock"><img src="../images/common/i_lock.png" alt=""></span>대표전화&nbsp;&nbsp;&nbsp;&nbsp;061.820.6114</a></div></div>
+					<nav id="menu" class="m_menu">
+						<ul class="menu clear">
+							<li class="depth1">
+								<a href="pr/pr01.html"><span>회사소개</span></a>
+								<ul class="depth2">
+									<li><a href="pr/pr01.html">CEO인사말</a></li>
+									<li><a href="pr/pr02.html">경영방침</a></li>
+									<li><a href="pr/pr09.html">이사회</a></li>	
+									<li><a href="pr/pr03.html">회사연혁</a></li>
+									<li><a href="pr/pr04.html">조직도</a></li>
+									<li><a href="pr/pr05.html">CI</a></li>
+									<li><a href="pr/pr08.html">찾아오시는길</a></li>
+								</ul>
+							</li>
+							<li class="depth1">
+								<a href="pa/pa01.html"><span>사업분야</span></a>
+								<ul class="depth2">
+									<li><a href="pa/pa01.html">전기검침사업</a></li>
+								</ul>
+							</li>
+							<li class="depth1">
+								<a href="off/ftoff01.html"><span>사업소 현황</span></a>
+								<ul class="depth2">
+									<li><a href="off/ftoff01.html">전국사업소 소개</a></li>
+								</ul>
+							</li>
+							<li class="depth1">
+								<a href="ft/ftbd01.html"><span>한전MCS소식</span></a>
+								<ul class="depth2">
+									<li><a href="ft/ftbd01.html">공지사항</a></li>
+									<li><a href="ft/ftbd01.html">언론보도자료</a></li>
+									<li><a href="ft/ftbd01.html">사회공헌활동</a></li>
+									<li><a href="ft/ftbd04.html">채용정보</a></li>
+								</ul>
+							</li>
+							<li class="depth1">
+								<a href="cs/cs01.html"><span>고객센터</span></a>
+								<ul class="depth2">
+									<li><a href="cs/cs01.html">고객문의</a></li>
+									<li><a href="http://www.kpx.or.kr/www/contents.do?key=216" target="_blank">전력정보</a></li>
+									<li><a href="http://home.kepco.co.kr/kepco/KO/A/A/KOAAHP00101.do?menuCd=FN05" target="_blank">전기상식</a></li>
+								</ul>
+							</li>
+						</ul>
+					</nav>
+					<a href="#" class="menu_close"><span>닫기</span></a>
+				</div>
+			</div>
+			<!-- all menu & mobile menu -->
+			<!-- // header   -->
+			<!-- top_popup slide -->
+		</div>
+		<!-- fullpage -->
+		<div id="fullpage">
+			<!-- section0 -->
+			<section class="section fp-auto-height-responsive" id="section0">
+				<div class="main_visual" id="js-slider-area">
+					<!-- slider -->
+					<ul id="js-slider" class="main_slider">
+						<li class="slidebg01">
+							<div class="slider_img bg01" style="visibility: hidden; opacity: 0">
+								<img src="../images/main/main_slider01.png" alt="">
+							</div> 
+							<div class="img_sea"></div>
+							<div id="effect1">	
+								<div class="img_sky"><img src="../images/main/bg_fog02.png" alt=""></div>
+								<div class="night">
+									<div class="shooting_star star_1"></div>
+									<div class="shooting_star star_2"></div>
+									<div class="shooting_star star_3"></div>
+								</div>
+								<div class="planet">
+									<div class="planet1">
+										<img src="../images/main/circle01.png" alt="">
+										<span>행복도우미</span> <span>도전혁신</span>
+									</div>
+									<div class="planet2">
+										<img src="../images/main/circle02.png" alt=""> 
+										<span>미래지향</span> <span>검침토털 서비스</span> <span>소통화합</span>
+									</div>
+									<div class="planet3">
+										<img src="../images/main/circle03.png" alt="">
+										<span>사회책임</span>
+									</div>
+								</div>
+							</div>
+							<div class="slider_txtbox">
+								<div class="slider_txt">
+									<h2>고객을 최우선으로 생각하는 <span class="block"><span class="color_sky bold">With People, </span> New KEPCO MCS</span></h2>
+									<p>한전엠씨에스에 고객 여러분들의 많은 성원 부탁드립니다.</p>
+									<a href="/ft/pr/pr02/list.do">자세히 보기</a>
+								</div>
+							</div>
+						</li>
+						<li class="slidebg02">
+							<div class="slider_img bg02"
+								style="visibility: hidden; opacity: 0">
+								<img src="../images/main/main_slider02.png" alt="">
+							</div>
+							<div class="slider_txtbox">
+								<div class="slider_txt">
+									<h2>사람중심의 따뜻한 고객 서비스로<span class="block"><span class="bold color_yellow">모두가 행복한 세상</span>을 만들겠습니다.</span></h2>
+									<p>한전엠씨에스에 고객 여러분들의 많은 성원 부탁드립니다.</p> 
+									<a href="/ft/pr/pr02/list.do">자세히 보기</a>
+								</div>
+							</div>
+						</li>
+						<li class="slidebg03">
+							<div class="slider_img bg03"
+								style="visibility: hidden; opacity: 0">
+								<img src="../images/main/main_slider03.png" alt="">
+							</div>
+							<div class="slider_txtbox">
+								<div class="slider_txt">
+									<h2>고객의 마음에는 명품을, 고객의 삶에는 꿈을! <span class="block"><span class="bold color_sky">New Energy Partner, </span> KEPCO MCS</span></h2>
+									<p>한전엠씨에스에 고객 여러분들의 많은 성원 부탁드립니다.</p>
+									<a href="/ft/pr/pr02/list.do">자세히 보기</a>
+								</div>
+							</div>
+						</li>
+						<li class="slidebg04">
+							<div class="slider_img bg04"
+								style="visibility: hidden; opacity: 0">
+								<img src="../images/main/main_slider04.png" alt="">
+							</div>
+							<div class="slider_txtbox">
+								<div class="slider_txt">
+									<h2>Grow together<span class="block"><span class="bold color_beige">함께 노력하고 함께 성장하는</span><span class="block">상생의 가치를 실현합니다.</span></span></h2>
+									<p>한전엠씨에스에 고객 여러분들의 많은 성원 부탁드립니다.</p>
+									<a href="/ft/pr/pr02/list.do">자세히 보기</a>
+								</div>
+							</div>
+						</li>
+					</ul>
+					<!-- //slider --> 
+				</div>
+				<div class="btn_scroll bounce" id="moveTo">
+					<span class="txt"><i class="arrow"></i></span>
+					<span class="line line_t js-line-t"></span>
+					<span class="line line_r js-line-r"></span>
+					<span class="line line_b js-line-b"></span>
+					<span class="line line_l js-line-l"></span>
+				</div>
+			</section>
+			<!--// section0 -->
+			<!-- section1 -->
+			<section class="section fp-auto-height-responsive" id="section1">
+				<div id="effect2" class="bg_img">
+					<img src="../images/main/bg_section2.png" alt="">
+				</div>
+				<div class="business_circle">
+					<div class="circle01"><img src="../images/main/i_circle01.png" alt=""></div>
+					<div class="circle02"><img src="../images/main/i_circle02.png" alt=""></div>
+				</div>
+				<div class="main_business">
+					<div class="business_cont">
+						<h2 class="main_tit">BUSINESS</h2>
+						<div class="main_tabarea">
+							<!-- 탭메뉴 -->
+							<ul class="main_tab" id="js-tab">
+								<li class="current"><a href="#tab01" class="js-slider-tab1">전력량계<span class="m_block">검침업무</span></a></li>
+								<li><a href="#tab02" class="js-slider-tab2">전기요금 청구서 <span class="m_block">송달업무</span></a></li>
+								<li><a href="#tab03" class="js-slider-tab3">전기요금 <span class="m_block">체납관리업무</span></a></li>
+								<li><a href="#tab04" class="js-slider-tab4">고객 서비스 <span class="m_block">업무</span></a></li>
+							</ul>
+							<!-- 탭 1 -->
+							<div id="tab01" class="main_tabcont js-tab-content">
+								<div class="tab_slider_area">
+									<div class="tab_slide_box">
+										<ul id="js-tabSlider1" class="tab_slider">
+											<li><span><img src="../images/main/img_tab01_01.png" alt=""></span></li>
+											<li><span><img src="../images/main/img_tab01_02.png" alt=""></span></li>
+										</ul>
+									</div>
+								</div>
+								<div class="tab_cont">
+									<h3 class="tab_tit">
+										<span>주요업무</span> 전력량계 검침업무
+									</h3>
+									<ul class="tab_info">
+										<li>- 매월 정기검침일에 전력량계 검침</li>
+										<li>- 사용량 과다, 과소 고객 대상 사용환경 이상여부 확인</li>
+										<li>- 전기사용 관련 특이사항 중계업무</li>
+									</ul>
+									<div class="tab_ibox">
+										<div class="ico">
+											<img src="../images/main/i_tab01.png" alt="">
+										</div>
+										<div class="txt">
+											전기를 사용하는 고객에게 행복 도우미로 감동과 
+											<span class="block">사랑으로 보답하며,사회적 기업으로 역할과 책임을</span> 
+											<span class="block">다해나갈 것을 약속드립니다.</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--// 탭 1-->
+							<!-- 탭 2 -->
+							<div id="tab02" class="main_tabcont js-tab-content">
+								<div class="tab_slider_area">
+									<div class="tab_slide_box">
+										<ul id="js-tabSlider2" class="tab_slider">
+											<li><span><img src="../images/main/img_tab02_01.png" alt=""></span></li>
+											<li><span><img src="../images/main/img_tab02_02.png" alt=""></span></li>
+										</ul>
+									</div>
+								</div>
+								<div class="tab_cont">
+									<h3 class="tab_tit">
+										<span>주요업무</span> 전기요금 청구서 송달업무
+									</h3>
+									<ul class="tab_info">
+										<li>- 전기요금 청구서 납기 7일 전 직접 전달</li>
+										<li>- 전기요금 미납고객 납부 독려 활동</li>
+										<li>- 고객불편사항 현장조사</li>
+									</ul>
+									<div class="tab_ibox">
+										<div class="ico">
+											<img src="../images/main/i_tab01.png" alt="">
+										</div>
+										<div class="txt">
+											전기를 사용하는 고객에게 행복 도우미로 감동과
+											<span class="block">사랑으로 보답하며,사회적 기업으로 역할과 책임을</span> 
+											<span class="block">다해나갈 것을 약속드립니다.</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--// 탭 2 -->
+							<!-- 탭 3 -->
+							<div id="tab03" class="main_tabcont js-tab-content">
+								<div class="tab_slider_area">
+									<div class="tab_slide_box">
+										<ul id="js-tabSlider3" class="tab_slider">
+											<li><span><img src="../images/main/img_tab03_01.png" alt=""></span></li>
+											<li><span><img src="../images/main/img_tab03_02.png" alt=""></span></li>
+										</ul>
+									</div>
+								</div>
+								<div class="tab_cont">
+									<h3 class="tab_tit">
+										<span>주요업무</span> 전기요금 체납관리업무
+									</h3>
+									<ul class="tab_info">
+										<li>- 3개월 이상 미납고객 대상 납부독려 활동</li>
+										<li>- 전류 제한기 부설 및 재공급</li>
+									</ul>
+									<div class="tab_ibox">
+										<div class="ico">
+											<img src="../images/main/i_tab01.png" alt="">
+										</div>
+										<div class="txt">
+											전기를 사용하는 고객에게 행복 도우미로 감동과 
+											<span class="block">사랑으로 보답하며,사회적 기업으로 역할과 책임을</span> 
+											<span class="block">다해나갈 것을 약속드립니다.</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--// 탭 3 -->
+							<!-- 탭 4 -->
+							<div id="tab04" class="main_tabcont js-tab-content">
+								<div class="tab_slider_area">
+									<div class="tab_slide_box">
+										<ul id="js-tabSlider4" class="tab_slider">
+											<li><span><img src="../images/main/img_tab04_01.png" alt=""></span></li>
+											<li><span><img src="../images/main/img_tab04_02.png" alt=""></span></li>
+										</ul>
+									</div>
+								</div>
+								<div class="tab_cont">
+									<h3 class="tab_tit">
+										<span>주요업무</span> 고객 서비스 업무
+									</h3>
+									<ul class="tab_info">
+										<li>- 전기사용량 과다, 과소 등 전기사용 관련 고객 안내</li>
+										<li>- 전기요금제도, 절전방법 등 고객상담</li>
+										<li>- 1주택 수가구 및 TV자원, 복지할인 부적정 등 현장조사</li>
+									</ul>
+									<div class="tab_ibox">
+										<div class="ico">
+											<img src="../images/main/i_tab01.png" alt="">
+										</div>
+										<div class="txt">
+											전기를 사용하는 고객에게 행복 도우미로 감동과 
+											<span class="block">사랑으로 보답하며,사회적 기업으로 역할과 책임을</span> 
+											<span class="block">다해나갈 것을 약속드립니다.</span>
+										</div>
+									</div>
+								</div>
+							</div>
+							<!--// 탭 4 -->
+						</div> 
+					</div>
+				</div>
+				<div class="btn_scroll bounce" id="moveTo1">
+					<span class="txt"><i class="arrow"></i></span>
+					<span class="line line_t js-line-t"></span>
+					<span class="line line_r js-line-r"></span>
+					<span class="line line_b js-line-b"></span>
+					<span class="line line_l js-line-l"></span>
+				</div>
+			</section>
+			<!--// section1 -->
+			<!-- section2 -->
+			<section class="section fp-auto-height-responsive" id="section2">
+				<div id="effect3"></div>
+				<div class="main_community">
+					<h2 class="main_tit">COMMUNITY</h2>
+					<div class="main_community_box">
+						<div class="main_board_area">
+							<!-- 공지사항 -->
+							<div class="main_board board_notice">
+								<h3 class="main_board_tit">공지사항</h3>
+								<div class="board_slider_box">
+									<ul id="js-boardSlier1">
+										<li>
+											<a href="ft/ftbd01.html" >
+												<h4 class="tit">2019년 한전MCS(주) 개인형 복지카드 사업자 선정 공고</h4>
+												<p class="txt">개인형 복지카드 사업자 선정 공고&nbsp;&nbsp;한전MCS(주)의 ’19~’21년 직원 복지포인트의 운영을 위해 아래와 같이 복지카드 사업자 선정 공고를 시행합니다.  &nbsp;  1. 사 업 명 : ’19~’21년 개인형 복지카드 사업자 선정2. 사업기간 :&nbsp; 체결일로부터 ’21. 12. 31까지(약 2년 2개월)3. 사업규모 :&nbsp; 약 2,700명, 약 11억원 수준4. 선정방법 :&nbsp; 제안사 평가방식에 의한 업체선정(협상에 의한 계약)5. 제안서 제출기한 :&nbsp; 2019년 7월 25일(목) 18시까지(도착분에 한함)6. 사업자 선정발표 :&nbsp; 2019년 8월 02일(금) 예정7. 문의사항 :&nbsp; 경영관리처 기획재무팀(☎ 061-820-6131)  &nbsp;  기타 자세한 사항은 공고문을 참고하여 주시기 바랍니다.  &nbsp;  &nbsp;&nbsp;&nbsp;</p> <span class="date">2019.07.11</span>
+											</a>
+										</li>
+									</ul>
+								</div>
+								<a href="/ft/ftbd01.html" class="board_more">더보기</a>
+							</div>
+							<div class="main_space"></div>
+							<!-- 보도자료 -->
+							<div class="main_board board_press">
+								<h3 class="main_board_tit">보도자료</h3>
+								<div class="board_slider_box">
+									<ul id="js-boardSlier2">
+										<li>
+											<a href="/ft/ftbd01.html" >
+												<h4 class="tit">보도자료 TEST</h4>
+												<p class="txt">언론 보도자료 TEST 입니다.&nbsp;</p> <span class="date">2019.07.11</span>
+											</a>
+										</li>
+									</ul>
+								</div>
+								<a href="/ft/ftbd/ftbd02/list.do" class="board_more">더보기</a>
+							</div>
+						</div>
+						<!-- 채용정보 -->
+						<div class="main_direct">
+							<div class="main_recruit">
+								<a href="/ft/ftbd04.html">
+									<div class="box">
+										<div class="direct_img">
+											<img src="../images/main/img_board01.png" alt="" />
+										</div>
+										<div class="direct_box">
+											<h3 class="direct_tit">채용정보</h3>
+											<p>
+												한전MCS와 함께 꿈을 <span class="block">펼쳐나갈 인재를 모십니다.</span>
+											</p>
+										</div>
+									</div>
+								</a>
+							</div>
+							<!-- 고객문의 -->
+							<div class="main_customer">
+								<a href="/ft/cs/cs01/list.do">
+									<div class="box">
+										<div class="direct_img">
+											<img src="../images/main/img_board02.png" alt="" />
+										</div>
+										<div class="direct_box">
+											<h3 class="direct_tit">고객문의</h3>
+											<ul>
+												<li><i><img src="../images/main/i_board01.png" alt="" /></i>전력량계검침</li>
+												<li><i><img src="../images/main/i_board02.png" alt="" /></i>전기요금청구서송달</li>
+												<li><i><img src="../images/main/i_board03.png" alt="" /></i>해지시공업무</li>
+											</ul>
+										</div>
+									</div>
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="btn_scroll bounce" id="moveTo2">
+					<span class="txt"><i class="arrow"></i></span>
+					<span class="line line_t js-line-t"></span>
+					<span class="line line_r js-line-r"></span>
+					<span class="line line_b js-line-b"></span>
+					<span class="line line_l js-line-l"></span>
+				</div>
+			</section>
+			<!--// section2 -->
+			<!-- section3 -->
+			<section class="section fp-auto-height-responsive" id="section3">
+				<div class="main_place">
+					<form name="defaultFrm" id="defaultFrm" method="post"  onsubmit="return false;">
+						<input type="hidden" id="pageIndex" name="pageIndex" />
+						<input type="hidden" id="seq" name="seq" />
+						<input type="hidden" id="searchCondition" name="searchCondition" />
+					</form>
+					<h2 class="main_tit">BUSINESS PLACE</h2>
+					<p class="txt">전기검침서비스, 전국 15개 지역 115개 지점을 검색해보세요!</p>
+					<div class="main_place_box"> 
+						<div class="main_map js-map-over">
+							<img src="../images/main/img_map.png" alt="">
+							<img src="../images/main/img_map.png" alt="" usemap="#image-map" class="hover_map js-hover-map">
+							<map class="js-map" name="image-map">
+								<area alt="강원도"onclick="mapSel('2500');" coords="360,43,368,48,377,49,390,61,409,79,427,89,455,140,507,121,518,104,588,105,595,124,586,143,518,137,510,132,458,151,507,219,525,249,532,258,521,266,513,276,500,270,478,276,471,270,467,275,451,272,420,269,429,259,393,259,389,249,383,264,371,257,377,234,372,222,383,216,353,203,354,192,349,185,364,178,342,161,337,152,323,146,317,145,307,128,287,131,272,119,266,113,265,88,300,66,314,54,326,37" shape="poly" src="../images/main/map_hover1.png">
+							    <area alt="경북" onclick="mapSel('3100');" coords="396,308,394,302,419,295,427,297,433,286,460,272,467,275,472,267,477,276,499,267,514,275,523,261,533,257,542,292,574,281,583,268,664,267,668,283,664,301,576,295,548,302,542,314,523,310,512,315,517,347,487,363,460,378,442,378,426,376,394,360,372,359,380,346,368,327,377,316,384,321,384,311" shape="poly" src="../images/main/map_hover2.png">
+							    <area alt="대구" onclick="mapSel('3000');" coords="516,347,509,316,522,309,540,316,536,358,536,382,532,401,551,397,552,409,580,412,590,400,665,398,675,425,662,436,594,440,578,426,552,422,541,446,529,434,518,435,512,428,499,440,484,441,470,448,459,443,410,438,402,417,378,409,379,393,385,387,394,370,382,360,392,359,419,373,435,371,453,379" shape="poly" src="../images/main/map_hover3.png">
+							    <area alt="부산울산" onclick="mapSel('3200');" coords="695,502,702,518,689,537,599,538,533,476,502,512,467,502,479,480,502,475,508,462,507,453,490,444,491,435,508,422,522,430,544,433,543,465,590,502" shape="poly" src="../images/main/map_hover4.png">
+							    <area alt="경남" onclick="mapSel('3300');" coords="493,627,563,625,571,599,555,588,492,586,462,545,467,502,480,479,499,473,507,456,487,445,482,435,469,444,442,436,412,433,398,409,377,402,352,430,356,449,351,471,364,505,364,518,364,539,352,560,375,556,411,537,453,556" shape="poly" src="../images/main/map_hover5.png">
+							    <area alt="제주" onclick="mapSel('3400');" coords="264,631,296,625,323,606,386,609,391,642,304,650,265,641,217,654,203,630,241,615" shape="poly" src="../images/main/map_hover6.png">
+							    <area alt="광주전남" onclick="mapSel('2900');" coords="231,444,204,474,194,502,121,518,109,505,12,505,2,531,13,542,119,541,152,529,168,541,204,521,173,580,209,584,239,590,264,609,278,582,285,564,315,571,336,556,356,544,365,515,357,485,341,464,298,468,289,451,266,447,258,464,240,462" shape="poly" src="../images/main/map_hover7.png">
+							    <area alt="전북" onclick="mapSel('2800');" coords="323,373,300,378,292,370,275,367,273,380,252,386,243,402,255,404,245,413,223,429,179,441,170,428,93,428,83,454,102,465,168,463,224,442,232,444,240,463,256,462,266,447,291,452,292,468,336,463,350,465,350,434,380,400,382,385,356,379,342,394" shape="poly" src="../images/main/map_hover8.png">
+							    <area alt="대전세종충남" onclick="mapSel('2700');" coords="237,351,183,357,174,368,64,373,47,354,59,337,168,333,183,347,239,337,223,328,205,308,224,290,235,282,248,278,273,288,276,303,287,297,284,291,310,286,329,294,340,307,326,318,335,343,322,362,324,370,335,370,329,378,300,377,293,370,275,369,273,380,253,388,243,379" shape="poly" src="../images/main/map_hover9.png">
+							    <area alt="충북" onclick="mapSel('2600');" coords="372,258,361,266,340,278,328,292,341,308,328,318,336,345,324,364,338,375,333,382,344,390,356,378,385,386,392,369,376,362,382,350,373,327,379,315,393,301,428,295,453,274,422,275,578,216,589,225,668,224,676,204,663,185,586,187,572,202,429,259,394,259,389,251" shape="poly" src="../images/main/map_hover10.png">
+							    <area alt="남서울" onclick="mapSel('2100');" coords="281,232,300,229,311,223,295,218,286,211,283,201,269,197,266,203,254,198,253,210,270,211,277,222,109,224,100,210,20,212,16,228,28,249,100,246,110,233" shape="poly" src="../images/main/map_hover11.png">
+							    <area alt="인천" onclick="mapSel('2200');" coords="21,148,15,162,21,181,102,182,111,176,212,199,221,214,233,224,244,219,253,217,271,237,283,234,269,212,253,209,251,199,265,200,265,192,259,195,240,182,238,171,228,178,217,177,214,190,113,164,102,149" shape="poly" src="../images/main/map_hover12.png">
+							    <area alt="서울" onclick="mapSel('2000');" coords="100,106,19,109,14,128,31,141,102,137,110,130,290,202,286,207,296,217,309,221,320,215,312,208,312,197,303,195,294,200,110,121" shape="poly" src="../images/main/map_hover13.png">
+							    <area alt="경기북부" onclick="mapSel('2300');" coords="356,206,336,226,311,223,320,211,313,205,312,195,302,193,289,204,270,198,268,186,261,192,243,179,237,170,236,147,253,138,261,135,211,92,115,92,94,71,107,57,209,53,218,83,274,133,289,132,306,129,317,145,336,152,362,177,351,185" shape="poly" src="../images/main/map_hover14.png">
+							    <area alt="경기" onclick="mapSel('2400');" coords="166,259,92,265,84,283,93,298,172,295,183,283,267,268,274,275,279,290,305,284,324,289,334,277,357,269,370,256,376,237,372,222,382,216,358,207,335,228,312,223,304,231,289,231,272,243,266,255,178,273" shape="poly" src="../images/main/map_hover15.png">
+							</map>
+						</div>
+						<div class="map_search_box">
+							<h3>한전MCS 전국 사업소</h3>
+							<div class="outcome_box">
+								<div class="map_input">
+									<select id="offSel" onchange="offselect(this.value);">
+										<option value="">지역을 선택하세요.</option>
+										<option value="2000">서울지역</option>
+										<option value="2100">남서울지역</option>
+										<option value="2200">인천지역</option>
+										<option value="2300">경기북부지역</option>
+										<option value="2400">경기지역</option>
+										<option value="2500">강원지역</option>
+										<option value="2600">충북지역</option>
+										<option value="2700">대전세종충남지역</option>
+										<option value="2800">전북지역</option>
+										<option value="2900">광주전남지역</option>
+										<option value="3000">대구지역</option>
+										<option value="3100">경북지역</option>
+										<option value="3200">부산울산지역</option>
+										<option value="3300">경남지역</option>
+										<option value="3400">제주지역</option>
+									</select>
+								</div>
+								<div class="tbl">
+									<div class="outcome">
+										<ul>
+											<li class="none">상단에서 지역을 선택해주세요!</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+			<!--// section3 -->
+			<section class="section fp-auto-height footer_area" id="section4">
+				<div id="footer" class="clear">
+					<ul class="foot_link">
+						<li><a href="pr/pr08.html">찾아오시는길</a></li>
+						<li><a href="off/ftoff01.html">사업소안내</a></li>
+						<li><a href="ft/ftbd04.html">채용정보</a></li>
+						<li><a href="cs/cs01.html">고객문의</a></li>
+					</ul>
+					<div class="foot_logo"><img src="../images/common/foot_logo.png" alt="한전엠씨에스(주)"></div>
+					<div class="foot_left">
+						<div class="site_copy"> 
+							<span>(58217) 전라남도 나주시 상야1길 7 예가람타워 5층 506호</span>
+							<span>대표전화 : <span class="number">061-820-6114</span></span>
+							<span>팩스 : <span class="number">061-820-6129 </span></span>
+							<span>사업자 등록번호 : <span class="number">222-880-01266</span></span> 
+							<div class="copy">Copyright © 한전MCS. All Rights Reserved.</div>
+						</div>
+					</div>
+					<div class="foot_right">
+						<div class="familysite">
+							 <div class="footBtn">
+								<button type="button">Family Site<span class="arrow"></span></button>
+								<ul class="family_list">
+									<li><a href="http://www.khnp.co.kr" target="_blank">한국수력원자력(주)</a></li>
+	                                <li><a href="https://www.koenergy.kr" target="_blank">한국남동발전(주)</a></li>
+	                                <li><a href="https://www.komipo.co.kr" target="_blank">한국중부발전(주)</a></li>
+	                                <li><a href="https://www.iwest.co.kr" target="_blank">한국서부발전(주)</a></li>
+	                                <li><a href="http://www.kospo.co.kr/" target="_blank">한국남부발전(주)</a></li>
+	                                <li><a href="http://www.ewp.co.kr" target="_blank">한국동서발전(주)</a></li>
+	                                <li><a href="https://www.kdn.com/" target="_blank">한국KDN(주)</a></li>
+	                                <li><a href="http://www.kopec.co.kr" target="_blank">한국전력기술(주)</a></li>
+	                                <li><a href="http://www.kps.co.kr" target="_blank">한전KPS(주)</a></li>
+	                                <li><a href="http://www.knfc.co.kr/" target="_blank">한전원자력연료(주)</a></li>
+	                                <li><a href="http://www.kepid.co.kr" target="_blank">한전산업개발(주)</a></li>
+	                                <li><a href="http://www.kepcomedi.co.kr" target="_blank">한전병원(주)</a></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+		</div>
+		<!--// fullpage -->
+	</div>
+	<!--// wrapper -->
+</body>
+</html>
+									

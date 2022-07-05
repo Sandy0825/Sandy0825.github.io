@@ -1,0 +1,78 @@
+@charset "utf-8";
+@font-face {
+	font-family: 'NotoSansKR';
+	font-style: normal;
+	font-weight: 300;
+	src: url(../font/NotoSansKR-Light.eot);
+	src: url(../font/NotoSansKR-Light.eot?#iefix) format('embedded-opentype'),
+	url(../font/NotoSansKR-Light.woff) format('woff'),
+	url(../font/NotoSansKR-Light.ttf) format('truetype');
+}
+@font-face {
+	font-family: 'NotoSansKR';
+	font-style: normal;
+	font-weight: 400;
+	src: url(../font/NotoSansKR-Regular.eot);
+	src: url(../font/NotoSansKR-Regular.eot?#iefix) format('embedded-opentype'),
+	url(../font/NotoSansKR-Regular.woff) format('woff'),
+	url(../font/NotoSansKR-Regular.ttf) format('truetype');
+}
+@font-face {
+	font-family: 'NotoSansKR';
+	font-style: normal;
+	font-weight: 600;
+	src: url(../font/NotoSansKR-Medium.eot);
+	src: url(../font/NotoSansKR-Medium.eot?#iefix) format('embedded-opentype'),
+	url(../font/NotoSansKR-Medium.woff) format('woff'),
+	url(../font/NotoSansKR-Medium.ttf) format('truetype');
+}
+@font-face {
+	font-family: 'NotoSansKR';
+	font-style: normal;
+	font-weight: 700;
+	src: url(../font/NotoSansKR-Bold.eot);
+	src: url(../font/NotoSansKR-Bold.eot?#iefix) format('embedded-opentype'),
+	url(../font/NotoSansKR-Bold.woff) format('woff'),
+	url(../font/NotoSansKR-Bold.ttf) format('truetype');
+}
+
+html {width: 100%;height:100%;margin:0;padding:0;font-size:10px;}
+body {font-size:1.6rem;position:relative;width: 100%;height:100%;margin:0;padding:0;line-height:1.4;font-family:'NotoSansKR', 'malgun gothic', 'dotum';font-weight:300;color:#333;word-spacing:-1px;-webkit-print-color-adjust: exact; }
+* {box-sizing: border-box; /*outline: 0;*/-webkit-text-size-adjust: none;-webkit-tap-highlight-color: rgba(0, 0, 0, 0);}
+*:after, *:before {-webkit-box-sizing: border-box;-moz-box-sizing: border-box;box-sizing: border-box;}
+
+table {border-spacing:0;border-collapse:collapse;width:100%;}
+caption {display:none;}
+th,td {padding:0;text-align:left;font-weight:normal;font-size:inherit;vertical-align:middle;}
+.clear::after {content: "";display: table;clear: both;}
+ 
+.paper {width: 210mm;min-height: 297mm;background: #fff;}
+.tbl_wrap {position: relative;width: 100%;} 
+.tbl_list {display: table;width:100%;table-layout: fixed;border-top: 0.1rem solid #03a580;}
+
+.view_title02 {position:relative;padding: 1.5rem 2rem;border-top: 0.2rem solid #03a580;border-bottom: 0.1rem solid #e5e5e5;background: #f9f9f9;font-size: 13px;}
+.view_title02 h3 {font-size: 2.3rem;font-weight: 600;color: #3d3d3d;line-height: 1;letter-spacing: -0.1rem;}
+.view_title02 .writer_company {margin-bottom: 1rem;}
+.view_title02 .writer_company .company {float:left;padding:0.6rem 2rem; background: #c7c7c7;border-radius: 1.6rem;color:#fff;}
+.view_title02 .writer_company .writer_info {float:right;letter-spacing: -0.07rem;}
+.view_title02 .writer_company .writer_info span {padding:0 1rem;vertical-align: middle;}
+.view_title02 .writer_company .writer_info .name {padding:0;}
+.view_title02 .writer_company .part {position: relative;}
+.view_title02 .writer_company .part::before {content: '';position: absolute;width: 0.1rem;height: 70%;background: #333; left:0; top: 50%;transform: translateY(-50%);}
+.view_title02 .pay_info {margin-top:1rem;}
+.view_title02 .btn_print {display:none;} 
+
+.tbl_num {position:relative;width:100%;}
+.tbl_num thead th {padding: 12px 0 12px 15px;background: #c9c9c9;color: #fff;font-size: 1.6rem;letter-spacing: -0.09rem;}
+.tbl_num thead tr th:first-child {border-right:0.1rem solid #fff;}
+.tbl_num tbody th {padding: 9px 0 9px 20px;background: #f9f9f9;color: #313131;border:0.1rem solid #e5e5e5;font-size: 1.5rem;letter-spacing: -0.07rem;}
+.tbl_num tbody tr th:first-child {border-left: 0;}
+.tbl_num tbody td {padding: 9px 20px;background: #fff;color: #313131;border-bottom: 0.1rem solid #e5e5e5;font-size: 1.5rem;letter-spacing: -0.07rem;text-align: right;}
+.tbl_num tbody tr.all_sum th,
+.tbl_num tbody tr.all_sum td{background: #feffed}
+.tbl_num tbody tr.all_count th {background: #a7d7aa;color:#fff;font-size: 1.7rem;letter-spacing: -0.09rem;}
+.tbl_num tbody tr.all_count td{background: #e4f3e5;font-size: 1.7rem;letter-spacing: -0.09rem;}
+
+.pay_notice {width:100%;margin-top:10px;padding:5px 10px;font-weight:400;font-size: 12px;border:0.1rem solid #e5e5e5;background:#f9f9f9 url(../images/sub/pay_logo.png) no-repeat 100% 100%;line-height:1.4;}
+.pay_notice .br {display:block;height: 1rem;}
+.pay_notice .color_red {color:#d23d3d;}

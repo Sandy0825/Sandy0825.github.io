@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>EZONE 송변전통합정보시스템</title>
+    <link rel="stylesheet" href="css/sub.css">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery-ui-1.12.1.custom.css">
+    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/jquery-ui-1.12.1.custom.js"></script>
+    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+</head>
+<body>
+	<div id="wrapper" class="sub_bg scroll">
+		<!-- header -->
+        <header id="header">
+            <h1 class="logo"><a href="index.html"><img src="images/common/logo.png" alt="EZONE 송변전통합정보시스템"></a></h1>
+            <span class="call">시스템문의:0910-7440, 7449, 7442, 7443</span>
+        </header>
+        <!-- //header -->
+        <!-- search area-->
+        <div class="search_area">
+            <div class="search_select js-search-select">
+                <label for="selec01">시스템선택</label>
+                <select id="selec01">
+                    <option selected>시스템선택</option>
+                    <option>옵션1</option>
+                    <option>옵션2</option>
+                </select>
+            </div>
+            <div class="search">
+                <input type="text" class="text" placeholder="검색어를 입력하세요"><button type="button" class="btn btn_search" onclick="location.href='search.html'">검색</button>
+            </div>
+            <div class="util">
+                <strong class="user"><span>홍길동님</span> 개선요청</strong>
+                <span class="util_count01">접수중<a href="#">12</a></span>
+                <span class="util_count02">채택<a href="#">7</a></span>
+            </div>
+        </div>
+        <!-- //search area-->
+        <div id="container">
+        	<div id="sub_content">
+        		<div class="content_area">
+        			<h2 class="page_title">질문과 답변</h2>
+					<!-- //tbl_top -->
+					<!-- tbl -->
+					<div class="tbl_wrap">
+					    <table class="tbl_row_type01">
+					        <caption>내용(제목, 작성자, 작성일 등으로 구성)</caption>
+					        <colgroup>
+					            <col style="width:15%;">
+					            <col style="width:35%;">
+					            <col style="width:15%;">
+					            <col style="width:35%;">
+					        </colgroup>
+					        <tbody>
+					            <tr>
+					                <th scope="row"><strong class="th_tit">작성자</strong></th>
+					                <td>관리자</td>
+					                <th scope="row"><strong class="th_tit">작성일</strong></th>
+					                <td>2017-02-15</td>
+					            </tr>
+					            <tr>
+					                <th scope="row"><strong class="th_tit">제목</strong></th>
+					                <td colspan="3">정전고장시스템 속보 등록 권한이 없다고 나옵니다.</td>
+					            </tr>
+					            <tr>
+					                <td colspan="4" class="tbl_text">
+					                    <div class="text_area">
+					                        권한은 해당 본부에 본부관리자에게 권한을 부여받으실 수 있습니다.
+					                    </div>
+					                </td>
+					            </tr>
+					        </tbody>
+					    </table>
+					    <!-- 답변글 -->
+					    <table class="tbl_row_type01 tbl_answer">
+					        <caption>문의글 답변내용(작성자 및 내용 등으로 구성)</caption>
+					        <colgroup>
+					            <col style="width:10%;">
+					            <col style="width:40%;">
+					            <col style="width:10%;">
+					            <col style="width:40%;">
+					        </colgroup>
+					        <tbody>
+					            <tr>
+					                <th scope="row" colspan="4"><strong class="th_tit">답변: 제목입니다.</strong></th>
+					            </tr>
+					            <tr>
+					                <td colspan="4" class="tbl_text">
+					                    답변 내용입니다. <br/>
+					                    답변 내용입니다. <br/>
+					                    답변 내용입니다.  <br/>
+					                    답변 내용입니다.
+					                </td>
+					            </tr>
+					        </tbody>
+					    </table>
+					</div>
+					<!-- //tbl -->
+					<!-- btn_area -->
+					<div class="btn_area">
+					    <div class="btn_right">
+					    	<a href="#" class="btn btn_mdl btn_rewrite">수정</a>
+					    	<a href="#" class="btn btn_mdl btn_delete">삭제</a>
+					    	<a href="qna.html" class="btn btn_mdl btn_cancel">취소</a>
+					    </div>
+					</div>
+					<!-- //btn_area -->
+	        	</div>
+        	</div>        		
+        </div>
+	</div>
+</body>
+</html>

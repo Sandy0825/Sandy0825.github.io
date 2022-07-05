@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<title>분산전원 통합 정보 서비스센터</title>
+	<link rel="stylesheet" type="text/css" href="css/sub.css">
+	<link rel="stylesheet" type="text/css" href="css/slick.css">
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript" src="js/slick.js"></script>
+	<script type="text/javascript">
+		$(function(){
+		});
+	</script>
+</head>
+<body>
+	<div id="skipnavi">
+	    <a href="#container">▶본문 바로가기</a>
+	    <a href="#gnb_area">▶주메뉴 바로가기</a>
+	</div>
+	<div id="wrapper">
+	    <!-- header 시작 -->
+	    <header id="header">
+	    	<div class="gnb_bg js-gnb-bg"></div>
+	        <div class="header_box">
+	        	<h1 class="logo"><a href="index.html"><img src="images/common/logo.png" alt="로고"></a></h1>
+	        	<span class="util_right"><a href="#">스마트그리드 데이터 센터</a></span>
+	        	<!-- gnb -->
+	        	 <div id="gnb_area">
+		            <nav id="gnb">
+		                <ul class="gnb js-gnb clear">
+		                    <li>
+		                        <a href="#" class="gnb_m1">소개</a>
+		                        <div class="menuWrap js-menuWrap">
+		                            <ul>
+		                                <li><a href="sub01_01.html">DMS</a></li>
+		                                <li><a href="sub01_0201.html">DERMS</a></li>
+		                                <li><a href="sub01_03.html">DER</a></li>
+		                            </ul>
+		                        </div>
+		                    </li>
+		                    <li>
+		                        <a href="#" class="gnb_m2">시험인증</a>
+		                        <div class="menuWrap js-menuWrap">
+		                            <ul>
+		                                <li><a href="#">통신인터페이스</a></li>
+		                                <li><a href="#">시험인증방법</a></li>
+		                            </ul>
+		                        </div>
+		                    </li>
+		                    <li>
+		                        <a href="#" class="gnb_m3">정보마당</a>
+		                        <div class="menuWrap js-menuWrap">
+		                            <ul>
+		                                <li><a href="#">표준 및 보고서</a></li>
+		                                <li><a href="#">정책</a></li>
+		                                <li><a href="#">기술 및 제품</a></li>
+		                            </ul>
+		                        </div>
+		                    </li>
+		                </ul>
+		            </nav>
+		        </div>
+	        	<!--// gnb -->
+	        </div>
+	    </header>
+	    <!-- //header -->
+	    <!-- container 시작 -->
+	    <div id="container">
+	        <div class="sub_visual">
+	 			<strong class="sub_visual_tit">DERMS</strong>
+	 			<div class="location_area">
+	 				<span class="i_home"></span>
+	 				<span>소개</span>
+	 				<span>DERMS</span>
+	 			</div>
+	        </div>
+	        <div id="content">
+	        	<section class="left_cont">
+	        		<!-- 소개 lnb -->
+		 			<div class="lnb js-lnb">
+					    <h3 class="lnb_title">소개</h3>
+			    		<ul>
+					        <li><a href="sub01_01.html">DMS</a></li>
+					        <li class="has_sub depth1 open active"><a href="#">DERMS</a>
+					            <ul>
+					                <li><a href="sub01_0201.html">개요</a></li>
+					                <li><a href="sub01_0202.html">구분</a></li>
+					                <li><a href="sub01_0203.html">특성</a></li>
+					                <li class="on"><a href="sub01_0204.html">구조</a></li>
+					                <li><a href="sub01_0205.html">기능</a></li>
+					            </ul>
+					        </li>
+					        <li ><a href="sub01_03.html">DER</a></li>
+					    </ul>
+					</div>
+	        	</section>
+		        <!--// aside -->     
+				<!-- contents -->	
+				<section class="right_cont derms04">
+					<dl class="sub_contwrap">
+						<dt>DERMS 개념적 구조</dt>
+						<dd>DERMS는 전력 시스템의 가동에 대한 요청을 전체적으로 처리할 수 있도록 분산전원 그룹과 함께 작동함</dd>
+						<dd>DERMS는 스마트 인버터로부터 상태를 얻고 제어 메시지(급전 요청)를 스마트 인버터로 보낼 수 있음</dd>
+						<dd>DERMS는 위치 및 목적에 따라 4가지의 구조로 구분 가능</dd>
+						<dd class="no_bul">
+							<ul>
+								<li>DMS 하위화</li>
+								<li>독립적인 시스템</li>
+								<li>클라우드에서 전력거래<br>사업자(Aggregator)에 의해 호스팅</li>
+								<li>변전소 내부 존재</li>
+							</ul>
+							<img src="images/sub/derms04_01.jpg" alt="DERMS 구축을 위한 개념적 구조">
+						</dd>
+						<dt>DERMS 기능적 구조</dt>
+						<dd>
+							DERMS는 어플리케이션 별로 제공하는 기능에 따라 3가지의 구조로 구분 가능
+							<dl class="depth2_dl">
+								<dt>① 중앙집중형 DERMS</dt>
+								<dd>DMS에 연계되어 있는 한 대의 중앙 유틸리티 DERMS가 관할 영역의 모든 DER을 관리하는 형태</dd>
+								<dd>배전계통 핵심 운영 역할을 하며 핵심 배전 관리 기능은 주로 DMS/ADMS 내에 존재하기 때문에, 중앙집중형 DERMS는 DMS/ADMS의 추가<br>기능 혹은 모듈이 될 수 있음</dd>
+								<dd>유틸리티가 작동하지 않은 경우, 중앙집중형 DERMS는 DMS의 핵심 기능의 일부 또는 전부를 제공할 수 있어야 함</dd>
+								<dd>주 DERMS 알고리즘이 DER의 위치와 물리적으로 분리된 주 제어 건물, 서비스 센터 또는 기타 시설 등의 중앙에 위치해 있는 최상위 제어기<br>형태로 존재하는 하드웨어 및/또는 소프트웨어 플랫폼을 지칭</dd>
+								<dd>중앙집중형 아키텍처에는 자산에 인접한 통신 시설 및 하드웨어 인터페이스 등의 일부 구성요소가 포함될 수 있으며, 주 DERMS는 항상 단일<br>중앙 위치에 상주하는 것을 기본으로 함 </dd>
+							</dl>
+							<img src="images/sub/derms04_02.jpg" alt="중앙집중식 DERMS의 구조 예시">
+						</dd>
+						<dd class="no_bul">
+							<dl class="depth2_dl">
+								<dt>② 분산형 DERMS</dt>
+								<dd>하나의 DMS에 의해 여러 대의 DERMS가 관리되고, 여러 개의 DERMS가 각각의 지역에 연계되어 있는 DER의 관리주체가 되어 해당 시스템을<br>관리하는 형태</dd>
+								<dd>신속한 응답을 필요로 하는 분산되어 있는 DERM들을 관리하며, 분산형 DERMS는 일반적으로 SCADA를 통해 유틸리티 측면의 자산을 제어<br>하며 분산된 정보를 통합하여 DER 또는 DER 집합을 빠르게 제어</dd>
+								<dd>주 DERMS 알고리즘이 DER에 인접한 현장에 있는 다수의 소형 제어기 형태로 분산되어 있는 하드웨어 및/또는 소프트웨어 플랫폼을 지칭</dd>
+								<dd>분산형 DERMS는 단일 마스터 제어기가 없으며, 일부 구성 요소(배전시스템 운영자가 사용하는 디스플레이 등)는 중앙에 위치 가능</dd>
+							</dl>
+							<img src="images/sub/derms04_03.jpg" alt="분산식 DERMS의 구조 예시">
+						</dd>
+						<dd class="no_bul">
+							<dl class="depth2_dl">
+								<dt>③ 하이브리드 DERMS</dt>
+								<dd>상위 DERMS의 분산된 형태의 공급자, 지역사회, 시설 또는 가정수준 DERMS에 의해서 DER들이 관리되고, DMS가 각각의 유틸리티 DERMS<br>및 하위 DERMS들과 연동되는 형태</dd>
+								<dd>다양한 유틸리티 혹은 시장의 니즈에 따라 DER를 최적화하는 기능으로 경제성 또는 신뢰성과 관련되며 하이브리드 DERMS의 경제적 목적<br>으로는 도매수준의 용량, 에너지 또는 보조 서비스를 제공</dd>
+								<dd>또한, 하이브리드 DERMS의 신뢰성 목적으로는 계통의 과부하를 방지하기 위한 DER 관리가 포함되며, DER이 발전소와 유사하게 다양한<br>서비스를 제공할 수 있는 경우 가상발전소(VPP)라고 불리기도 함
+									<span class="notice">* 단, 긴급상황 또는 피크 부하를 줄이기 위해 DER 시스템에게 광범위하게 호출을 내리는 수요반응(DR) 시스템은 제외</span>
+								</dd>
+								<dd>주 DERMS 알고리즘이 중앙 및 현장 위치에 있는 소형 제어기 간에 분산되어 있는  하드웨어 및/또는 소프트웨어 플랫폼을 지칭
+									<span class="notice">* 하이브리드 DERMS의 경우 단일 마스터 제어기가 존재하지 않을 수도 있음 </span>
+								</dd>
+							</dl>
+							<img src="images/sub/derms04_04.jpg" alt="하이브리드 DERMS의 구조 예시">
+						</dd>
+					</dl>
+				</section>
+		    </div>
+		</div>
+		<!--// contents e --> 
+	    <!-- footer 시작 -->
+	    <footer id="footer">
+	    	<div class="footer_cont">
+	    		<span class="address">서울시 송파구 양재대로 71길 20-18(방이동 188-8번지)</span>
+	        	<span class="copyright">Copyright(c) 2021 SmartGrid. All Rights Reserved</span>	
+	    	</div>
+	    </footer>
+	    <!-- //footer -->
+	</div>
+</body>
+</html>

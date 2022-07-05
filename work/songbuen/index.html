@@ -1,0 +1,1515 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>EZONE 송변전통합정보시스템</title>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" href="css/jcolor-picker.min.css" />
+    <script src="js/jquery-1.11.3.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/jquery-ui-1.12.1.custom.js"></script>
+    <script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="js/jcolor-picker.min.js"></script>
+    <script type="text/javascript"> 
+        $(function(){
+            //---->좌측 메뉴기능
+            //메뉴 hover_box
+            $(".drag").on("mouseenter focusin",function(){
+                $(this).children('.hover_box').show();
+            });
+            $(".drag").on("mouseleave blur",function(){
+                $(this).children('.hover_box').hide();
+            });
+            $(".drag").on("focusin",function(){
+                if($(this).children('.hover_box').is(":visible")){
+                    $(this).children('.hover_box').hide();
+                }
+            });
+            $('#drop_box .hover_box').css('display','none');
+
+            //like메뉴 드래그
+            $(".drag_list .drag").draggable({
+                helper: "clone", 
+                revert: 'invalid', 
+                cursor: "move",
+                start: function(ev, ui){
+                    $('.hover_box').css('display','none');
+                }
+            });
+            $("#drop_box").droppable({
+                accept: '.drag_list .drag',
+                hoverClass: "droppable-active",
+                tolerance:'fit',
+                drop: function (ev, ui) {
+                    var itemCount = $("#drop_box > .new").length;
+                    console.log(itemCount);
+                    if($("#drop_box:contains('"+ui.draggable.text()+"')").length > 0)
+                    {
+                        $('.new').draggable({
+                                revert: 'valid',
+                                connectToSortable: "#drop_box"
+                            });
+                       return false;
+                    }
+                    else if(itemCount > 8){
+                        alert("더이상의 메뉴는 추가하실 수 없습니다.");
+                        $('.new').draggable({
+                                revert: 'valid'
+                            });
+                        return false;
+                    } 
+                    else{
+                        $(this).append($(ui.draggable).clone().draggable({
+                            helper: "original"
+                        }).addClass('new'));
+                        if(itemCount >= 0){
+                            $('#drop_box').css('background','#f7f7f7');
+                        }
+                    }
+                }
+            });
+            $(".favorites .new").draggable({
+                helper: "clone", 
+                revert: 'invalid', 
+                cursor: "move"
+            });
+            $('.favorites').droppable({
+                accept: '.new',
+                tolerance:'fit',
+                drop:function (event, ui) {
+                    if($(ui.draggable).hasClass('ui-draggable-dragging')){
+                        $(ui.draggable).removeClass('ui-draggable-dragging');
+                        $(ui.draggable).addClass('drop');
+                        $(ui.draggable).css({'top':'','left':''});
+                    }
+                },
+                out: function (event, ui) {                    
+                    if(confirm("삭제하시겠습니까?")){
+                        if($(ui.draggable).hasClass('new')){
+                            $(ui.draggable).fadeOut(500,function(){
+                                $(this).remove();                                
+                            });                            
+                        }
+                    }else{ 
+                        if($(ui.draggable).hasClass('new')){
+                             $(ui.draggable).css({'top':'','left':'','width':'32%'}); 
+                        }
+                    }
+                }
+            });
+
+
+            //---->기능팝업들
+            //계산기
+            $('.calculator').click(function(){
+                $('.js-calcul-pop').show();
+            });
+            $(".js-calcul-close").click(function(){
+                $(".js-calcul-pop").hide();
+            });
+            $(".js-calcul-pop").draggable();
+
+            //일정
+            $('.schedule').click(function(){
+                $('.js-schedule-pop').show();
+            });
+            $(".js-schedule-close").click(function(){
+                $(".js-schedule-pop").hide();
+            });
+            $(".js-schedule-pop").draggable();
+            
+            //메모장
+            $('.memo').click(function(){
+                $('.js-memo-pop').show();
+            });
+            $(".js-memo-close").click(function(){
+                $(".js-memo-pop").hide();
+            });
+            $(".js-memo-pop").draggable();
+
+            //call box 안내번호박스
+            $('.call').click(function(){
+                $('.call_pop').addClass('show');
+            });
+            $('.call_close').click(function(){
+                $('.call_pop').removeClass('show');
+            });
+
+
+            //---->근무자
+            //근무자현황 scrollbar
+            $(".worker_center").mCustomScrollbar({
+              axis:"y",
+              theme:"dark-3"
+            });
+
+            //근무자현황 addressbox
+            $('.worker_list > li').click(function(){
+                $('.address_pop').fadeIn();
+            });
+            $('.address_close').click(function(){
+                $('.address_pop').fadeOut();
+            });
+
+            //근무자현황 높이자동조정
+            $(window).load(function(){
+               var boxToday = $('.today_box').height();
+                var boxWorker = $('.worker_box').height();
+                var listWorker = $('.worker_center').height();
+                boxWorker = 836 - boxToday;
+                listWorker = boxWorker - 99;
+                $('.worker_box').css('height',boxWorker);
+                $('.worker_center').css('height',listWorker);
+            });
+
+
+            //---->메인페이지 고장현황 박스 tab기능
+            $(".js-tab-content").hide();
+            $(".js-tab-content:first").show();
+            $(".js-tab a").click(function(event) {
+                event.preventDefault(); //주소에 #숨김
+                $(this).parent().addClass("current");
+                $(this).parent().siblings().removeClass("current");
+                var tab = $(this).attr("href");
+                $(".js-tab-content").not(tab).css("display", "none");
+                $(tab).fadeIn();
+            });       
+            
+        });
+    
+        //---->통합팝업박스
+        function view_show(num) {
+            $("body").addClass("ofHidden");
+            var left = (( $(window).width() - $("#dispay_view"+num).width()) / 2 );
+            var top = (( $(window).height() - $("#dispay_view"+num).height()) / 2 );
+            $("#dispay_view"+num).css({'left':left,'top':top, 'position':'fixed'});
+            document.getElementById("dispay_view"+num).style.display = "block";
+            document.getElementById("js-popup-bg").style.display = "block";
+            return false;
+         }
+        function view_hide(num) {
+          $("body").removeClass("ofHidden");
+          document.getElementById("dispay_view"+num).style.display = "none";
+          document.getElementById("js-popup-bg").style.display = "none";
+          return false;
+        }
+        $(function(){
+            $('#js-popup-bg').click(function(){
+                $("body").removeClass("ofHidden");
+                $('.js-popup').css("display","none");
+                $(this).css("display","none");
+              });
+             $('.window_close').click(function(){
+                window.open('about:blank', '_self').close();
+            });
+
+            //통합팝업 전체tab기능
+            $(".js-tab-content2").hide();
+            $(".js-tab-content2:first").show();
+            $(".js-tab2 a").click(function(event) {
+                event.preventDefault(); //주소에 #숨김
+                $(this).parent().addClass("current");
+                $(this).parent().siblings().removeClass("current");
+                var tab = $(this).attr("href");
+                $(".js-tab-content2").not(tab).css("display", "none");
+                $(tab).fadeIn();
+            });  
+
+            //통합팝업 안 통계관리자 tab기능
+            $(".js-tab-content3").hide();
+            $(".js-tab-content3:first").show();
+            $(".js-tab3 a").click(function(event) {
+                event.preventDefault(); //주소에 #숨김
+                $(this).parent().addClass("current");
+                $(this).parent().siblings().removeClass("current");
+                var tab = $(this).attr("href");
+                $(".js-tab-content3").not(tab).css("display", "none");
+                $(tab).fadeIn();
+            }); 
+        });
+
+
+    </script>
+</head>
+<body>
+    <!-- wrapper -->
+    <div id="wrapper" class="main_bg">
+        <!-- header -->
+        <header id="header">
+            <h1 class="logo"><a href="index.html"><img src="images/common/logo.png" alt="EZONE 송변전통합정보시스템"></a></h1>
+            <span class="call">시스템문의 안내번호</span>
+            <div class="call_pop">
+                <div class="call_header">
+                    <h4>시스템문의 안내번호</h4>
+                    <a href="#" class="call_close"></a>
+                </div>
+                <div class="call_content">
+                    <table class="tbl_call">
+                        <colgroup>
+                            <col style="width: 17%">
+                            <col>
+                            <col style="width: 17%">
+                            <col style="width: 20%">
+                        </colgroup>
+                        <thead>
+                            <tr>
+                                <th scope="col">구분</th>
+                                <th scope="col">시스템명</th>
+                                <th scope="col">유지보수담당자</th>
+                                <th scope="col">관리부서</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td rowspan="13" class="c">송변전통합<br>정보시스템<br>(EZ-One)</td>
+                                <td>EZ-One 메인포탈</td>
+                                <td rowspan="2" class="c"><a href="#">0910-7440</a></td>
+                                <td rowspan="12" class="c">ICT<br>인프라처</td>
+                            </tr>
+                            <tr>
+                                <td>정전고장관리시스템</td>
+                            </tr>
+                            <tr>
+                                <td>SCADA DB선정관리시스템</td>
+                                <td rowspan="2" class="c"><a href="#">0910-7442</a></td>
+                            </tr>
+                            <tr>
+                                <td>송변전교육관리시스템</td>
+                            </tr>
+                            <tr>
+                                <td>업무지원시스템(금일근무현황)</td>
+                                <td rowspan="2" class="c"><a href="#">0910-7443</a></td>
+                            </tr>
+                            <tr>
+                                <td>변전소 순시점검시스템</td>
+                            </tr>
+                            <tr>
+                                <td>변전소 출입관리시스템</td>
+                                <td rowspan="6" class="c"><a href="#">0910-7434</a></td>
+                            </tr>
+                            <tr>
+                                <td>슈퍼바이저 관리시스템</td>
+                            </tr>
+                            <tr>
+                                <td>지중송전 시공전문회사 관리시스템</td>
+                            </tr>
+                            <tr>
+                                <td>지중송전 위탁전문회사 관리시스템</td>
+                            </tr>
+                            <tr>
+                                <td>지중송전 접속원 관리시스템</td>
+                            </tr>
+                            <tr>
+                                <td>방화구획재 전문회사 관리시스템</td>
+                            </tr>
+                            <tr>
+                                <td>PDAS(보호계전기 원격취득관리시스템)</td>
+                                <td class="c"><a href="#">0910-7438</a></td>
+                                <td rowspan="2" class="c" style="border-bottom:0">ICT 인프라처<br>통신운영총괄부</td>
+                            </tr>
+                            <tr>
+                                <td class="c">전력IT플랫폼</td>
+                                <td></td>
+                                <td class="c"><a href="#">0910-7442</a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </header>
+        <!-- //header -->
+        <!-- search area-->
+        <div class="search_area">
+            <div class="search_select js-search-select">
+                <label for="selec01">시스템선택</label>
+                <select id="selec01">
+                    <option selected>시스템선택</option>
+                    <option>옵션1</option>
+                    <option>옵션2</option>
+                </select>
+            </div>
+            <div class="search">
+                <input type="text" class="text" placeholder="검색어를 입력하세요"><button type="button" class="btn btn_search">검색</button>
+            </div>
+            <div class="util">
+                <strong class="user"><span>홍길동님</span> 개선요청</strong>
+                <span class="util_count01">접수중<a href="#">12</a></span>
+                <span class="util_count02">채택<a href="#">7</a></span>
+            </div>
+        </div>
+        <!-- //search area-->
+        <!-- container -->
+        <div id="container">
+            <div id="main_content">
+                <!-- left_content -->
+                <div id="left_content">
+                    <div class="content_area clear">
+                        <!-- drag_menu_wrapper -->
+                        <div class="drag_menu_wrapper">
+                            <div class="menu_box01">
+                                <h2>주요시스템</h2>
+                                <div class="drag_list">
+                                    <div id="drag1" class="drag"><a href="#" class="main_menu01">정전고장</a></div>
+                                    <div id="drag2" class="drag"><a href="#" class="main_menu02">휴전관리</a></div>
+                                    <div id="drag3" class="drag"><a href="#" class="main_menu03">SOMAS</a></div>
+                                    <div id="drag4" class="drag"><a href="#" class="main_menu04">Web Scada</a></div>
+                                </div>
+                                <a href="#dispay_view1" onclick="view_show(1);" class="more" title="더보기">&plus;</a>
+                            </div>
+                            <div class="menu_box02">
+                                <h2>계통발전</h2>
+                                <div class="drag_list">
+                                    <div id="drag5" class="drag">
+                                        <a href="#" class="main_menu05">i-Pas
+                                            <span class="hover_bullet"></span><!-- hover박스 있을시 -->
+                                        </a>
+                                        <div class="hover_box">
+                                            <h3>관리본부를 선택해주세요</h3>
+                                            <ul class="clear">
+                                                <li><a href="#">서울</a></li>
+                                                <li><a href="#">남서울</a></li>
+                                                <li><a href="#">인천</a></li>
+                                                <li><a href="#">경기북부</a></li>
+                                                <li><a href="#">경기</a></li>
+                                                <li><a href="#">강원</a></li>
+                                                <li><a href="#">충북</a></li>
+                                                <li><a href="#">대전세종충남</a></li>
+                                                <li><a href="#">전북</a></li>
+                                                <li><a href="#">광주전남</a></li>
+                                                <li><a href="#">대구경북</a></li>
+                                                <li><a href="#">부산울산</a></li>
+                                                <li><a href="#">경남</a></li>
+                                                <li><a href="#">제주</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div id="drag6" class="drag"><a href="#" class="main_menu06">PDAS</a></div>
+                                    <div id="drag7" class="drag"><a href="#" class="main_menu07">손실정보</a></div>
+                                    <div id="drag8" class="drag"><a href="#" class="main_menu08">발전기정보</a></div>
+                                </div>
+                                <a href="#dispay_view1" onclick="view_show(1);" class="more" title="더보기">&plus;</a>
+                            </div>
+                            <div class="menu_box03">
+                                <h2>송전건설</h2>
+                                <div class="drag_list">
+                                    <div id="drag9" class="drag"><a href="#" class="main_menu09">TOMS</a></div>
+                                    <div id="drag10" class="drag"><a href="#" class="main_menu10">FOMS</a></div>
+                                    <div id="drag11" class="drag"><a href="#" class="main_menu11">낙뢰감시</a></div>
+                                    <div id="drag12" class="drag"><a href="#" class="main_menu12">선로감시</a></div>
+                                </div>
+                                <a href="#dispay_view1" onclick="view_show(1);" class="more" title="더보기">&plus;</a>
+                            </div>
+                            <div class="menu_box04">
+                                <h2>변전통신</h2>
+                                <div class="drag_list">
+                                    <div id="drag13" class="drag"><a href="#" class="main_menu13">변전전문회사</a></div>
+                                    <div id="drag14" class="drag">
+                                        <a href="#" class="main_menu14 menu_long">주파수 조정용 ESS통합운영
+                                            <span class="hover_bullet"></span>
+                                            <!-- hover박스 있을시 -->
+                                        </a>
+                                        <div class="hover_box">
+                                            <h3>관리본부를 선택해주세요</h3>
+                                            <ul class="clear">
+                                                <li><a href="#">서울</a></li>
+                                                <li><a href="#">남서울</a></li>
+                                                <li><a href="#">인천</a></li>
+                                                <li><a href="#">경기북부</a></li>
+                                                <li><a href="#">경기</a></li>
+                                                <li><a href="#">강원</a></li>
+                                                <li><a href="#">충북</a></li>
+                                                <li><a href="#">대전세종충남</a></li>
+                                                <li><a href="#">전북</a></li>
+                                                <li><a href="#">광주전남</a></li>
+                                                <li><a href="#">대구경북</a></li>
+                                                <li><a href="#">부산울산</a></li>
+                                                <li><a href="#">경남</a></li>
+                                                <li><a href="#">제주</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div id="drag15" class="drag"><a href="#" class="main_menu15">방화구획재</a></div>
+                                    <div id="drag16" class="drag"><a href="#" class="main_menu16">SCADA DB</a></div>
+                                </div>
+                                <a href="#dispay_view1" onclick="view_show(1);" class="more" title="더보기">&plus;</a>
+                            </div>
+                            <div class="menu_box05">
+                                <h2>기술기타</h2>
+                                <div class="drag_list">
+                                    <div id="drag17" class="drag"><a href="#" class="main_menu17">평생학습</a></div>
+                                    <div id="drag18" class="drag"><a href="#" class="main_menu18">변전건설지식</a></div>
+                                    <div id="drag19" class="drag"><a href="#" class="main_menu19">기술표준</a></div>
+                                    <div id="drag20" class="drag"><a href="#" class="main_menu20">전자파정보</a></div>
+                                </div>
+                                <a href="#dispay_view1" onclick="view_show(1);" class="more" title="더보기">&plus;</a>
+                            </div>
+                        </div>
+                        <!-- //drag_menu_wrapper -->
+                        <!-- middle content -->
+                        <div class="content">
+                            <div class="cont_box cont_box01 clear">
+                                <!-- like메뉴 -->
+                                <div class="favorites">
+                                    <h2 class="main_tit">LIKE 메뉴</h2>
+                                    <div id="drop_box">
+
+                                    </div>
+                                    <a href="#dispay_view1" onclick="view_show(1);" class="btn_setting" title="모달창호출"></a>
+                                </div>
+                                <!-- //like메뉴 -->
+                                <!-- maintab_area -->
+                                <div class="maintab_area">
+                                    <ul class="tab js-tab tab_menu">
+                                        <li class="current"><a href="#main_tab1">고장현황</a></li>
+                                        <li><a href="#main_tab2">휴전현황</a></li>
+                                        <li><a href="#main_tab3">공사현황</a></li>
+                                        <li><a href="#main_tab4">급전속보</a></li>
+                                        <li><a href="#main_tab5">출입현황</a></li>
+                                        <li><a href="#main_tab6">발전기정보</a></li>
+                                    </ul>
+                                    <!-- 고장현황 -->
+                                    <div id="main_tab1" class="tab_content js-tab-content">
+                                        <div class="tbl_wrap">
+                                            <table class="tbl_col_type01">
+                                                <colgroup>
+                                                    <col style="width:100px">
+                                                    <col>
+                                                    <col style="width:100px">
+                                                </colgroup>
+                                                <thead>
+                                                    <tr>
+                                                        <th scope="col">지사</th>
+                                                        <th scope="col">고장내역</th>
+                                                        <th scope="col">접수일</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="branch">순천전력지사</td>
+                                                        <td class="broken">순천S/S 154kV 순천율촌 #1  송전선로</td>
+                                                        <td class="date c">01-22 15:28</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="branch">순천전력지사</td>
+                                                        <td class="broken">순천S/S 154kV 순천율촌 #1  송전선로</td>
+                                                        <td class="date c">01-22 15:28</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="branch">순천전력지사</td>
+                                                        <td class="broken">순천S/S 154kV 순천율촌 #1  송전선로</td>
+                                                        <td class="date c">01-22 15:28</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="branch">순천전력지사</td>
+                                                        <td class="broken">순천S/S 154kV 순천율촌 #1  송전선로</td>
+                                                        <td class="date c">01-22 15:28</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="branch">순천전력지사</td>
+                                                        <td class="broken">순천S/S 154kV 순천율촌 #1  송전선로</td>
+                                                        <td class="date c">01-22 15:28</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="branch">순천전력지사</td>
+                                                        <td class="broken">순천S/S 154kV 순천율촌 #1  송전선로</td>
+                                                        <td class="date c">01-22 15:28</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <!-- 휴전현황 -->
+                                    <div id="main_tab2" class="tab_content js-tab-content"></div>
+                                    <!-- 공사현황 -->
+                                    <div id="main_tab3" class="tab_content js-tab-content"></div>
+                                    <!-- 급전속보 -->
+                                    <div id="main_tab4" class="tab_content js-tab-content"></div>
+                                    <!-- 출입현황 -->
+                                    <div id="main_tab5" class="tab_content js-tab-content"></div>
+                                    <!-- 발전기정보 -->
+                                    <div id="main_tab6" class="tab_content js-tab-content"></div>
+                                    <a href="#dispay_view1" onclick="view_show(1);" class="btn_more">더보기</a>
+                                </div>
+                                <!-- //maintab_area -->
+                            </div>
+                            <div class="cont_box cont_box02 clear">
+                                <!-- 통계데이터 -->
+                                <div class="mainchart_box">
+                                    <h2 class="main_tit">통계데이터</h2>
+                                    <div class="search_select js-search-select">
+                                        <label for="selec02">시스템선택</label>
+                                        <select id="selec02">
+                                            <option selected>시스템선택</option>
+                                            <option>옵션1</option>
+                                            <option>옵션2</option>
+                                        </select>
+                                    </div>
+                                    <span class="chart_tit">- 고장속보 사업소 주간통계('19.02.07~'19.02.14)</span>
+                                    <div class="chart_container">
+                                        <div id="chart_content01" style="min-width:100%;height:200px"></div>
+                                        <!-- <div id="chart_content02" style="min-width:100%;height:200px"></div>
+                                        <div id="chart_content03" style="min-width:100%;height:200px"></div> -->
+                                    </div>
+                                    <a href="#dispay_view1" onclick="view_show(1);" class="btn_setting" title="설정"></a>
+                                    <script src="js/highcharts.js"></script>
+                                    <script src="js/highcharts-3d.js"></script>
+                                    <script src="js/exporting.js"></script>
+                                    <script src="js/export-data.js"></script>
+                                    <script type="text/javascript">
+                                        //chart
+                                        $(function(){
+                                            Highcharts.chart('chart_content01', {
+                                                chart: {
+                                                    type: 'pie',
+                                                    options3d: {
+                                                        enabled: true,
+                                                        alpha: 45
+                                                    }
+                                                },
+                                                title: {
+                                                    text: null
+                                                },
+                                                navigation: {
+                                                    buttonOptions: {
+                                                        y: -1000
+                                                    }
+                                                },
+                                                credits: {
+                                                    enabled: false
+                                                        },
+                                                plotOptions: {
+                                                    pie: {
+                                                        size:150,
+                                                        innerSize: 40,
+                                                        depth: 45,
+                                                        dataLabels: {
+                                                            enabled: true,
+                                                            format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                                                        }
+                                                    }
+                                                },
+                                                series: [{
+                                                    data: [
+                                                        ['서울', 22.2],
+                                                        ['경기', 8.3],
+                                                        ['인천', 2.8],
+                                                        ['광주', 16.7],
+                                                        ['세종', 22.2],
+                                                        ['전라', 11.1],
+                                                        ['충청', 11.1],
+                                                        ['강원', 2.8],
+                                                        ['경남', 2.8]
+                                                    ]
+                                                }]
+                                            });
+                                            /*Highcharts.chart('chart_content02', {
+                                                chart: {
+                                                    type: 'column'
+                                                },
+                                                title: {
+                                                    text: null
+                                                },
+                                                xAxis: {
+                                                    type: 'category'
+                                                },
+                                                yAxis: {
+                                                    title: {
+                                                        text: null
+                                                    }
+
+                                                },
+                                                navigation: {
+                                                    buttonOptions: {
+                                                        y: -1000
+                                                    }
+                                                },
+                                                legend: {
+                                                    enabled: false
+                                                },
+                                                credits: {
+                                                    enabled: false
+                                                        },
+                                                plotOptions: {
+                                                    pie: {
+                                                        size:150,
+                                                        innerSize: 40,
+                                                        depth: 45,
+                                                        dataLabels: {
+                                                            enabled: true,
+                                                            format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                                                        }
+                                                    }
+                                                },
+                                                series: [{
+                                                    colorByPoint: true,
+                                                    data: [
+                                                        {
+                                                            name:'서울',
+                                                            y: 22.2
+                                                        },
+                                                        {
+                                                            name:'경기',
+                                                            y: 8.3
+                                                        },
+                                                        {
+                                                            name:'인천',
+                                                            y: 2.8
+                                                        },
+                                                        {
+                                                            name:'광주',
+                                                            y: 16.7
+                                                        },
+                                                        {
+                                                            name:'세종',
+                                                            y: 22.2
+                                                        },
+                                                        {
+                                                            name:'전라',
+                                                            y: 11.1
+                                                        },{
+                                                            name:'충청',
+                                                            y: 11.1
+                                                        },
+                                                        {
+                                                            name:'강원',
+                                                            y: 2.8
+                                                        },
+                                                        {
+                                                            name:'경남',
+                                                            y: 2.8
+                                                        }
+                                                    ]
+                                                }]
+                                            });*/
+                                        })
+                                    </script>
+                                </div>
+                                <!-- //통계데이터 -->
+                                <!-- 데이터공개 -->
+                                <div class="data_box">
+                                    <h2 class="main_tit">WeMake 시스템</h2>
+                                    <div class="tbl_wrap mar_t10">
+                                        <table class="tbl_col_type01">
+                                            <colgroup>
+                                                <col style="width: 100px">
+                                                <col style="width: 80px">
+                                                <col>
+                                            </colgroup>
+                                            <thead>
+                                                <tr>
+                                                    <th scope="col">시스템</th>
+                                                    <th scope="col">배경</th>
+                                                    <th scope="col">요청내용</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td class="branch">순천전력지사</td>
+                                                    <td class="broken c">배경</td>
+                                                    <td class="date">요청내용이 이곳에 들어갑니다.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="branch">순천전력지사</td>
+                                                    <td class="broken c">배경</td>
+                                                    <td class="date">요청내용이 이곳에 들어갑니다.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="branch">순천전력지사</td>
+                                                    <td class="broken c">배경</td>
+                                                    <td class="date">요청내용이 이곳에 들어갑니다.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="branch">순천전력지사</td>
+                                                    <td class="broken c">배경</td>
+                                                    <td class="date">요청내용이 이곳에 들어갑니다.</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="branch">순천전력지사</td>
+                                                    <td class="broken c">배경</td>
+                                                    <td class="date">요청내용</td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="branch">순천전력지사</td>
+                                                    <td class="broken c">배경</td>
+                                                    <td class="date">요청내용이 이곳에 들어갑니다.</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <a href="wemake.html" class="btn_more">더보기</a>
+                                </div>
+                                <!-- //데이터공개 -->
+                            </div>
+                            <div class="cont_box cont_box03 clear">
+                                <!-- 기술검토 -->
+                                <div class="count_box">
+                                    <h2 class="main_tit">기술검토</h2>
+                                    <ul class="count_list">
+                                        <li class="count01"><a href="#">이도계산</a></li>
+                                        <li class="count02"><a href="#">연선장력계산</a></li>
+                                        <li class="count03"><a href="#">건폐율계산</a></li>
+                                    </ul>
+                                </div>
+                                <!-- //기술검토 -->
+                                <!-- 질문과답변 -->
+                                <div class="qna_box">
+                                    <h2 class="main_tit">질문과 답변</h2>
+                                    <ul class="qna_list">
+                                        <li><a href="#">정전고장 권한요청 문의드립니다.</a> <span class="tag tag_type01">대기</span></li>
+                                        <li><a href="#">정전고장 SMS수신자 설정 요청</a> <span class="tag tag_type01">대기</span></li>
+                                        <li><a href="#">신포천 S/S업로드 불가 확인요청</a> <span class="tag tag_type02">완료</span></li>
+                                        <li><a href="#">Adobe Flash Player 재생불가 확인요청</a> <span class="tag tag_type02">완료</span></li>
+                                        <li><a href="#">정전고장 SMS 수신자 설정요청</a> <span class="tag tag_type02">완료</span></li>
+                                    </ul>
+                                    <a href="qna.html" class="btn_more">더보기</a>
+                                </div>
+                                <!-- //질문과답변 -->
+                                <!-- kepco소식 -->
+                                <div class="board_box">
+                                    <h2 class="main_tit">Kepco 소식</h2>
+                                    <ul class="board_list clear">
+                                        <li><a href="#"><img src="images/main/logo01.png" alt="한국전력공사"></a></li>
+                                        <li><a href="#"><img src="images/main/logo02.png" alt="한국kps"></a></li>
+                                        <li><a href="#"><img src="images/main/logo03.png" alt="한국수력원자력"></a></li>
+                                        <li><a href="#"><img src="images/main/logo04.png" alt="한국중부발전"></a></li>
+                                        <li><a href="#"><img src="images/main/logo05.png" alt="전력거래소"></a></li>
+                                        <li><a href="#"><img src="images/main/logo06.png" alt="한국전력기술"></a></li>
+                                    </ul>
+                                </div>
+                                <!-- //kepco소식 -->
+                            </div>
+                        </div>
+                        <!-- //middle content -->
+                    </div>
+                </div>
+                <!-- //left_content -->
+                <!-- right_content -->
+                <div id="right_content">
+                    <!-- today_box -->
+                    <div class="today_box">
+                        <div class="today_content">
+                            <span class="today_date">2019. 01. 22 화요일</span>
+                            <div class="today_weather">
+                                <span class="temper">10<sup>°C</sup></span>
+                                <span class="min_temper">최저 -2<sup>°C</sup></span>
+                                <span class="max_temper">최고 14<sup>°C</sup></span>
+                                <span class="dust">미세먼지 48㎍/㎥ <span>보통</span></span>
+                            </div>
+                            <span class="function calculator"><a href="#">계산기</a></span>
+                            <span class="function schedule"><a href="#">일정</a></span>
+                            <span class="function memo"><a href="#">메모</a></span>   
+                        </div> 
+                                           
+                        <div class="today_status">
+                            <div class="status01">
+                                <h3>금일현황</h3>
+                                <ul class="status_list clear">
+                                    <li>정전<span><strong>3</strong></span></li>
+                                    <li>출입<span><strong>1</strong></span></li>
+                                    <li>휴전<span><strong>5</strong></span></li>
+                                    <li>낙뢰<span><strong>2</strong></span></li>
+                                    <li>스카다<span><strong>3</strong></span></li>
+                                    <li>위해개소<span><strong>7</strong></span></li>
+                                </ul>
+                            </div>
+                            <div class="status02">
+                                <h3>결재현황</h3>
+                                <ul class="status_list clear">
+                                    <li>정전<span><strong>3</strong></span></li>
+                                    <li>변전전문<span><strong>1</strong></span></li>
+                                    <li>업무<span><strong>5</strong></span></li>
+                                    <li>변전협력<span><strong>2</strong></span></li>
+                                    <li>출입관리<span><strong>3</strong></span></li>                    
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- //today_box -->
+                    <!-- 근무자현황 -->
+                    <div class="worker_box">
+                        <h2>근무자 현황</h2>
+                        <div class="worker_content">
+                            <div class="search_select js-search-select">
+                                <label for="selec03">서울본부</label>
+                                <select id="selec03">
+                                    <option selected>서울본부</option>
+                                    <option>옵션1</option>
+                                    <option>옵션2</option>
+                                </select>
+                            </div>
+                            <div class="search_select js-search-select">
+                                <label for="selec04">시스템선택</label>
+                                <select id="selec04">
+                                    <option selected>시스템선택</option>
+                                    <option>옵션1</option>
+                                    <option>옵션2</option>
+                                </select>
+                            </div>
+                            <span class="btn btn_search">검색</span>
+                            <div class="worker_center">
+                                <div class="worker_listbox">
+                                    <h3>광역계통운영센터</h3>
+                                    <ul class="worker_list clear">
+                                        <li><a href="#">홍길동</a></li>
+                                        <li><a href="#">김철수</a></li>
+                                        <li><a href="#">고길동</a></li>
+                                        <li><a href="#">박영수</a></li>
+                                    </ul>
+                                    <h3>성동변전소</h3>
+                                    <ul class="worker_list clear">
+                                        <li><a href="#">홍길동</a></li>
+                                        <li><a href="#">김철수</a></li>
+                                    </ul>
+                                    <h3>중부변전소</h3>
+                                    <ul class="worker_list clear">
+                                        <li><a href="#">홍길동</a></li>
+                                        <li><a href="#">김철수</a></li>
+                                        <li><a href="#">고길동</a></li>
+                                        <li><a href="#">박영수</a></li>
+                                    </ul>
+                                    <h3>광역계통운영센터</h3>
+                                    <ul class="worker_list clear">
+                                        <li><a href="#">홍길동</a></li>
+                                        <li><a href="#">김철수</a></li>
+                                        <li><a href="#">고길동</a></li>
+                                        <li><a href="#">박영수</a></li>
+                                    </ul>
+                                    <h3>성동변전소</h3>
+                                    <ul class="worker_list clear">
+                                        <li><a href="#">홍길동</a></li>
+                                        <li><a href="#">김철수</a></li>
+                                    </ul>
+                                    <h3>중부변전소</h3>
+                                    <ul class="worker_list clear">
+                                        <li><a href="#">홍길동</a></li>
+                                        <li><a href="#">김철수</a></li>
+                                        <li><a href="#">고길동</a></li>
+                                        <li><a href="#">박영수</a></li>
+                                    </ul>
+                                    <h3>광역계통운영센터</h3>
+                                    <ul class="worker_list clear">
+                                        <li><a href="#">홍길동</a></li>
+                                        <li><a href="#">김철수</a></li>
+                                        <li><a href="#">고길동</a></li>
+                                        <li><a href="#">박영수</a></li>
+                                    </ul>
+                                    <h3>성동변전소</h3>
+                                    <ul class="worker_list clear">
+                                        <li><a href="#">홍길동</a></li>
+                                        <li><a href="#">김철수</a></li>
+                                    </ul>
+                                   
+                                </div>                                                            
+                            </div> 
+                            <div class="address_pop">
+                                <div class="address_tit">
+                                    <span class="address_center">광역계통운영센터</span>
+                                    <span class="address_person">홍길동</span>
+                                </div>
+
+                                <span>휴&nbsp;&nbsp;&nbsp;&nbsp;대&nbsp;&nbsp;&nbsp;&nbsp;폰&nbsp;&nbsp;:&nbsp;&nbsp;
+                                    <a href="#">010-1234-5678</a>
+                                </span>
+                                <span>사&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;번&nbsp;&nbsp;:&nbsp;&nbsp; 123456789</span>
+                                <span>내&nbsp;선&nbsp;번&nbsp;호&nbsp;&nbsp;:&nbsp;&nbsp;
+                                    <a href="#">6001</a>
+                                </span>
+                                <span>1차 사업소&nbsp;&nbsp;:&nbsp;&nbsp;서울본부</span>
+                                <a href="#" class="address_close"></a>
+                            </div>                        
+                        </div>
+                        <a href="#" class="btn_more">더보기</a>
+                    </div>
+                    <!-- //근무자현황 -->
+                    <!-- wemake시스템 -->
+                    <!--<div class="system_box">
+                        <h2>WeMake 시스템</h2>
+                        <div class="system_list">
+                            <div class="tbl_wrap tbl_scroll">
+                                <table class="tbl_col_type01 tbl_fix">
+                                    <colgroup>
+                                        <col style="width: 100px">
+                                        <col style="width: 50px">
+                                        <col style="width: 100px">
+                                    </colgroup>
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">시스템</th>
+                                            <th scope="col">배경</th>
+                                            <th scope="col" class="pd_r15">요청내용</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>순천전력지사</td>
+                                            <td class="c">배경</td>
+                                            <td>권한요청관리</td>
+                                        </tr>
+                                        <tr>
+                                            <td>순천전력지사</td>
+                                            <td class="c">배경</td>
+                                            <td>권한요청관리</td>
+                                        </tr>
+                                        <tr>
+                                            <td>순천전력지사</td>
+                                            <td class="c">배경</td>
+                                            <td>권한요청관리</td>
+                                        </tr>
+                                        <tr>
+                                            <td>순천전력지사</td>
+                                            <td class="c">배경</td>
+                                            <td>권한요청관리</td>
+                                        </tr>
+                                        <tr>
+                                            <td>순천전력지사</td>
+                                            <td class="c">배경</td>
+                                            <td>권한요청관리</td>
+                                        </tr>
+                                        <tr>
+                                            <td>순천전력지사</td>
+                                            <td class="c">배경</td>
+                                            <td>권한요청관리</td>
+                                        </tr>
+                                        <tr>
+                                            <td>순천전력지사</td>
+                                            <td class="c">배경</td>
+                                            <td>권한요청관리</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <a href="#" class="btn_more">더보기</a>
+                    </div>-->
+                    <!-- //wemake시스템 -->
+                </div>
+                <!-- //right_content -->
+            </div>
+        </div>
+        <!--// container -->
+    </div>
+    <!-- //wrapper -->
+    <!-- 모달창 -->
+    <div id="dispay_view1" class="popup js-popup">
+        <a href="#" title="팝업창 닫기" onclick="view_hide(1);" class="pop_close"></a>
+        <div class="pop_content">
+            <ul class="tab js-tab2 tab_menu">
+                <li class="current"><a href="#pop_tab01">시스템</a></li>
+                <li><a href="#pop_tab02">Like메뉴</a></li>
+                <li><a href="#pop_tab03">금일현황</a></li>
+                <li><a href="#pop_tab04">결재현황</a></li>
+                <li><a href="#pop_tab05">More</a></li>
+                <li><a href="#pop_tab06">통계데이터</a></li>
+                <li><a href="#pop_tab07">통계관리자</a></li>
+            </ul>
+            <!-- 탭 1 -->
+            <div id="pop_tab01" class="tab_content js-tab-content2 clear">
+                <div class="pop_menubox pop_menubox01">
+                    <h2>주요시스템</h2>
+                    <ul class="pop_menulist">
+                        <li><input type="checkbox"> 정전고장</li>
+                        <li><input type="checkbox"> 휴전관리</li>
+                        <li><input type="checkbox"> SOMAS</li>
+                        <li><input type="checkbox"> WEB SCADA</li>
+                        <li><input type="checkbox"> 차세대 웹 SCADA</li>
+                    </ul>
+                </div>
+                <div class="pop_menubox pop_menubox02">
+                    <h2>계통발전</h2>
+                    <ul class="pop_menulist">
+                        <li><input type="checkbox">i-Pas</li>
+                        <li><input type="checkbox">PDAS</li>
+                        <li><input type="checkbox">손실정보</li>
+                        <li><input type="checkbox">발전기정보</li>
+                        <li><input type="checkbox">차세대 웹 SCADA</li>
+                    </ul>
+                </div>
+                <div class="pop_menubox pop_menubox03">
+                    <h2>송전건설운영</h2>
+                    <ul class="pop_menulist">
+                        <li><input type="checkbox">TOMS</li>
+                        <li><input type="checkbox">FOMS</li>
+                        <li><input type="checkbox">낙뢰감시</li>
+                        <li><input type="checkbox">선로감시</li>
+                        <li><input type="checkbox">레이더감시</li>
+                        <li><input type="checkbox">도면유통</li>
+                        <li><input type="checkbox">용지관리</li>
+                        <li><input type="checkbox">전력유도</li>
+                        <li><input type="checkbox">지중시공회사</li>
+                        <li><input type="checkbox">지중위탁업무</li>
+                        <li><input type="checkbox">지중접속원</li>
+                        <li><input type="checkbox">보상지원 종합</li>
+                        <li><input type="checkbox">송전이용요금산정시스템</li>
+                        <li><input type="checkbox">전력수급비상 설정관리 시스템</li>
+                        <li><input type="checkbox">전원개발사업 실시계획 시스템</li>
+                    </ul>
+                </div>
+                <div class="pop_menubox pop_menubox04">
+                    <h2>변전통신</h2>
+                    <ul class="pop_menulist">
+                        <li><input type="checkbox">건전도평가</li>
+                        <li><input type="checkbox">변전전문회사</li>
+                        <li><input type="checkbox">업무지원</li>
+                        <li><input type="checkbox">변전설비점검</li>
+                        <li><input type="checkbox">방화구획재</li>
+                        <li><input type="checkbox">CAblePlug-in관리</li>
+                        <li><input type="checkbox">SCADA DB</li>
+                        <li><input type="checkbox">변전협력회사</li>
+                        <li><input type="checkbox">전력IT플랫폼</li>
+                        <li><input type="checkbox">출입관리</li>
+                        <li><input type="checkbox">순시지원</li>
+                        <li><input type="checkbox">주파수 조정용 ESS통합운영</li>
+                        <li><input type="checkbox">지역별 수요예측 시스템</li>
+                    </ul>
+                </div>
+                <div class="pop_menubox pop_menubox05">
+                    <h2>기술기타</h2>
+                    <ul class="pop_menulist">
+                        <li><input type="checkbox">평생학습</li>
+                        <li><input type="checkbox">변전건설지식 DB관리</li>
+                        <li><input type="checkbox">송전이용요금산정 시스템</li>
+                    </ul>
+                </div>
+            </div>
+            <!-- 탭 2 -->
+            <div id="pop_tab02" class="tab_content js-tab-content2 clear">
+                <div class="pop_likebox likebox01">
+                    <h2>Like 크기 설정</h2>
+                    <ul class="likebox01_list">
+                        <li><input type="radio" class="i_like" id="like01" name="like"><label for="like01"><span></span>3 X 3</label></li>
+                        <li><input type="radio" class="i_like" id="like02" name="like"><label for="like02"><span></span>4 X 4</label></li>
+                    </ul>
+                </div>
+                <div class="pop_likebox likebox02">
+                    <h2>System 색지정</h2>
+                    <ul class="likebox02_list01">
+                        <li><span class="pcolor"></span>정전고장</li>
+                        <li><span class="pcolor"></span>휴전관리</li>
+                        <li><span class="pcolor"></span>SOMAS</li>
+                        <li><span class="pcolor"></span>Web Scada</li>
+                    </ul>
+                    <ul class="likebox02_list02">
+                        <li><span class="pcolor"></span>i-PAS</li>
+                        <li><span class="pcolor"></span>PDAS</li>
+                        <li><span class="pcolor"></span>손실정보</li>
+                        <li><span class="pcolor"></span>전원개발사업 실시계획 시스템</li>
+                    </ul>
+                    <ul class="likebox02_list03">
+                        <li><span class="pcolor"></span>TOMS</li>
+                        <li><span class="pcolor"></span>FOMS</li>
+                        <li><span class="pcolor"></span>낙뢰감시</li>
+                        <li><span class="pcolor"></span>선로감시</li>
+                    </ul>
+                    <ul class="likebox02_list04">
+                        <li><span class="pcolor"></span>변전전문회사</li>
+                        <li><span class="pcolor"></span>업무지원시스템</li>
+                        <li><span class="pcolor"></span>방화구획재</li>
+                        <li><span class="pcolor"></span>SCADA DB</li>
+                    </ul>
+                    <ul class="likebox02_list05">
+                        <li><span class="pcolor"></span>평생학습</li>
+                        <li><span class="pcolor"></span>변전건설 지식</li>
+                        <li><span class="pcolor"></span>기술표준</li>
+                        <li><span class="pcolor"></span>전자파정보</li>
+                    </ul>
+                </div>
+                <script>
+                    /*var source = document.querySelectorAll('.pcolor');
+                    // set hooks for each source element
+                    for (var i = 0, len = source.length; i < len; ++i) {
+                        (new CP(source[i])).on("change", function(color) {
+                            //this.source.value = '#' + color;
+                            this.source.style.backgroundColor = '#' + color;
+                        });
+                    }*/
+                    $('.pcolor').jColorPicker();
+                </script>
+            </div>
+            <!-- 탭 3 -->
+            <div id="pop_tab03" class="tab_content js-tab-content2">
+                <div class="popbox popbox03">
+                    <h2>금일현황 시스템 노출 여부</h2>
+                    <div class="popbox_content">
+                        <ul>
+                            <li><input type="checkbox">정전</li>
+                            <li><input type="checkbox">휴전</li>
+                            <li><input type="checkbox">스카다</li>
+                            <li><input type="checkbox">출입관리</li>
+                            <li><input type="checkbox">낙뢰</li>
+                            <li><input type="checkbox">위해개소</li>
+                        </ul>
+                        <img src="images/main/bg_popbox03.png" alt="">
+                    </div>
+                </div>                
+            </div>
+            <!-- 탭 4 -->
+            <div id="pop_tab04" class="tab_content js-tab-content2">
+                <div class="popbox popbox04">
+                    <h2>결재현황 시스템 노출 여부</h2>
+                    <div class="popbox_content">
+                        <ul>
+                            <li><input type="checkbox">정전</li>
+                            <li><input type="checkbox">업무</li>
+                            <li><input type="checkbox">변전전문</li>
+                            <li><input type="checkbox">변전협력</li>
+                            <li><input type="checkbox">출입관리</li>
+                        </ul>
+                        <img src="images/main/bg_popbox04.png" alt="">
+                    </div>
+                </div>   
+            </div>
+            <!-- 탭 5 -->
+            <div id="pop_tab05" class="tab_content js-tab-content2">
+                <div class="popbox popbox05">
+                    <h2>more 시스템 노출여부 및 순서</h2>
+                    <div class="popbox_content">
+                        <ul>
+                            <li><input type="checkbox"><input type="text" class="w30">고장현황</li>
+                            <li><input type="checkbox"><input type="text" class="w30">휴전현황</li>
+                            <li><input type="checkbox"><input type="text" class="w30">공사현황</li>
+                            <li><input type="checkbox"><input type="text" class="w30">급전속보</li>
+                            <li><input type="checkbox"><input type="text" class="w30">출입현황</li>
+                            <li><input type="checkbox"><input type="text" class="w30">발전기정보</li>
+                        </ul>
+                        <img src="images/main/bg_popbox05.png" alt="">
+                    </div>
+                </div>   
+            </div>
+            <!-- 탭 6 -->
+            <div id="pop_tab06" class="tab_content js-tab-content2">
+                <div class="popbox popbox06">
+                    <h2>통계데이터 시스템 노출 여부</h2>
+                    <div class="popbox_content">
+                        <ul>
+                            <li><input type="checkbox">정전고장<span class="chart_style chart_style01">그래프</span></li>
+                            <li><input type="checkbox">휴전현황<span class="chart_style chart_style02">파이</span></li>
+                            <li><input type="checkbox">공사현황<span class="chart_style chart_style02">파이</span></li>
+                            <li><input type="checkbox">급전속보<span class="chart_style chart_style03">막대</span></li>
+                            <li><input type="checkbox">출입현황<span class="chart_style chart_style01">그래프</span></li>
+                        </ul>
+                        <img src="images/main/bg_popbox06.png" alt="">
+                    </div>
+                </div>
+            </div>
+            <!-- 탭 7 -->
+            <div id="pop_tab07" class="tab_content js-tab-content2">
+                <div class="popbox popbox07">
+                    <h2>통계데이터 시스템 노출여부</h2>
+                    <ul class="tab js-tab3 tab_menu02">
+                        <li class="current"><a href="#tab01">통계데이터</a></li>
+                        <li><a href="#tab02">데이터공개</a></li>
+                    </ul>
+                    <!-- 탭 1 -->
+                    <div id="tab01" class="tab_content02 js-tab-content3">
+                        <ul>
+                            <li>정전고장
+                                <select class="w100">
+                                    <option>Pie chart</option>
+                                    <option>Bar chart</option>
+                                    <option>Line chart</option>
+                                </select>
+                            </li>
+                            <li>휴전현황
+                                <select class="w100">
+                                    <option>Pie chart</option>
+                                    <option>Bar chart</option>
+                                    <option>Line chart</option>
+                                </select>
+                            </li>
+                            <li>공사현황
+                                <select class="w100">
+                                    <option>Pie chart</option>
+                                    <option>Bar chart</option>
+                                    <option>Line chart</option>
+                                </select>
+                            </li>
+                            <li>급전속보
+                                <select class="w100">
+                                    <option>Pie chart</option>
+                                    <option>Bar chart</option>
+                                    <option>Line chart</option>
+                                </select>
+                            </li>
+                            <li>출입현황
+                                <select class="w100">
+                                    <option>Pie chart</option>
+                                    <option>Bar chart</option>
+                                    <option>Line chart</option>
+                                </select>
+                            </li>
+                        </ul>
+                        <img src="images/main/bg_popbox07_1.png" alt="">
+                    </div>
+                    <!-- 탭 2 -->
+                    <div id="tab02" class="tab_content02 js-tab-content3">
+                        <ul>
+                            <li><span>시스템</span><input type="text" class="w200"></li>
+                            <li><span>공개컬럼</span><input type="text" class="w200"></li>
+                            <li><span>공개일자</span><input type="text" class="w200"></li>
+                        </ul>
+                        <img src="images/main/bg_popbox07_2.png" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="pop_footer">
+            <a href="#" class="btn btn_mdl btn_write">저장</a>
+            <a href="#" title="팝업창 닫기" onclick="view_hide(1);" class="btn btn_mdl btn_cancel">취소</a>
+        </div>
+    </div>
+    <div class="popup_bg" id="js-popup-bg"></div>
+    <!-- //모달창 -->
+    <!-- 계산기 -->                       
+    <div class="calcul_pop function_pop js-calcul-pop">
+        <div class="calcul_header">
+            <h4>계산기</h4>
+            <a href="#" class="calcul_close function_close js-calcul-close"></a>
+        </div> 
+        <div class="calcul_content">
+            <table>
+                <tr>
+                    <td colspan="3"><input type="text" class="text" id="result" onkeypress="return runScript(event)" /></td>
+                    <td><input type="button" class="btn" value="c" onclick="clr()"/> </td>
+                </tr>
+                <tr>
+                    <td><input type="button" class="btn" value="1" onclick="dis('1')"/> </td>
+                    <td><input type="button" class="btn" value="2" onclick="dis('2')"/> </td>
+                    <td><input type="button" class="btn" value="3" onclick="dis('3')"/> </td>
+                    <td><input type="button" class="btn" value="/" onclick="dis('/')"/> </td>
+                </tr>
+                <tr>
+                    <td><input type="button" class="btn" value="4" onclick="dis('4')"/> </td>
+                    <td><input type="button" class="btn" value="5" onclick="dis('5')"/> </td>
+                    <td><input type="button" class="btn" value="6" onclick="dis('6')"/> </td>
+                    <td><input type="button" class="btn" value="-" onclick="dis('-')"/> </td>
+                </tr>
+                <tr>
+                    <td><input type="button" class="btn" value="7" onclick="dis('7')"/> </td>
+                    <td><input type="button" class="btn" value="8" onclick="dis('8')"/> </td>
+                    <td><input type="button" class="btn" value="9" onclick="dis('9')"/> </td>
+                    <td><input type="button" class="btn" value="+" onclick="dis('+')"/> </td>
+                </tr>
+                <tr>
+                    <td><input type="button" class="btn" value="." onclick="dis('.')"/> </td>
+                    <td><input type="button" class="btn" value="0" onclick="dis('0')"/> </td>
+                    <td><input type="button" class="btn" value="=" onclick="solve()"/> </td>
+                    <td><input type="button" class="btn" value="*" onclick="dis('*')"/> </td>
+                </tr>
+           </table>  
+        </div>               
+    </div>
+    <script>
+         function dis(val){
+             document.getElementById("result").value+=val
+         }
+         function solve(){
+             let x = document.getElementById("result").value
+             let y = eval(x)
+             document.getElementById("result").value = y
+         }
+         function clr(){
+             document.getElementById("result").value = ""
+         }
+         function runScript(e) {
+            if(e.keyCode == 13) {
+                 solve();
+                 return false;
+            }else if(e.which == 27){
+                clr();
+                return false;
+            }
+         }
+      </script>
+    <!-- //계산기 -->  
+    <!-- 일정 -->
+    <div class="schedule_pop function_pop js-schedule-pop">
+        <div class="schedule_header">
+            <h4>일정</h4>
+            <a href="#" class="schedule_close function_close js-schedule-close"></a>
+        </div>
+        <div class="schedule_content">
+            <div class="schedule_title">
+                <span class="direction"><img src="images/main/i_sch_left.png"></span>
+                2019년 3월
+                <span class="direction"><img src="images/main/i_sch_right.png"></span>
+            </div>
+            <ul class="schedule_list clear">
+                <li>
+                    <span class="sch_date">1</span>
+                    <input type="text" class="text">
+                    <a href="#" class="btn btn_sch_save">저장</a>
+                </li>
+                <li>
+                    <span class="sch_date sch_sat">2</span>
+                    <input type="text" class="text" value="송변전통합시스템 회의">
+                    <a href="#" class="btn btn_sch_rewrite"></a>
+                    <a href="#" class="btn btn_sch_del"></a>
+                </li>
+                <li>
+                    <span class="sch_date sch_holiday">3</span>
+                    <input type="text" class="text">
+                    <a href="#" class="btn btn_sch_save">저장</a>
+                </li>
+                <li>
+                    <span class="sch_date">4</span>
+                    <input type="text" class="text">
+                    <a href="#" class="btn btn_sch_save">저장</a>
+                </li>
+                <li>
+                    <span class="sch_date">5</span>
+                    <input type="text" class="text" value="시스템현황 모달창 내용확인">
+                    <a href="#" class="btn btn_sch_rewrite"></a>
+                    <a href="#" class="btn btn_sch_del"></a>
+                </li>
+                <li>
+                    <span class="sch_date sch_sat">6</span>
+                    <input type="text" class="text">
+                    <a href="#" class="btn btn_sch_save">저장</a>
+                </li>
+                <li>
+                    <span class="sch_date">7</span>
+                    <input type="text" class="text">
+                    <a href="#" class="btn btn_sch_save">저장</a>
+                </li>
+                <li>
+                    <span class="sch_date">8</span>
+                    <input type="text" class="text">
+                    <a href="#" class="btn btn_sch_save">저장</a>
+                </li>
+                <li>
+                    <span class="sch_date sch_sat">9</span>
+                    <input type="text" class="text">
+                    <a href="#" class="btn btn_sch_save">저장</a>
+                </li>
+                <li>
+                    <span class="sch_date sch_holiday">10</span>
+                    <input type="text" class="text">
+                    <a href="#" class="btn btn_sch_save">저장</a>
+                </li>
+                <li>
+                    <span class="sch_date">11</span>
+                    <input type="text" class="text">
+                    <a href="#" class="btn btn_sch_save">저장</a>
+                </li>
+                <li>
+                    <span class="sch_date">12</span>
+                    <input type="text" class="text">
+                    <a href="#" class="btn btn_sch_save">저장</a>
+                </li>
+                <li>
+                    <span class="sch_date">13</span>
+                    <input type="text" class="text">
+                    <a href="#" class="btn btn_sch_save">저장</a>
+                </li>
+                <li>
+                    <span class="sch_date">14</span>
+                    <input type="text" class="text">
+                    <a href="#" class="btn btn_sch_save">저장</a>
+                </li>
+                <li>
+                    <span class="sch_date">15</span>
+                    <input type="text" class="text">
+                    <a href="#" class="btn btn_sch_save">저장</a>
+                </li>
+                <li>
+                    <span class="sch_date sch_sat">16</span>
+                    <input type="text" class="text">
+                    <a href="#" class="btn btn_sch_save">저장</a>
+                </li>
+                <li>
+                    <span class="sch_date sch_holiday">17</span>
+                    <input type="text" class="text">
+                    <a href="#" class="btn btn_sch_save">저장</a>
+                </li>
+                <li>
+                    <span class="sch_date">18</span>
+                    <input type="text" class="text">
+                    <a href="#" class="btn btn_sch_save">저장</a>
+                </li>
+                <li>
+                    <span class="sch_date">19</span>
+                    <input type="text" class="text">
+                    <a href="#" class="btn btn_sch_save">저장</a>
+                </li>
+                <li>
+                    <span class="sch_date">20</span>
+                    <input type="text" class="text">
+                    <a href="#" class="btn btn_sch_save">저장</a>
+                </li>
+                <li>
+                    <span class="sch_date">21</span>
+                    <input type="text" class="text">
+                    <a href="#" class="btn btn_sch_save">저장</a>
+                </li>
+                <li>
+                    <span class="sch_date">22</span>
+                    <input type="text" class="text">
+                    <a href="#" class="btn btn_sch_save">저장</a>
+                </li>
+                <li>
+                    <span class="sch_date sch_sat">23</span>
+                    <input type="text" class="text">
+                    <a href="#" class="btn btn_sch_save">저장</a>
+                </li>
+                <li>
+                    <span class="sch_date sch_holiday">24</span>
+                    <input type="text" class="text">
+                    <a href="#" class="btn btn_sch_save">저장</a>
+                </li>
+                <li>
+                    <span class="sch_date">25</span>
+                    <input type="text" class="text">
+                    <a href="#" class="btn btn_sch_save">저장</a>
+                </li>
+                <li>
+                    <span class="sch_date">26</span>
+                    <input type="text" class="text">
+                    <a href="#" class="btn btn_sch_save">저장</a>
+                </li>
+                <li>
+                    <span class="sch_date">27</span>
+                    <input type="text" class="text">
+                    <a href="#" class="btn btn_sch_save">저장</a>
+                </li>
+                <li>
+                    <span class="sch_date">28</span>
+                    <input type="text" class="text">
+                    <a href="#" class="btn btn_sch_save">저장</a>
+                </li>
+                <li>
+                    <span class="sch_date">29</span>
+                    <input type="text" class="text">
+                    <a href="#" class="btn btn_sch_save">저장</a>
+                </li>
+                <li>
+                    <span class="sch_date sch_sat">30</span>
+                    <input type="text" class="text">
+                    <a href="#" class="btn btn_sch_save">저장</a>
+                </li>
+                <li>
+                    <span class="sch_date sch_holiday">31</span>
+                    <input type="text" class="text">
+                    <a href="#" class="btn btn_sch_save">저장</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <!-- //일정 -->
+    <!-- 메모장 -->                       
+    <div class="memo_pop function_pop js-memo-pop">
+        <div class="memo_header">
+            <h4>메모</h4>
+            <a href="#" class="memo_close function_close js-memo-close"></a>
+        </div>
+        <div class="memo_content">
+            <textarea></textarea>
+        </div>        
+        <div class="memo_footer">
+            <a href="#" class="btn_memo_write">저장</a>
+        </div>                            
+    </div>
+    <!-- //메모장 -->    
+</body>
+</html>

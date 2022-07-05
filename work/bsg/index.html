@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+	<meta id="mobileMeta" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<title>BSG</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/swiper.min.css">
+	<link rel="stylesheet" type="text/css" href="css/aos.css">
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript" src="js/swiper.min.js"></script>
+	<script type="text/javascript" src="js/aos.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('.js-btn-menu').on('click',function(e){
+				$('#header').toggleClass('on');
+				$('#gnb_area').slideToggle();
+			});
+
+			$(window).load(function() {
+				AOS.init({
+					 once: false
+				});
+			});
+
+			$(".js-tab-content1").hide();
+		    $(".js-tab-content1:first").show();
+		    $(".js-tab1 a").click(function(event) {
+		        event.preventDefault(); //주소에 #숨김
+		        $(this).parent().addClass("current");
+		        $(this).parent().siblings().removeClass("current");
+		        var tab = $(this).attr("href");
+		        $(".js-tab-content1").not(tab).css("display", "none");
+		        $(tab).fadeIn();
+		    });
+
+		    $(".js-btmtab-content1").hide();
+		    $(".js-btmtab-content1:first").show();
+		    $(".js-btmtab1 a").click(function(event) {
+		        event.preventDefault(); //주소에 #숨김
+		        $(this).parent().addClass("current");
+		        $(this).parent().siblings().removeClass("current");
+		        var tab = $(this).attr("href");
+		        $(".js-btmtab-content1").not(tab).css("display", "none");
+		        $(tab).fadeIn();
+		    });
+
+		    $(".js-btmtab-content2").hide();
+		    $(".js-btmtab-content2:first").show();
+		    $(".js-btmtab2 a").click(function(event) {
+		        event.preventDefault(); //주소에 #숨김
+		        $(this).parent().addClass("current");
+		        $(this).parent().siblings().removeClass("current");
+		        var tab = $(this).attr("href");
+		        $(".js-btmtab-content2").not(tab).css("display", "none");
+		        $(tab).fadeIn();
+		    });
+
+		    $(".js-btmtab-content3").hide();
+		    $(".js-btmtab-content3:first").show();
+		    $(".js-btmtab3 a").click(function(event) {
+		        event.preventDefault(); //주소에 #숨김
+		        $(this).parent().addClass("current");
+		        $(this).parent().siblings().removeClass("current");
+		        var tab = $(this).attr("href");
+		        $(".js-btmtab-content3").not(tab).css("display", "none");
+		        $(tab).fadeIn();
+		    });
+
+		    $(".js-btmtab-content4").hide();
+		    $(".js-btmtab-content4:first").show();
+		    $(".js-btmtab4 a").click(function(event) {
+		        event.preventDefault(); //주소에 #숨김
+		        $(this).parent().addClass("current");
+		        $(this).parent().siblings().removeClass("current");
+		        var tab = $(this).attr("href");
+		        $(".js-btmtab-content4").not(tab).css("display", "none");
+		        $(tab).fadeIn();
+		    });
+
+		    var swiper1 = new Swiper(".clientSlide", {
+				slidesPerView: 5,
+				speed:800,
+				loop:true,
+				autoplay:{
+					delay:3000,
+					disableOnInteraction: false
+				},
+				navigation: {
+				  nextEl: ".swiper-button-next",
+				  prevEl: ".swiper-button-prev",
+				},
+				breakpoints:{
+					320: {
+						slidesPerView : 2
+					},
+					768:{
+						slidesPerView : 4	
+					},
+					1400: {
+						slidesPerView : 5
+					}
+				}
+			});
+
+			var swiper2 = new Swiper(".boardSlide", {
+		    	slidesPerView: 1,
+		    	loop:false,
+		    	navigation: {
+				  nextEl: ".swiper-button-next",
+				  prevEl: ".swiper-button-prev",
+				},
+				pagination: {
+		          el: ".swiper-pagination",
+				  clickable: true,
+		        }
+		    });
+			
+		});
+
+	</script>
+</head>
+<body>
+	<div id="skipnavi">
+	    <a href="#container">▶본문 바로가기</a>
+	    <a href="#gnb_area">▶주메뉴 바로가기</a>
+	</div>
+	<div id="wrapper">
+	    <!-- header 시작 -->
+	    <header id="header">
+	    	<div class="header_wrap">
+	    		<h1 class="logo"><a href="#"><img src="images/common/logo.png" alt="로고"></a></h1>
+	    		<div class="btn_gnb">
+		            <a href="javascript:void(0);" class="js-btn-menu">
+		                <span class="bar01"></span>
+		                <span class="bar02"></span>
+		                <span class="bar03"></span>
+		                <span class="bar04"></span>
+		            </a>
+		        </div>
+		    	<!-- gnb -->
+		    	<nav id="gnb_area">
+		    		<ul class="gnb">
+		    			<li><a href="#">홈</a></li>
+		    			<li><a href="#">overview</a></li>
+		    			<li><a href="#">제품소개</a></li>
+		    			<li><a href="#">공지사항</a></li>
+		    			<li><a href="#">FAQ</a></li>
+		    		</ul>
+		    	</nav>
+	    	</div>
+	    </header>
+	    <!-- //header -->
+	    <!-- container 시작 -->
+	    <div id="container">
+	        <div id="content">
+	        	<section class="main_cont01">
+	        		<div class="cont_wrap" data-aos="fade-up" data-aos-duration="1000" data-aos-easing="ease-out-back">
+	        			<h2 class="main_tit">G-HR 2.0 CLOUD SERVICE</h2>
+		        		<p class="main_txt">인사관리가 아닌 사람과 회사의 성장에 집중하세요.</p>
+		        		<!-- 탭메뉴 -->
+						<ul class="js-tab1 tab_menu">
+						    <li class="current"><a href="#main_tab0101"><i></i>G-HR 2.0 시작하기</a></li>
+						    <li><a href="#main_tab0102"><i></i>도입문의</a></li>
+						</ul>
+						<!-- 탭 1 -->
+						<div id="main_tab0101" class="tab_content js-tab-content1">
+						    <img src="images/main/bg_main01.png" alt="G-HR 2.0 시작하기">
+						</div>
+						<!-- 탭 2 -->
+						<div id="main_tab0102" class="tab_content js-tab-content1">
+						    탭메뉴2 영역
+						</div>
+	        		</div>
+	        	</section>
+	        	<section class="client_wrap">
+	        		<div class="cont_wrap">
+	        			<!-- Swiper -->
+					    <div class="swiper-container clientSlide">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide"><img src="images/main/client01.png" alt=""></div>
+								<div class="swiper-slide"><img src="images/main/client02.png" alt=""></div>
+								<div class="swiper-slide"><img src="images/main/client03.png" alt=""></div>
+								<div class="swiper-slide"><img src="images/main/client04.png" alt=""></div>
+								<div class="swiper-slide"><img src="images/main/client05.png" alt=""></div>
+							</div>
+					      	<div class="swiper-button-next"></div>
+	  						<div class="swiper-button-prev"></div>
+					    </div>
+	        		</div>
+	        	</section>
+	        	<section class="main_cont02">
+	        		<div class="cont_wrap">
+        				<p class="main_txt" data-aos="fade-up" data-aos-duration="500" data-aos-easing="ease-out"><span class="Mont"><strong>G-HR 2.0</strong></span> 은 <span class="Mont">SaaS</span> 방식으로 <span class="Mont">Cloud</span> 환경에서 제공되는<br><strong>지능형 인사관리 시스템을 추구</strong>합니다.</p>
+        				<div class="ability_contwrap" data-aos="fade-up" data-aos-duration="800" data-aos-offset="300">
+        					<div class="ability_diagram">
+	        					<span class="c">지능형<br>인사관리</span>
+	        					<span>인재확보</span>
+	        					<span>인재육성</span>
+	        					<span>보상관리</span>
+	        					<span class="eng">Core HR</span>
+	        					<span class="eng round">Labor<br>Unions</span>
+	        					<span class="eng round">Management<br>Practices</span>
+	        					<span class="eng round">Legislation</span>
+	        					<span class="eng round">Change World<br>of Work</span>
+	        				</div>
+	        				<div class="ability_wrap">
+								<div class="ability_box">
+		    						<h4 class="ability_tit">인재확보</h4>
+		    						<span>
+		    							<img src="images/main/percent1.png">
+		    						</span>
+		        					<ul class="ability_list">
+		        						<li>
+		        							<img src="images/main/icon1_1.png">
+		        							<strong>조직관리</strong>
+		        						</li>
+		        						<li>
+		        							<img src="images/main/icon1_2.png">
+		        							<strong>직무관리</strong>
+		        						</li>
+		        						<li>
+		        							<img src="images/main/icon1_3.png">
+		        							<strong>정원관리</strong>
+		        						</li>
+		        						<li>
+		        							<img src="images/main/icon1_4.png">
+		        							<strong>인원계획</strong>
+		        						</li>
+		        						<li>
+		        							<img src="images/main/icon1_5.png">
+		        							<strong>인건비계획</strong>
+		        						</li>
+		        						<li>
+		        							<img src="images/main/icon1_6.png">
+		        							<strong>채용</strong>
+		        						</li>
+		        					</ul>
+		        				</div>
+		        				<div class="ability_box">
+		    						<h4 class="ability_tit">인재육성</h4>
+		    						<span>
+		    							<img src="images/main/percent2.png">
+		    						</span>
+		        					<ul class="ability_list">
+		        						<li>
+		        							<img src="images/main/icon2_1.png">
+		        							<strong>교육</strong>
+		        						</li>
+		        						<li>
+		        							<img src="images/main/icon2_2.png">
+		        							<strong>승계계획</strong>
+		        						</li>
+		        						<li>
+		        							<img src="images/main/icon2_3.png">
+		        							<strong>핵심인재</strong>
+		        						</li>
+		        						<li>
+		        							<img src="images/main/icon2_4.png">
+		        							<strong>목표관리</strong>
+		        						</li>
+		        						<li>
+		        							<img src="images/main/icon2_5.png">
+		        							<strong>평가관리</strong>
+		        						</li>
+		        						<li>
+		        							<img src="images/main/icon2_6.png">
+		        							<strong>360평가</strong>
+		        						</li>
+		        					</ul>
+		        				</div>
+		        				<div class="ability_box">
+		    						<h4 class="ability_tit">보상관리</h4>
+		    						<span>
+		    							<img src="images/main/percent3.png">
+		    						</span>
+		        					<ul class="ability_list">
+		        						<li>
+		        							<img src="images/main/icon3_1.png">
+		        							<strong>급여관리</strong>
+		        						</li>
+		        						<li>
+		        							<img src="images/main/icon3_2.png">
+		        							<strong>정산관리</strong>
+		        						</li>
+		        						<li>
+		        							<img src="images/main/icon3_3.png">
+		        							<strong>퇴직금</strong>
+		        						</li>
+		        						<li>
+		        							<img src="images/main/icon3_4.png">
+		        							<strong>사회보험</strong>
+		        						</li>
+		        						<li>
+		        							<img src="images/main/icon3_5.png">
+		        							<strong>휴가관리</strong>
+		        						</li>
+		        						<li>
+		        							<img src="images/main/icon3_6.png">
+		        							<strong>근태시간</strong>
+		        						</li>
+		        					</ul>
+		        				</div>
+		        				<div class="ability_box">
+		    						<h4 class="ability_tit">Core HR</h4>
+		    						<span>
+		    							<img src="images/main/percent4.png">
+		    						</span>
+		        					<ul class="ability_list">
+		        						<li>
+		        							<img src="images/main/icon4_1.png">
+		        							<strong>인사정보</strong>
+		        						</li>
+		        						<li>
+		        							<img src="images/main/icon4_2.png">
+		        							<strong>발령관리</strong>
+		        						</li>
+		        						<li>
+		        							<img src="images/main/icon4_3.png">
+		        							<strong>제증명</strong>
+		        						</li>
+		        						<li>
+		        							<img src="images/main/icon4_4.png">
+		        							<strong>전자서명</strong>
+		        						</li>
+		        						<li>
+		        							<img src="images/main/icon4_5.png">
+		        							<strong>TASK관리</strong>
+		        						</li>
+		        						<li>
+		        							<img src="images/main/icon4_6.png">
+		        							<strong>셀프서비스</strong>
+		        						</li>
+		        					</ul>
+		        				</div>
+	        				</div>
+        				</div>        				
+	        		</div>
+	        	</section>
+	        	<section class="main_cont03">
+	        		<div class="cont_wrap">
+	        			<div class="produce_circle"><span>Why G-HR 2.0 ?</span>지능형 인사관리</div>
+	        			<ul class="produce_list">
+	        				<li>
+	        					<strong>검증되고 고급화된 CONTENTS 제공</strong>
+	        					<p>G-HR 2.0 업무 기능 뿐 아니라, 해당 업무의 내용을 구성하는<br>검증되고 수준 높은 컨텐츠를 제공합니다.</p>
+	        				</li>
+	        				<li>
+	        					<strong>선진기술과 접목하여 업무 생산성 극대화</strong>
+	        					<p>CLOUD 환경에 제공되는 우수한 기술력을 가진<br>솔루션과 접목된 시스템을 제공합니다.</p>
+	        				</li>
+	        				<li>
+	        					<strong>세밀하고 정교화된 시뮬레이션 기능 제공</strong>
+	        					<p>사업계획 등과 연계된 인원/인권비 계획 혹은 대량의<br>조직개편 작업 시 사전에 Simulation 하는 기능 제공</p>
+	        				</li>
+	        				<li>
+	        					<strong>보다 세련된 데이터 기반의 UI/UX 제공</strong>
+	        					<p>사용자 계층별에 맞춤형 정보 제공 및 데이터의 속성을<br>분석하여 가독성을 극대화한 UI/UX 제공</p>
+	        				</li>
+	        				<li>
+	        					<strong>비대면 환경에서도 업무를 처리할 수 있는 기능 제공</strong>
+	        					<p>코로나의 장기화로 과거의 일하는 방식에서 탈피하여 TASK<br>중심으로 관리될 수 있는 기능을 제공</p>
+	        				</li>
+	        			</ul>
+	        		</div>
+	        	</section>
+	        	<section class="main_cont04">
+	        		<div class="cont_wrap">
+	        			<!-- Swiper -->
+					    <div class="swiper-container boardSlide">
+							<div class="swiper-wrapper">
+								<div class="swiper-slide">
+									<h2 class="main_tit">Core HR</h2>
+				        			<!-- 탭메뉴 -->
+									<ul class="js-btmtab1 tab_menu">
+									    <li class="current"><a href="#btm_tab0101">개인정보</a></li>
+									    <li><a href="#btm_tab0102">발령이력</a></li>
+									    <li><a href="#btm_tab0103">인재비교</a></li>
+									    <li><a href="#btm_tab0104">조직개편</a></li>
+									    <li><a href="#btm_tab0105">셀프서비스</a></li>
+									</ul>
+									<!-- 탭 1 -->
+									<div id="btm_tab0101" class="tab_content js-btmtab-content1">
+									    <div class="image_box" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100" data-aos-easing="ease-out-back"><img src="images/main/cont_main03.png" alt="인사관리 화면"></div>
+				        				<div class="manage_subtxt"><p>조직원과 임직원의 동방성장을 위해 필요한 개인정보를 최상의 보안성을 유지하면서 체계적으로 관리 되어집니다.</p></div>
+									</div>
+									<!-- 탭 2 -->
+									<div id="btm_tab0102" class="tab_content js-btmtab-content1">
+									    <div class="image_box" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100" data-aos-easing="ease-out-back"><img src="images/main/cont_main03.png" alt="인사관리 화면"></div>
+				        				<div class="manage_subtxt"><p>조직원과 임직원의 동방성장을 위해 필요한 개인정보를 최상의 보안성을 유지하면서 체계적으로 관리 되어집니다.</p></div>
+									</div>
+									<!-- 탭 3 -->
+									<div id="btm_tab0103" class="tab_content js-btmtab-content1">
+									    <div class="image_box" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100" data-aos-easing="ease-out-back"><img src="images/main/cont_main03.png" alt="인사관리 화면"></div>
+				        				<div class="manage_subtxt"><p>조직원과 임직원의 동방성장을 위해 필요한 개인정보를 최상의 보안성을 유지하면서 체계적으로 관리 되어집니다.</p></div>
+									</div>
+									<!-- 탭 4 -->
+									<div id="btm_tab0104" class="tab_content js-btmtab-content1">
+									    <div class="image_box" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100" data-aos-easing="ease-out-back"><img src="images/main/cont_main03.png" alt="인사관리 화면"></div>
+				        				<div class="manage_subtxt"><p>조직원과 임직원의 동방성장을 위해 필요한 개인정보를 최상의 보안성을 유지하면서 체계적으로 관리 되어집니다.</p></div>
+									</div>
+									<!-- 탭 5 -->
+									<div id="btm_tab0105" class="tab_content js-btmtab-content1">
+									    <div class="image_box" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100" data-aos-easing="ease-out-back"><img src="images/main/cont_main03.png" alt="인사관리 화면"></div>
+				        				<div class="manage_subtxt"><p>조직원과 임직원의 동방성장을 위해 필요한 개인정보를 최상의 보안성을 유지하면서 체계적으로 관리 되어집니다.</p></div>
+									</div>
+								</div>
+								<div class="swiper-slide">
+									<h2 class="main_tit">Core HR2</h2>
+				        			<!-- 탭메뉴 -->
+									<ul class="js-btmtab2 tab_menu">
+									    <li class="current"><a href="#btm_tab0201">개인정보</a></li>
+									    <li><a href="#btm_tab0202">발령이력</a></li>
+									    <li><a href="#btm_tab0203">인재비교</a></li>
+									    <li><a href="#btm_tab0204">조직개편</a></li>
+									    <li><a href="#btm_tab0205">셀프서비스</a></li>
+									</ul>
+									<!-- 탭 1 -->
+									<div id="btm_tab0201" class="tab_content js-btmtab-content2">
+									    <div class="image_box" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100" data-aos-easing="ease-out-back"><img src="images/main/cont_main03.png" alt="인사관리 화면"></div>
+				        				<div class="manage_subtxt"><p>조직원과 임직원의 동방성장을 위해 필요한 개인정보를 최상의 보안성을 유지하면서 체계적으로 관리 되어집니다.</p></div>
+									</div>
+									<!-- 탭 2 -->
+									<div id="btm_tab0202" class="tab_content js-btmtab-content2">
+									    <div class="image_box" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100" data-aos-easing="ease-out-back"><img src="images/main/cont_main03.png" alt="인사관리 화면"></div>
+				        				<div class="manage_subtxt"><p>조직원과 임직원의 동방성장을 위해 필요한 개인정보를 최상의 보안성을 유지하면서 체계적으로 관리 되어집니다.</p></div>
+									</div>
+									<!-- 탭 3 -->
+									<div id="btm_tab0203" class="tab_content js-btmtab-content2">
+									    <div class="image_box" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100" data-aos-easing="ease-out-back"><img src="images/main/cont_main03.png" alt="인사관리 화면"></div>
+				        				<div class="manage_subtxt"><p>조직원과 임직원의 동방성장을 위해 필요한 개인정보를 최상의 보안성을 유지하면서 체계적으로 관리 되어집니다.</p></div>
+									</div>
+									<!-- 탭 4 -->
+									<div id="btm_tab0204" class="tab_content js-btmtab-content2">
+									    <div class="image_box" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100" data-aos-easing="ease-out-back"><img src="images/main/cont_main03.png" alt="인사관리 화면"></div>
+				        				<div class="manage_subtxt"><p>조직원과 임직원의 동방성장을 위해 필요한 개인정보를 최상의 보안성을 유지하면서 체계적으로 관리 되어집니다.</p></div>
+									</div>
+									<!-- 탭 5 -->
+									<div id="btm_tab0205" class="tab_content js-btmtab-content2">
+									    <div class="image_box" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100" data-aos-easing="ease-out-back"><img src="images/main/cont_main03.png" alt="인사관리 화면"></div>
+				        				<div class="manage_subtxt"><p>조직원과 임직원의 동방성장을 위해 필요한 개인정보를 최상의 보안성을 유지하면서 체계적으로 관리 되어집니다.</p></div>
+									</div>
+								</div>
+								<div class="swiper-slide">
+									<h2 class="main_tit">Core HR3</h2>
+				        			<!-- 탭메뉴 -->
+									<ul class="js-btmtab3 tab_menu">
+									    <li class="current"><a href="#btm_tab0301">개인정보</a></li>
+									    <li><a href="#btm_tab0302">발령이력</a></li>
+									    <li><a href="#btm_tab0303">인재비교</a></li>
+									    <li><a href="#btm_tab0304">조직개편</a></li>
+									    <li><a href="#btm_tab0305">셀프서비스</a></li>
+									</ul>
+									<!-- 탭 1 -->
+									<div id="btm_tab0301" class="tab_content js-btmtab-content3">
+									    <div class="image_box" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100" data-aos-easing="ease-out-back"><img src="images/main/cont_main03.png" alt="인사관리 화면"></div>
+				        				<div class="manage_subtxt"><p>조직원과 임직원의 동방성장을 위해 필요한 개인정보를 최상의 보안성을 유지하면서 체계적으로 관리 되어집니다.</p></div>
+									</div>
+									<!-- 탭 2 -->
+									<div id="btm_tab0302" class="tab_content js-btmtab-content3">
+									    <div class="image_box" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100" data-aos-easing="ease-out-back"><img src="images/main/cont_main03.png" alt="인사관리 화면"></div>
+				        				<div class="manage_subtxt"><p>조직원과 임직원의 동방성장을 위해 필요한 개인정보를 최상의 보안성을 유지하면서 체계적으로 관리 되어집니다.</p></div>
+									</div>
+									<!-- 탭 3 -->
+									<div id="btm_tab0303" class="tab_content js-btmtab-content3">
+									    <div class="image_box" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100" data-aos-easing="ease-out-back"><img src="images/main/cont_main03.png" alt="인사관리 화면"></div>
+				        				<div class="manage_subtxt"><p>조직원과 임직원의 동방성장을 위해 필요한 개인정보를 최상의 보안성을 유지하면서 체계적으로 관리 되어집니다.</p></div>
+									</div>
+									<!-- 탭 4 -->
+									<div id="btm_tab0304" class="tab_content js-btmtab-content3">
+									    <div class="image_box" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100" data-aos-easing="ease-out-back"><img src="images/main/cont_main03.png" alt="인사관리 화면"></div>
+				        				<div class="manage_subtxt"><p>조직원과 임직원의 동방성장을 위해 필요한 개인정보를 최상의 보안성을 유지하면서 체계적으로 관리 되어집니다.</p></div>
+									</div>
+									<!-- 탭 5 -->
+									<div id="btm_tab0305" class="tab_content js-btmtab-content3">
+									    <div class="image_box" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100" data-aos-easing="ease-out-back"><img src="images/main/cont_main03.png" alt="인사관리 화면"></div>
+				        				<div class="manage_subtxt"><p>조직원과 임직원의 동방성장을 위해 필요한 개인정보를 최상의 보안성을 유지하면서 체계적으로 관리 되어집니다.</p></div>
+									</div>
+								</div>
+								<div class="swiper-slide">
+									<h2 class="main_tit">Core HR4</h2>
+				        			<!-- 탭메뉴 -->
+									<ul class="js-tab4 tab_menu">
+									    <li class="current"><a href="#btm_tab0401">개인정보</a></li>
+									    <li><a href="#btm_tab0402">발령이력</a></li>
+									    <li><a href="#btm_tab0403">인재비교</a></li>
+									    <li><a href="#btm_tab0404">조직개편</a></li>
+									    <li><a href="#btm_tab0405">셀프서비스</a></li>
+									</ul>
+									<!-- 탭 1 -->
+									<div id="btm_tab0401" class="tab_content js-btmtab-content4">
+									    <div class="image_box" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100" data-aos-easing="ease-out-back"><img src="images/main/cont_main03.png" alt="인사관리 화면"></div>
+				        				<div class="manage_subtxt"><p>조직원과 임직원의 동방성장을 위해 필요한 개인정보를 최상의 보안성을 유지하면서 체계적으로 관리 되어집니다.</p></div>
+									</div>
+									<!-- 탭 2 -->
+									<div id="btm_tab0402" class="tab_content js-btmtab-content4">
+									    <div class="image_box" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100" data-aos-easing="ease-out-back"><img src="images/main/cont_main03.png" alt="인사관리 화면"></div>
+				        				<div class="manage_subtxt"><p>조직원과 임직원의 동방성장을 위해 필요한 개인정보를 최상의 보안성을 유지하면서 체계적으로 관리 되어집니다.</p></div>
+									</div>
+									<!-- 탭 3 -->
+									<div id="btm_tab0403" class="tab_content js-btmtab-content4">
+									    <div class="image_box" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100" data-aos-easing="ease-out-back"><img src="images/main/cont_main03.png" alt="인사관리 화면"></div>
+				        				<div class="manage_subtxt"><p>조직원과 임직원의 동방성장을 위해 필요한 개인정보를 최상의 보안성을 유지하면서 체계적으로 관리 되어집니다.</p></div>
+									</div>
+									<!-- 탭 4 -->
+									<div id="btm_tab0404" class="tab_content js-btmtab-content4">
+									    <div class="image_box" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100" data-aos-easing="ease-out-back"><img src="images/main/cont_main03.png" alt="인사관리 화면"></div>
+				        				<div class="manage_subtxt"><p>조직원과 임직원의 동방성장을 위해 필요한 개인정보를 최상의 보안성을 유지하면서 체계적으로 관리 되어집니다.</p></div>
+									</div>
+									<!-- 탭 5 -->
+									<div id="btm_tab0405" class="tab_content js-btmtab-content4">
+									    <div class="image_box" data-aos="fade-up" data-aos-duration="1500" data-aos-delay="100" data-aos-easing="ease-out-back"><img src="images/main/cont_main03.png" alt="인사관리 화면"></div>
+				        				<div class="manage_subtxt"><p>조직원과 임직원의 동방성장을 위해 필요한 개인정보를 최상의 보안성을 유지하면서 체계적으로 관리 되어집니다.</p></div>
+									</div>
+								</div>
+							</div>
+					      	<div class="swiper-button-next"></div>
+	  						<div class="swiper-button-prev"></div>
+	  						<div class="swiper-pagination"></div>
+					    </div>
+
+	        			
+	        		</div>
+	        	</section>
+	        </div>
+	    </div>
+	    <!-- //container -->
+	    <!-- footer 시작 -->
+	    <footer id="footer">
+	    	<div class="footer_top">
+	    		<h1 class="footer_logo">BSG PARTNERS</h1>
+	    		<p>
+	    			기업 정보화의 고정관념과 기술의 경계를 뛰어넘는 창의적 IT 구현.<br>
+	    			국가의 경계를 넘어 세계로 발돋움하는 글로벌 서비스. 기업가치와 정보기술의 만남.<br>
+	    			그곳에 BSG가 있습니다.
+	    		</p>
+	    		<ul class="sns_list">
+	    			<li class="twitter"><a href="#">트위터</a></li>
+	    			<li class="facebook"><a href="#">페이스북</a></li>
+	    			<li class="instagram"><a href="#">인스타그램</a></li>
+	    			<li class="linkedin"><a href="#">링크드인</a></li>
+	    		</ul>
+	    		<div class="btn_wrap">
+	    			<span class="btn_down"><a href="#">다운로드<i></i></a></span>
+	    			<span class="btn_inquiry"><a href="#">도입문의<i></i></a></span>
+	    		</div>
+	    	</div>
+	    	<div class="footer_btm">
+	    		<ul class="footer_cont">
+	    			<li>© 2021 BSG PARTNERS. All Rights Reserved</li>
+	    			<li>+82-2-6730-3200</li>
+	    			<li>BSGinfo@bsgglobal.com</li>
+	    		</ul>
+	    		<p class="address">서울시 강남구 논현로85길 21 (BSG빌딩),(주)비에스지파트너스</p>
+	    	</div>
+	    </footer>
+	    <!-- //footer -->
+	</div>
+					
+</body>
+</html>

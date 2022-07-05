@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+	<meta id="mobileMeta" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<title>국립한글박물관</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/slick.css">
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript" src="js/slick.js"></script>
+	<script type="text/javascript" src="js/amplitude.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('.btn_lang').on('click',function(){
+				$('.lang_box').slideDown();
+			});
+			$('.lang_box .btn_close').on('click',function(){
+				$('.lang_box').slideUp();
+			});
+		});
+	</script>
+</head>
+<body>
+	<div id="wrapper">
+	    <!-- header 시작 -->
+	    <header id="header">
+	  		<button class="btn_lang"><img src="images/common/i_lang.svg" alt="언어선택"></button>
+	  		<div class="lang_box">
+	  			<span>Language Setting<span class="btn_close">close</span></span>
+	  			<ul class="lang_list">
+		  			<li><a href="main_kor.html">한국어</a></li>
+		  			<li><a href="main_eng.html">ENGLISH</a></li>
+		  			<li><a href="main_chi.html">中文</a></li>
+		  			<li><a href="main_jap.html">日本語</a></li>
+		  		</ul>
+	  		</div>
+	    </header>
+	    <!-- //header -->
+	    <!-- container 시작 -->
+	    <div id="main_container">
+	        <ul class="main_menu menu04">
+	        	<li><a href="list.html">상설<br>전시</a></li>
+	        	<li><a href="commentary.html">관람<br>안내</a></li>
+	        	<li><a href="exhibition.html">기획<br>전시</a></li>
+	        	<li><a href="intro.html">박물관 소개</a></li>
+	        </ul>
+	    </div>
+	    <!-- //container -->
+	    <!-- footer 시작 -->
+	    <footer id="footer">
+	    	<img src="images/common/logo.png" alt="국립한글박물관 로고">
+	    </footer>
+	    <!-- //footer -->
+	</div>
+					
+</body>
+</html>

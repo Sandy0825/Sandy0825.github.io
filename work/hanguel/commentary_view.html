@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+	<meta id="mobileMeta" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<title>국립한글박물관</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/slick.css">
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript" src="js/slick.js"></script>
+	<script type="text/javascript" src="js/amplitude.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			//링크 공유하기박스
+			$('.share').on('click',function(){
+				$('.share_box').slideDown();
+			});
+			$('.share_box .btn_close').on('click',function(){
+				$('.share_box').slideUp();
+			});
+
+			//전시해설 이미지슬라이드
+			$('.img_slider').slick({
+				dots: true,
+  				infinite: false,
+			});
+			$('.img_slider .btn_detail').on('click',function(){
+				var src = $(this).siblings('img').attr('src');
+				$('.detail_box img').attr('src',src);
+				$('.detail_box').show();
+			});
+			$('.detail_box .btn_close').on('click',function(){
+				$('.detail_box').hide();
+			});
+
+			//해시태그박스 높이에 따른 해설내용 영역조절
+			var hashHeight = $('.hashtag').height();
+			$('.audio_txt').css('padding-bottom',hashHeight+10);
+
+			//해설북마크
+			$('.control-container .bookmark').on('click',function(){
+				$(this).toggleClass('on');
+			});			
+		});
+	</script>
+</head>
+<body>
+	<div id="wrapper">
+	    <!-- header 시작 -->
+	    <header id="sub_header">
+			<h2 class="sub_tit c">전시해설</h2>
+			<span class="prev"><a href="commentary.html">prev</a></span>	
+		</header>
+	    <!-- //header -->
+	    <!-- container 시작 -->
+	    <div id="sub_container">
+	    	<div class="commentary_wrap">
+	    		<div class="detail_box_page">
+	    			<span class="btn_close"></span>
+	    			<img src="images/sub/img_comment.png">
+	    		</div>
+	    	</div>
+	    </div>
+	    <!-- //container -->
+	</div>
+					
+</body>
+</html>

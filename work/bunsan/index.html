@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<title>분산전원 통합 정보 서비스센터</title>
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="css/slick.css">
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript" src="js/slick.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			mainTab();
+			$('.icon_box > span').hover(function(){
+				var iconTop = $(this).css('top');
+				var moveTop = parseInt(iconTop) - 20;
+				$(this).css('top', moveTop);
+			},function(){
+				var iconTop = $(this).css('top'); 
+				var moveTop = parseInt(iconTop) + 20;
+				$(this).css('top', '');
+			});
+		});
+	</script>
+</head>
+<body>
+	<div id="skipnavi">
+	    <a href="#container">▶본문 바로가기</a>
+	    <a href="#gnb_area">▶주메뉴 바로가기</a>
+	</div>
+	<div id="wrapper">
+	    <!-- header 시작 -->
+	    <header id="header">
+	    	<div class="gnb_bg js-gnb-bg"></div>
+	        <div class="header_box">
+	        	<h1 class="logo"><a href="index.html"><img src="images/common/logo.png" alt="로고"></a></h1>
+	        	<span class="util_right"><a href="#">스마트그리드 데이터 센터</a></span>
+	        	<!-- gnb -->
+	        	 <div id="gnb_area">
+		            <nav id="gnb">
+		                <ul class="gnb js-gnb clear">
+		                    <li>
+		                        <a href="sub01_01.html" class="gnb_m1">소개</a>
+		                        <div class="menuWrap js-menuWrap">
+		                            <ul>
+		                                <li><a href="sub01_01.html">DMS</a></li>
+		                                <li><a href="sub01_0201.html">DERMS</a></li>
+		                                <li><a href="sub01_03.html">DER</a></li>
+		                            </ul>
+		                        </div>
+		                    </li>
+		                    <li>
+		                        <a href="#" class="gnb_m2">시험인증</a>
+		                        <div class="menuWrap js-menuWrap">
+		                            <ul>
+		                                <li><a href="#">통신인터페이스</a></li>
+		                                <li><a href="#">시험인증방법</a></li>
+		                            </ul>
+		                        </div>
+		                    </li>
+		                    <li>
+		                        <a href="#" class="gnb_m3">정보마당</a>
+		                        <div class="menuWrap js-menuWrap">
+		                            <ul>
+		                                <li><a href="#">표준 및 보고서</a></li>
+		                                <li><a href="#">정책</a></li>
+		                                <li><a href="#">기술 및 제품</a></li>
+		                            </ul>
+		                        </div>
+		                    </li>
+		                </ul>
+		            </nav>
+		        </div>
+	        	<!--// gnb -->
+	        </div>
+	    </header>
+	    <!-- //header -->
+	    <!-- container 시작 -->
+	    <div id="container" class="main_container">
+			<section class="mainvisual_wrap">
+				<div class="icon_box">
+					<span class="icon01"></span>
+					<span class="icon02"></span>
+					<span class="icon03"></span>
+					<span class="icon04"></span>
+					<span class="icon05"></span>
+					<span class="icon06"></span>
+					<span class="icon07"></span>
+				</div>
+			</section>
+			<section class="cont_wrap">
+				<div class="status_box">
+					<div class="today">
+						<span class="date" id="today">2021.12.15 (수)</span>
+						<span class="time" id="clock">10:37:21</span>
+					</div>
+					<div class="status_cont">
+						<div class="realtime">
+							<h2 class="status_tit">실시간 전력수급현황 <span>(단위 : 만/kw)</span></h2>
+							<ul class="status_list">
+								<li>공급능력<strong>7,718</strong></li>
+								<li>현재부하<strong>5,674</strong></li>
+								<li>공급예비력<strong>2,044</strong></li>
+								<li>공급예비율<strong>36%</strong></li>
+							</ul>
+						</div>
+						<div class="smp">
+							<h2 class="status_tit">SMP <span>(단위 : 원/KWh)</span></h2>
+							<div class="smp_tabcont">
+								<ul class="tab_menu js-tab">
+									<li class="current"><a href="#tab_cont01">육지</a></li>
+									<li><a href="#tab_cont02">제주</a></li>
+								</ul>
+								<div id="tab_cont01" class="tab_content">
+									<span class="max">
+										<span>최대</span>
+										<strong>82.14</strong>
+									</span>
+									<span class="min">
+										<span>최소</span>
+										<strong>76.62</strong>
+									</span>
+								</div>
+								<div id="tab_cont02" class="tab_content">
+									<span class="max">
+										<span>최대</span>
+										<strong>82.14</strong>
+									</span>
+									<span class="min">
+										<span>최소</span>
+										<strong>76.62</strong>
+									</span>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="board_box">
+					<h2 class="main_tit">정보마당</h2>
+					<div class="board_cont">
+						<div class="board_new">
+							<div class="tit">ESS용 PCS 단체표준인증 추진 중단 공지 </div>
+							<p class="cont">
+								안녕하십니까. 한국스마트그리드협회 품질인증센터입니다.한국스마트그리드협회 단체표준인증 추진 중단공지에 대해 안내드립니다.
+							</p>
+							<span class="date">2021-08-19</span>
+							<span class="btn_view"><a href="">VIEW</a></span>
+						</div>
+						<ul class="board_list">
+							<li><a href="">OpenADR Alliance Sponsorship Opportunities for </a></li>
+							<li><a href="">OpenADR Alliance Sponsorship Opportunities for </a></li>
+						</ul>
+					</div>
+					<a href="" class="btn_more">더보기</a>
+				</div>
+				<div class="video_box">
+					<h2 class="main_tit">동영상자료</h2>
+					<div class="video">
+						<video autoplay="autoplay" muted width="100%" height="100%" controls="">
+							<source src="/publish/video/smartgrid_introduce_210303.mp4" type="video/mp4">
+					    </video>
+					</div>
+					<a href="#" class="btn_more">더보기</a>
+				</div>
+			</section>
+		</div>
+	    <!-- //container -->
+	    <!-- footer 시작 -->
+	    <footer id="footer">
+	    	<div class="footer_cont">
+	    		<span class="address">서울시 송파구 양재대로 71길 20-18(방이동 188-8번지)</span>
+	        	<span class="copyright">Copyright(c) 2021 SmartGrid. All Rights Reserved</span>	
+	    	</div>
+	    </footer>
+	    <!-- //footer -->
+	</div>
+</body>
+</html>

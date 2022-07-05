@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<title>바이텍</title>
+	<!-- 공통파일링크 -->
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+	<!-- 스크롤바 관련파일 링크 -->
+	<link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
+	<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+	<!-- 메뉴트리 관련파일 링크 -->
+	<link rel="stylesheet" href="css/zTreeStyle.css" type="text/css">
+	<script type="text/javascript" src="js/jquery.ztree.core.js"></script>
+	<script type="text/javascript" src="js/jquery.ztree.excheck.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+			//스크롤
+			scroll();
+
+			//트리메뉴
+			$.fn.zTree.init($("#treeDemo"), setting, zNodes);
+			setCheck();
+
+			//클릭시 아이콘색깔 변화
+			$('.checkbox_true_full').prev().addClass('check');
+			$('.chk').click('on',function(){
+				setTimeout(function(){
+					if($('.chk').is('.checkbox_true_full, .checkbox_true_full_focus')){
+						$('.checkbox_true_full').prev().addClass('check');
+						$('.checkbox_true_full_focus').prev().addClass('check');
+					}
+				},100);
+				if($(this).is('.checkbox_true_full, .checkbox_true_full_focus')){
+					setTimeout(function(){
+						if($('.chk').is('.checkbox_true_part')){
+							$('.checkbox_true_part').prev().removeClass('check');
+						}
+					},100);
+					$(this).prev().removeClass('check');
+					$(this).siblings('ul').find('.check').removeClass('check');
+				}else if($(this).is('.checkbox_true_part, .checkbox_true_part_focus')){
+					$(this).siblings('ul').find('.check').removeClass('check');
+				}
+			});
+		});
+
+		function scroll(){
+			$('.scroll').mCustomScrollbar({
+				axis:"y",
+              	theme:"dark-3"
+			});
+		}
+		//트리메뉴 
+        var setting = {
+			check: {
+				enable: true,
+				chkDisabledInherit : true
+			},
+			data: {
+				simpleData: {
+					enable: true
+				}
+			}
+		};
+		var zNodes =[
+			{ id:1, pId:0, name:"can check 1", open:true},
+			{ id:11, pId:1, name:"can check 1-1", open:true},
+			{ id:111, pId:11, name:"can check 1-1-1"},
+			{ id:112, pId:11, name:"can check 1-1-2"},
+			{ id:12, pId:1, name:"can check 1-2", open:true},
+			{ id:121, pId:12, name:"can check 1-2-1", checked: true},
+			{ id:122, pId:12, name:"can check 1-2-2"},
+			{ id:2, pId:0, name:"can check 2", open:true},
+			{ id:21, pId:2, name:"can check 2-1"},
+			{ id:22, pId:2, name:"can check 2-2", open:true, chkDisabled:true},
+			{ id:221, pId:22, name:"can check 2-2-1"},
+			{ id:222, pId:22, name:"can check 2-2-2"},
+			{ id:23, pId:2, name:"can check 2-3"},
+			{ id:3, pId:0, name:"can check 3", open:true},
+		];
+		var code;
+		function setCheck() {
+			var zTree = $.fn.zTree.getZTreeObj("treeDemo"),
+			type = { "Y":"ps", "N":"ps"};
+			zTree.setting.check.chkboxType = type;
+		}
+		function showCode(str) {
+			if (!code) code = $("#code");
+			code.empty();
+			code.append("<li>"+str+"</li>");
+		}
+    </script>
+</head>
+<body>
+	<div id="wrapper">
+		<div id="header">
+			<h1><a href="index.html"><span></span><strong>계통운영상황</strong> 모니터링 시스템</a></h1>
+			<div class="util_box">
+				<span class="setting"></span>
+				<span class="alarm"></span>
+				<span class="user"></span>
+			</div>
+		</div>
+		<div class="content_wrap">
+			<div class="lnb js-lnb">
+				<span class="btn_logout"><a href="login.html">Logout</a></span>
+				<ul class="lnb_menu">
+					<li><a href="index.html">메인화면</a></li>
+					<li class="has_sub">
+						<a href="#">실시간 모니터링</a>
+						<ul>
+							<li><a href="realtime_img.html">실시간 모니터링</a></li>
+							<li><a href="realtime_log.html">전력계통 신뢰도지수</a></li>
+							<li><a href="#">발전기차단 고장파급장치</a></li>
+							<li><a href="#">부하차단 고장파급장치</a></li>
+							<li><a href="#">발전기/차단기 Alarm</a></li>
+							<li><a href="#">송변전 계통 차단기 Alarm</a></li>
+							<li><a href="#">융통선로 Alarm</a></li>
+						</ul>
+					</li>
+					<li><a href="acquirement.html">취득상태</a></li>
+					<li class="has_sub">
+						<a href="#">이력 모니터링</a>
+						<ul>
+							<li><a href="monitor_img.html">PSHI</a></li>
+							<li><a href="monitor_log.html">SPS-발전기차단</a></li>
+							<li><a href="#">SPS-부하차단</a></li>
+							<li><a href="#">발전기/차단기 알람로그</a></li>
+							<li><a href="#">송변전 계통 차단기 Alarm</a></li>
+							<li><a href="#">융통선로 Alarm</a></li>
+						</ul>
+					</li>
+					<li class="has_sub open active">
+						<a href="#">시스템 관리</a>
+						<ul>
+							<li><a href="system_list.html">사용자관리</a></li>
+							<li><a href="system_form.html">권한관리</a></li>
+							<li><a href="system_view.html">메뉴관리</a></li>
+							<li class="active"><a href="menu_tree.html">권한별 메뉴관리</a></li>
+							<li><a href="#">상위코드관리</a></li>
+							<li><a href="#">하위코드관리</a></li>
+							<li><a href="#">데이터 삭제주기</a></li>
+						</ul>
+					</li>
+				</ul>
+				<div class="lnb_footer">Copyright &nbsp;KOREA&nbsp; POWER&nbsp; EXCHANGE(KPX).<br>All&nbsp; Rights&nbsp; Reserved</div>
+				<span class="btn_lnb"></span>
+			</div>
+			<div id="contents">
+				<div class="sub_wrapper">
+					<div class="menutree_wrap">
+						<h2 class="menu_tit">권한별 메뉴관리</h2>
+						<div class="menutree_box scroll">
+							<ul id="treeDemo" class="ztree"></ul>
+						</div>
+						<div class="btn_area">
+							<a href="#" class="btn btn_mdl btn_save mar_r15">저장</a>
+							<a href="#" class="btn btn_mdl btn_list">목록</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</body>
+</html>

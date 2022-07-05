@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<title>바이텍</title>
+	<!-- 공통파일링크 -->
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+</head>
+<body>
+	<div id="wrapper">
+		<div id="header">
+			<h1><a href="index.html"><span></span><strong>계통운영상황</strong> 모니터링 시스템</a></h1>
+			<div class="util_box">
+				<span class="setting"></span>
+				<span class="alarm"></span>
+				<span class="user"></span>
+			</div>
+		</div>
+		<div class="content_wrap">
+			<div class="lnb js-lnb">
+				<span class="btn_logout"><a href="login.html">Logout</a></span>
+				<ul class="lnb_menu">
+					<li><a href="index.html">메인화면</a></li>
+					<li class="has_sub open active">
+						<a href="#">실시간 모니터링</a>
+						<ul>
+							<li class="active"><a href="realtime_img.html">실시간 모니터링</a></li>
+							<li><a href="realtime_log.html">전력계통 신뢰도지수</a></li>
+							<li><a href="#">발전기차단 고장파급장치</a></li>
+							<li><a href="#">부하차단 고장파급장치</a></li>
+							<li><a href="#">발전기/차단기 Alarm</a></li>
+							<li><a href="#">송변전 계통 차단기 Alarm</a></li>
+							<li><a href="#">융통선로 Alarm</a></li>
+						</ul>
+					</li>
+					<li><a href="acquirement.html">취득상태</a></li>
+					<li class="has_sub">
+						<a href="#">이력 모니터링</a>
+						<ul>
+							<li><a href="monitor_img.html">PSHI</a></li>
+							<li><a href="monitor_log.html">SPS-발전기차단</a></li>
+							<li><a href="#">SPS-부하차단</a></li>
+							<li><a href="#">발전기/차단기 알람로그</a></li>
+							<li><a href="#">송변전 계통 차단기 Alarm</a></li>
+							<li><a href="#">융통선로 Alarm</a></li>
+						</ul>
+					</li>
+					<li class="has_sub">
+						<a href="#">시스템 관리</a>
+						<ul>
+							<li><a href="system_list.html">사용자관리</a></li>
+							<li><a href="system_form.html">권한관리</a></li>
+							<li><a href="system_view.html">메뉴관리</a></li>
+							<li><a href="menu_tree.html">권한별 메뉴관리</a></li>
+							<li><a href="#">상위코드관리</a></li>
+							<li><a href="#">하위코드관리</a></li>
+							<li><a href="#">데이터 삭제주기</a></li>
+						</ul>
+					</li>
+				</ul>
+				<div class="lnb_footer">Copyright &nbsp;KOREA&nbsp; POWER&nbsp; EXCHANGE(KPX).<br>All&nbsp; Rights&nbsp; Reserved</div>
+				<span class="btn_lnb"></span>
+			</div>
+			<div id="contents">
+				<span class="status abnormal"><span class="i_circle"></span>비정상 2019-07-15 19:00:05</span>
+				<div class="realimg_wrap">
+					<img src="images/sub/bg_realtime.png" alt="실시간모니터링이미지">
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</body>
+</html>

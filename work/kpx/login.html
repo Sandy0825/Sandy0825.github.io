@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<title>바이텍</title>
+	<!-- 공통파일링크 -->
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+</head>
+<body>
+	<div id="login_wrapper">
+		<div id="login_wrap">
+		    <div class="login_txt">
+		    	<h2><strong>계통운영상황</strong> 모니터링 시스템</h2>
+		        <p>서비스 이용을 위한 로그인 페이지입니다.<br>로그인하시어 다양한 서비스를 누려보세요.</p>
+		        <span>Coptright KOREA POWER EXCHANGE(KPX). All Rights Reserved</span>
+		    </div>
+		    <div id="login_box">
+		        <div class="login_input">
+		            <h2 class="login_title">System Login</h2>
+		            <div class="login_inputbox">
+		                <form name="LoginForm" id="LoginForm" method="post">
+		                        <input type="hidden" name="smsYN" id="smsYN" value="N">
+		                        <p class="loginId"><input type="text" name="id" id="id" placeholder="Id" /></p>
+		                        <p class="loginPwd"><input type="password" name="pass" id="pass" placeholder="Password" /></p>
+		                        <p class="remain_check"><input type="checkbox" name="remain" id="remain"><label for="remain"><span></span>아이디 저장</label></p>
+		                        <a href="#" class="btn_login">LOGIN</a>
+		                </form>
+		                <form name="LoginForm2" id="LoginForm2" method="post" target="smsFm" >
+		                    <input type="hidden" name="id" id="id2">
+		                    <input type="hidden" name="pass" id="pass2">
+		                </form>
+		             </div>
+		        <div id="smsResult"></div>
+		        </div>
+		        <div class="login_guid">
+		            <dl class="login_info">
+		                <dt><span class="i_login"></span> 아이디/비밀번호를 잘 모르시겠나요?</dt>
+		                <dd>계통운영상황 모니터링 시스템 관리자에게 문의하시기 바랍니다.</dd>
+		            </dl>
+		            <ul class="clear">
+		                <li>전화 : [국선] 061-123-4567 / [사선] 1588-1234</li>
+		                <li>이메일 : help@kpx.com</li>
+		            </ul>
+		        </div>
+		    </div>
+		</div>
+	</div>
+</body>
+</html>

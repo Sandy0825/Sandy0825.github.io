@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+	<meta id="mobileMeta" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<title>국립한글박물관</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/slick.css">
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript" src="js/slick.js"></script>
+	<script type="text/javascript" src="js/amplitude.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			//링크 공유하기박스
+			$('.share').on('click',function(){
+				$('.share_box').slideDown();
+			});
+			$('.share_box .btn_close').on('click',function(){
+				$('.share_box').slideUp();
+			});
+
+			//전시해설 이미지슬라이드
+			$('.img_slider').slick({
+				dots: true,
+  				infinite: false,
+			});
+			$('.img_slider .btn_detail').on('click',function(){
+				var src = $(this).siblings('img').attr('src');
+				$('.detail_box img').attr('src',src);
+				$('.detail_box').show();
+			});
+			$('.detail_box .btn_close').on('click',function(){
+				$('.detail_box').hide();
+			});
+
+			//해시태그박스 높이에 따른 해설내용 영역조절
+			var hashHeight = $('.hashtag').height();
+			$('.audio_txt').css('padding-bottom',hashHeight+10);
+
+			//해설북마크
+			$('.control-container .bookmark').on('click',function(){
+				$(this).toggleClass('on');
+			});			
+		});
+	</script>
+</head>
+<body>
+	<div id="wrapper">
+	    <!-- header 시작 -->
+	    <header id="sub_header">
+	  		<h2 class="sub_tit">전시해설</h2>
+	  		<span class="bookmark"><a href="bookmark.html"></a></span>
+	  		<span class="share"></span>
+	  		<span class="home"><a href="#">home</a></span>
+	  		<div class="share_box">
+	  			<span>공유하기<span class="btn_close">close</span></span>
+	  			<ul class="share_list">
+		  			<li class="facebook"><a href="#">페이스북</a></li>
+		  			<li class="twitter"><a href="#">트위터</a></li>
+		  			<li class="url"><a href="#">URL 복사</a></li>
+		  		</ul>
+	  		</div>
+	    </header>
+	    <!-- //header -->
+	    <!-- container 시작 -->
+	    <div id="sub_container">
+	    	<div class="commentary_wrap">
+	    		<ul class="img_slider">
+	    			<li>
+	    				<div class="img_wrap">
+	    					<img src="images/sub/img_comment.png">
+    						<span class="btn_detail">더보기</span>
+	    				</div>
+	    			</li>
+	    			<li>
+	    				<div class="img_wrap">
+    						<img src="images/sub/intro_sample.png">
+    						<span class="btn_detail">더보기</span>
+    					</div>
+	    			</li>
+	    			<li>
+	    				<div class="img_wrap">
+    						<img src="images/sub/img_comment.png">
+    						<span class="btn_detail">더보기</span>
+    					</div>
+	    			</li>
+	    			<li>
+	    				<div class="img_wrap">
+    						<img src="images/sub/intro_sample.png">
+    						<span class="btn_detail">더보기</span>
+    					</div>
+	    			</li>
+	    		</ul>
+	    		<div class="detail_box">
+	    			<span class="btn_close"></span>
+	    			<img src="images/sub/img_comment.png">
+	    		</div>
+	    		<div class="audio_contbox">
+	    			<div class="audio_box">
+	    				<div class="bottom-container">
+	    					<input type="range" class="amplitude-song-slider">
+					        <progress class="amplitude-song-played-progress" id="song-played-progress"></progress>
+					        <div class="time-container">
+					          <span class="current-time">
+					            <span class="amplitude-current-minutes"></span>:<span class="amplitude-current-seconds"></span>
+					          </span>
+					          <span class="duration">
+					            <span class="amplitude-duration-minutes"></span>:<span class="amplitude-duration-seconds"></span>
+					          </span>
+					        </div>
+					        <div class="control-container">
+					          <div class="amplitude-play-pause" id="play-pause"></div>
+					          <div class="meta-container">
+					            <span data-amplitude-song-info="name" class="song-name"></span>
+					          </div>
+					          <span class="bookmark on"></span>
+					        </div>
+						</div>
+	    			</div>
+	    			<!-- 오디오 관련 스크립트 -->
+	    			<script type="text/javascript">
+					Amplitude.init({
+					    "bindings": {
+					      37: 'prev',
+					      39: 'next',
+					      32: 'play_pause'
+					    },
+			            debug: true,
+			            callbacks: {
+			                waiting: function() {
+			                   console.log('audio is loading.');
+			               },
+			                canplay: function() {
+							console.log('audio is ready to play'); 
+							  var loop = setInterval(function() {
+									console.log(Amplitude.getPlayerState() );
+									if(Amplitude.getPlayerState() == 'playing') {
+										clearInterval(loop);
+									}
+								}, 500);
+			               }
+			            },
+					    "songs": [
+					      {
+					          "name": "300.<span class='status'>국보</span><br>백성을 가르치는 바른 소리 『훈민정음』",
+					          "url": "images/sub/sound.mp3"
+					      }
+					    ]
+					  });
+					Amplitude.pause();
+					  window.onkeydown = function(e) {
+					      return !(e.keyCode == 32);
+					  };
+					  /*
+					    Handles a click on the song played progress bar.
+					  */
+					  document.getElementById('song-played-progress').addEventListener('click', function( e ){
+					    var offset = this.getBoundingClientRect();
+					    var x = e.pageX - offset.left;
+					    Amplitude.setSongPlayedPercentage( ( parseFloat( x ) / parseFloat( this.offsetWidth) ) * 100 );
+					  });
+					</script>
+	    			<p class="audio_txt">
+		    			“훈민정음 해례본(訓民正音 解例本)”은 1446년 편찬한 훈민 정음 해설서입니다. 전체가 33장으로 이루어진 목판본으로 한글의 창제 원리를 상세하게 기록하였습니다. 세종은 1443년에 문자 훈민정음을 창제한 후 해설서의 편찬을 명했고, 정인지, 최항, 박팽년, 신숙주, 성삼문, 강희안, 이개, 이선로 등 집현전 학사들에 의해 1446년 “훈민정음”이라는 이름의 해설서가 편찬되었습니다. 그런 이유로 책 이름을 따라 “훈민정음” 이라고도 하고, 판각 원본이라는 점에서 “훈민정음 원본”, 한문으로 쓰였다는 점에서 “훈민정음 한문본” 이라고도 합니다. 그러나 일반적으로는 문자의 사용법을 풀이해 놓은 “훈민정음 해례본(訓民正音 解例本)”은 1446년 편찬한 훈민 정음 해설서입니다. 전체가 33장으로 이루어진 목판본으로 한글의 창제 원리를 상세하게 기록하였습니다. 세종은 1443년에 문자 훈민정음을 창제한 후 해설서의 편찬을 명했고, 정인지, 최항, 박팽년, 신숙주, 성삼문, 강희안, 이개, 이선로 등 집현전 학사들에 의해 1446년 “훈민정음”이라는 이름의 해설서가 편찬되었습니다. 그런 이유로 책 이름을 따라 “훈민정음” 이라고도 하고, 판각 원본이라는 점에서 “훈민정음 원본”, 한문으로 쓰였다는 점에서 “훈민정음 한문본” 이라고도 합니다. 그러나 일반적으로는 문자의 사용법을 풀이해 놓은“훈민정음 해례본(訓民正音 解例本)”은 1446년 편찬한 훈민 정음 해설서입니다. 전체가 33장으로 이루어진 목판본으로 한글의 창제 원리를 상세하게 기록하였습니다. 세종은 1443년에 문자 훈민정음을 창제한 후 해설서의 편찬을 명했고, 정인지, 최항, 박팽년, 신숙주, 성삼문, 강희안, 이개, 이선로 등 집현전 학사들에 의해 1446년 “훈민정음”이라는 이름의 해설서가 편찬되었습니다. 그런 이유로 책 이름을 따라 “훈민정음” 이라고도 하고, 판각 원본이라는 점에서 “훈민정음 원본”, 한문으로 쓰였다는 점에서 “훈민정음 한문본” 이라고도 합니다. 그러나 일반적으로는 문자의 사용법을 풀이해 놓은“훈민정음 해례본(訓民正音 解例本)”은 1446년 편찬한 훈민 정음 해설서입니다. 전체가 33장으로 이루어진 목판본으로 한글의 창제 원리를 상세하게 기록하였습니다. 세종은 1443년에 문자 훈민정음을 창제한 후 해설서의 편찬을 명했고, 정인지, 최항, 박팽년, 신숙주, 성삼문, 강희안, 이개, 이선로 등 집현전 학사들에 의해 1446년 “훈민정음”이라는 이름의 해설서가 편찬되었습니다. 그런 이유로 책 이름을 따라 “훈민정음” 이라고도 하고, 판각 원본이라는 점에서 “훈민정음 원본”, 한문으로 쓰였다는 점에서 “훈민정음 한문본” 이라고도 합니다. 그러나 일반적으로는 문자의 사용법을 풀이해 놓은
+		    		</p>
+	    		</div>
+	    		<div class="hashtag">
+	    			<span>#훈민정음</span>
+	    			<span>#해례본</span>
+	    			<span>#목판본</span>
+	    			<span>#집현전</span>
+	    			<span>#훈빈정음 한문본</span>
+	    		</div>
+	    	</div>
+	    </div>
+	    <!-- //container -->
+	</div>
+					
+</body>
+</html>

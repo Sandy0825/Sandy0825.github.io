@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<title>바이텍</title>
+	<!-- 공통파일링크 -->
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+	<!-- 스크롤바 관련파일 링크 -->
+	<link rel="stylesheet" href="css/jquery.mCustomScrollbar.css">
+	<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+	<!-- 달력 관련 파일 링크 -->
+	<link rel="stylesheet" href="css/jquery-ui-1.12.1.custom.css"/> 
+	<script type="text/javascript" src="js/jquery-ui-1.12.1.custom.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			scroll3();
+
+			//달력
+			var dates = $( "#from1, #to1" ).datepicker({
+			changeMonth: true,
+			changeYear: true,
+			buttonImage: "images/sub/icon_calendar.png",
+			buttonImageOnly: true,
+			onSelect: function( selectedDate ) {
+				var option = this.id == "from1" ? "minDate" : "maxDate",
+				instance = $( this ).data( "datepicker" ),
+				date = $.datepicker.parseDate(
+					instance.settings.dateFormat ||
+					$.datepicker._defaults.dateFormat,
+					selectedDate, instance.settings );
+				dates.not( this ).datepicker( "option", option, date );
+			  }
+			 });
+
+			var dates2 = $( "#from2, #to2" ).datepicker({
+			buttonImage: "images/sub/icon_calendar.png",
+			buttonImageOnly: true,
+			onSelect: function( selectedDate ) {
+				var option = this.id == "from2" ? "minDate" : "maxDate",
+				instance = $( this ).data( "datepicker" ),
+				date = $.datepicker.parseDate(
+					instance.settings.dateFormat ||
+					$.datepicker._defaults.dateFormat,
+					selectedDate, instance.settings );
+				dates2.not( this ).datepicker( "option", option, date );
+			  }
+          });
+		});
+		//스크롤
+		function scroll3(){
+			$(".scroll03").mCustomScrollbar({
+              axis:"y",
+              theme:"dark-3"
+            });
+		}
+	</script>
+</head>
+<body>
+	<div id="wrapper">
+		<div id="header">
+			<h1><a href="index.html"><span></span><strong>계통운영상황</strong> 모니터링 시스템</a></h1>
+			<div class="util_box">
+				<span class="setting"></span>
+				<span class="alarm"></span>
+				<span class="user"></span>
+			</div>
+		</div>
+		<div class="content_wrap">
+			<div class="lnb js-lnb">
+				<span class="btn_logout"><a href="login.html">Logout</a></span>
+				<ul class="lnb_menu">
+					<li><a href="index.html">메인화면</a></li>
+					<li class="has_sub">
+						<a href="#">실시간 모니터링</a>
+						<ul>
+							<li><a href="realtime_img.html">실시간 모니터링</a></li>
+							<li><a href="realtime_log.html">전력계통 신뢰도지수</a></li>
+							<li><a href="#">발전기차단 고장파급장치</a></li>
+							<li><a href="#">부하차단 고장파급장치</a></li>
+							<li><a href="#">발전기/차단기 Alarm</a></li>
+							<li><a href="#">송변전 계통 차단기 Alarm</a></li>
+							<li><a href="#">융통선로 Alarm</a></li>
+						</ul>
+					</li>
+					<li><a href="acquirement.html">취득상태</a></li>
+					<li class="has_sub open active">
+						<a href="#">이력 모니터링</a>
+						<ul>
+							<li><a href="monitor_img.html">PSHI</a></li>
+							<li class="active"><a href="monitor_log.html">SPS-발전기차단</a></li>
+							<li><a href="#">SPS-부하차단</a></li>
+							<li><a href="#">발전기/차단기 알람로그</a></li>
+							<li><a href="#">송변전 계통 차단기 Alarm</a></li>
+							<li><a href="#">융통선로 Alarm</a></li>
+						</ul>
+					</li>
+					<li class="has_sub">
+						<a href="#">시스템 관리</a>
+						<ul>
+							<li><a href="system_list.html">사용자관리</a></li>
+							<li><a href="system_form.html">권한관리</a></li>
+							<li><a href="system_view.html">메뉴관리</a></li>
+							<li><a href="menu_tree.html">권한별 메뉴관리</a></li>
+							<li><a href="#">상위코드관리</a></li>
+							<li><a href="#">하위코드관리</a></li>
+							<li><a href="#">데이터 삭제주기</a></li>
+						</ul>
+					</li>
+				</ul>
+				<div class="lnb_footer">Copyright &nbsp;KOREA&nbsp; POWER&nbsp; EXCHANGE(KPX).<br>All&nbsp; Rights&nbsp; Reserved</div>
+				<span class="btn_lnb"></span>
+			</div>
+			<div id="contents">
+				<h2 class="menu_tit">이력모니터링 _ 알람로그</h2>
+				<div class="search_box">
+				    <fieldset>
+				        <legend>검색</legend>
+				        <strong class="search_tit">조회기간</strong>
+                        <span class="search_input">
+                        	<span class="calendar_input"><input type="text" id="from1" class="text w100"/></span>
+                        	 ~
+                        	<span class="calendar_input" ><input type="text" id="to1" class="text w100" /></span>
+                        </span>
+				        <button type="button" class="btn btn_search">조회</button>
+				    </fieldset>
+				</div>
+				<span class="status abnormal"><span class="i_circle"></span>비정상 2019-07-15 19:00:05</span>
+				<div class="tbl_wrap">
+					<table class="tbl_col_type01">
+						<caption>로그실시간 모니터링 목록</caption>
+						<colgroup>
+							<col style="width: 15%">
+							<col>
+						</colgroup>
+						<thead>
+							<tr>
+								<th scope="col">로그일시</th>
+								<th scope="col">메시지</th>
+							</tr>
+						</thead>
+					</table>
+					<div class="tbl_body scroll03">
+						<table class="tbl_col_type01">
+							<caption></caption>
+							<colgroup>
+								<col style="width: 15%;">
+								<col>
+							</colgroup>
+							<tbody>
+								<tr>
+									<td>2019-07-15 19:00</td>
+									<td class="subject">충북 옥천SS LD 고속전철#1 MW Data 유효치 초과 (CUR)-28.38 MW (Range)-16.87 (PRE)-14.20 <br>PHOSTA</td>
+								</tr>
+								<tr>
+									<td>2019-07-15 19:00</td>
+									<td class="subject">충북 옥천SS LD 고속전철#1 MW Data 유효치 초과 (CUR)-28.38 MW (Range)-16.87 (PRE)-14.20<br>PHOSTA</td>
+								</tr>
+								<tr>
+									<td>2019-07-15 19:00</td>
+									<td class="subject">충북 옥천SS LD 고속전철#1 MW Data 유효치 초과 (CUR)-28.38 MW (Range)-16.87 (PRE)-14.20</td>
+								</tr>
+								<tr>
+									<td>2019-07-15 19:00</td>
+									<td class="subject">충북 옥천SS LD 고속전철#1 MW Data 유효치 초과 (CUR)-28.38 MW (Range)-16.87 (PRE)-14.20</td>
+								</tr>
+								<tr>
+									<td>2019-07-15 19:00</td>
+									<td class="subject">충북 옥천SS LD 고속전철#1 MW Data 유효치 초과 (CUR)-28.38 MW (Range)-16.87 (PRE)-14.20</td>
+								</tr>
+								<tr>
+									<td>2019-07-15 19:00</td>
+									<td class="subject">충북 옥천SS LD 고속전철#1 MW Data 유효치 초과 (CUR)-28.38 MW (Range)-16.87 (PRE)-14.20</td>
+								</tr>
+								<tr>
+									<td>2019-07-15 19:00</td>
+									<td class="subject">충북 옥천SS LD 고속전철#1 MW Data 유효치 초과 (CUR)-28.38 MW (Range)-16.87 (PRE)-14.20</td>
+								</tr>
+								<tr>
+									<td>2019-07-15 19:00</td>
+									<td class="subject">충북 옥천SS LD 고속전철#1 MW Data 유효치 초과 (CUR)-28.38 MW (Range)-16.87 (PRE)-14.20</td>
+								</tr>
+								<tr>
+									<td>2019-07-15 19:00</td>
+									<td class="subject">충북 옥천SS LD 고속전철#1 MW Data 유효치 초과 (CUR)-28.38 MW (Range)-16.87 (PRE)-14.20</td>
+								</tr>
+								<tr>
+									<td>2019-07-15 19:00</td>
+									<td class="subject">충북 옥천SS LD 고속전철#1 MW Data 유효치 초과 (CUR)-28.38 MW (Range)-16.87 (PRE)-14.20</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+				<div class="paging_wrap">
+					<div class="paging">
+						<a class="btn_page first">목록 처음으로 이동</a>
+						<a class="btn_page prev">이전 페이지로 이동</a>
+						<strong class="page_num">1</strong>
+						<a href="#">2</a>
+						<a href="#">3</a>
+						<a href="#">4</a>
+						<a href="#">5</a>
+						<a href="#">6</a>
+						<a href="#">7</a>
+						<a href="#">8</a>
+						<a href="#">9</a>
+						<a href="#">10</a>
+						<a class="btn_page next">다음 페이지로 이동</a>
+						<a class="btn_page last">목록 마지막으로 이동</a>
+					</div>
+					<div class="btn_right">
+						<a href="#" class="btn btn_mdl btn_write">신규</a>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</body>
+</html>

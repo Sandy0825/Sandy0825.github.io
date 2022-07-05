@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<title>분산전원 통합 정보 서비스센터</title>
+	<link rel="stylesheet" type="text/css" href="css/sub.css">
+	<link rel="stylesheet" type="text/css" href="css/slick.css">
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript" src="js/slick.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$(".explain > div").hide();
+		    $(".explain > div:first").show();
+		    $(".tit_tab a").click(function(event) {
+		        event.preventDefault(); //주소에 #숨김
+		        $('.tit_tab').removeClass("on");
+		        $('.tit_tab').prev().removeClass("on");
+		        $(this).parent().addClass("on");
+		        $(this).parent().prev().addClass('on');
+		        var tab = $(this).attr("href");
+		        $(".explain > div").not(tab).css("display", "none");
+		        $(tab).fadeIn();
+		    });
+		});
+	</script>
+</head>
+<body>
+	<div id="skipnavi">
+	    <a href="#container">▶본문 바로가기</a>
+	    <a href="#gnb_area">▶주메뉴 바로가기</a>
+	</div>
+	<div id="wrapper">
+	    <!-- header 시작 -->
+	    <header id="header">
+	    	<div class="gnb_bg js-gnb-bg"></div>
+	        <div class="header_box">
+	        	<h1 class="logo"><a href="index.html"><img src="images/common/logo.png" alt="로고"></a></h1>
+	        	<span class="util_right"><a href="#">스마트그리드 데이터 센터</a></span>
+	        	<!-- gnb -->
+	        	 <div id="gnb_area">
+		            <nav id="gnb">
+		                <ul class="gnb js-gnb clear">
+		                    <li>
+		                        <a href="#" class="gnb_m1">소개</a>
+		                        <div class="menuWrap js-menuWrap">
+		                            <ul>
+		                                <li><a href="sub01_01.html">DMS</a></li>
+		                                <li><a href="sub01_0201.html">DERMS</a></li>
+		                                <li><a href="sub01_03.html">DER</a></li>
+		                            </ul>
+		                        </div>
+		                    </li>
+		                    <li>
+		                        <a href="#" class="gnb_m2">시험인증</a>
+		                        <div class="menuWrap js-menuWrap">
+		                            <ul>
+		                                <li><a href="#">통신인터페이스</a></li>
+		                                <li><a href="#">시험인증방법</a></li>
+		                            </ul>
+		                        </div>
+		                    </li>
+		                    <li>
+		                        <a href="#" class="gnb_m3">정보마당</a>
+		                        <div class="menuWrap js-menuWrap">
+		                            <ul>
+		                                <li><a href="#">표준 및 보고서</a></li>
+		                                <li><a href="#">정책</a></li>
+		                                <li><a href="#">기술 및 제품</a></li>
+		                            </ul>
+		                        </div>
+		                    </li>
+		                </ul>
+		            </nav>
+		        </div>
+	        	<!--// gnb -->
+	        </div>
+	    </header>
+	    <!-- //header -->
+	    <!-- container 시작 -->
+	    <div id="container">
+	        <div class="sub_visual">
+	 			<strong class="sub_visual_tit">DERMS</strong>
+	 			<div class="location_area">
+	 				<span class="i_home"></span>
+	 				<span>소개</span>
+	 				<span>DERMS</span>
+	 			</div>
+	        </div>
+	        <div id="content">
+	        	<section class="left_cont">
+	        		<!-- 소개 lnb -->
+		 			<div class="lnb js-lnb">
+					    <h3 class="lnb_title">소개</h3>
+			    		<ul>
+					        <li><a href="sub01_01.html">DMS</a></li>
+					        <li class="has_sub depth1 open active"><a href="#">DERMS</a>
+					            <ul>
+					                <li><a href="sub01_0201.html">개요</a></li>
+					                <li><a href="sub01_0202.html">구분</a></li>
+					                <li><a href="sub01_0203.html">특성</a></li>
+					                <li><a href="sub01_0204.html">구조</a></li>
+					                <li class="on"><a href="sub01_0205.html">기능</a></li>
+					            </ul>
+					        </li>
+					        <li ><a href="sub01_03.html">DER</a></li>
+					    </ul>
+					</div>
+	        	</section>
+		        <!--// aside -->     
+				<!-- contents -->	
+				<section class="right_cont derms05">
+					<dl class="sub_contwrap">
+						<dt>DERMS 기능</dt>
+						<dd>DERMS는 기존의 DMS 혹은 DRAS와 같이 SCADA 시스템을 기반으로 한 통신 네트워크를 기반으로 DER 관리, 제어 및 통신하는 것을 전제로 함</dd>
+						<dd class="no_bul">
+							<table class="tbl_derms">
+								<caption></caption>
+								<colgroup>
+									<col style="width:24%;">
+									<col style="width:5%;">
+									<col style="width:25%;">
+									<col>
+								</colgroup>
+								<thead>
+									<tr>
+										<th scope="col">(대분류) 기능</th>
+										<th scope="col">No.</th>
+										<th scope="col">(소분류) 기능</th>
+										<th scope="col">설명</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<th scope="row" rowspan="4">DER 그룹 제한 및 운전 경계 기능</th>
+										<td class="on">1</td>
+										<td class="tit_tab on"><a href="#tab01">DER 그룹 생성</a></td>
+										<td rowspan="18" class="explain">
+											<div id="tab01">
+												<dl>
+													<dt>DER 그룹 생성</dt>
+													<dd>소프트웨어 개체가 DER의 논리적 그룹을 정의하고 다른 응용 프로그램 또는 비즈니스와 그룹에 대한 정의를 교환할 수 있도록 함</dd>
+													<dd>그룹 생성의 목적은 DER 그룹을 생성하여, 이후에 그룹 레벨에서<br>모니터링 및 관리를 수행하기 위함</dd>
+													<dd>상태 모니터링, 용량 검색 및 급전기능을 위해서는 그룹화가 필요함</dd>
+												</dl>
+												<a href="sub01_0205_01.html" class="btn_more">상세설명 영상 보기</a>
+											</div>
+											<div id="tab02">
+												<dl>
+													<dt>DER 그룹 멤버 조회</dt>
+													<dd>어떤 한 DER 그룹에 현재 소속되어 있는 다른 DER들의 현재 멤버를<br>파악하기 위한 정보제공 기능</dd>
+													<dd>그룹 멤버 조회의 목적은 여러 DER들이 하나의 DER 그룹을 구성하여, DER 그룹 내에서 동일한 정보를 제공하고 운용하기 위함</dd>
+												</dl>
+												<a href="sub01_0205_02.html" class="btn_more">상세설명 영상 보기</a>
+											</div>
+											<div id="tab03">
+												<dl>
+													<dt>DER 그룹 삭제</dt>
+													<dd>이전에 생성된 그룹을 삭제할 수 있도록 함</dd>
+													<dd>그룹 삭제의 목적은 DER 그룹을 삭제하여 구성된 가상 자원으로서의 존재를 없애는 것임</dd>
+												</dl>
+												<a href="sub01_0205_04.html" class="btn_more">상세설명 영상 보기</a>
+											</div>
+											<div id="tab04">
+												<dl>
+													<dt>DER 그룹 유지관리</dt>
+													<dd>그룹에서 멤버를 추가, 업데이트 또는 삭제할 수 있도록 할 수 있어야<br>하며, 서비스 계약 및 DER 종류별로 실시간 관리가 가능할 수 있도록 함</dd>
+													<dd>그룹 유지관리의 목적은 기존 그룹에 새로운 DER 멤버를 추가,<br>업데이트, 삭제하는 유지관리 작업을 지원함으로서 실시간으로 요청<br>되는 서비스에 신뢰성있는 데이터를 제공하여 거래하도록 하는 것임</dd>
+												</dl>
+												<a href="sub01_0205_03.html" class="btn_more">상세설명 영상 보기</a>
+											</div>
+											<div id="tab05">
+												<dl>
+													<dt>DER 그룹 상태 모니터링</dt>
+													<dd>DER 그룹에 대한 실시간 상태 정보를 교환할 수 있도록 함</dd>
+													<dd>현재 가격 및 현재 조정 가능 범위(즉, 관리 가능한 파라미터의 최소/<br>최대 급전 가능 범위)를 비롯하여 동적 데이터를 처리함</dd>
+													<dd>그룹 상태 모니터링의 목적은 DER 그룹의 현재상태를 판도하고 보고<br>하는 것으로 이를 위해 상태정보 교환을 수행함.<br>여기에서 DER 그룹 상태는 유효 및 무효전력 레벨의 현재 값과 조정<br>가능한 범위(최대값/최소값)를 나타냄</dd>
+												</dl>
+												<a href="sub01_0205_05.html" class="btn_more">상세설명 영상 보기</a>
+											</div>
+											<div id="tab06">
+												<dl>
+													<dt>DER 그룹 서비스 및 기능 검색</dt>
+													<dd>DER 그룹이 지원할 수 있는 계통 지원 서비스 측면에서 DER 그룹이<br>제공하는 서비스 및 기능에 대한 정보를 교환할 수 있도록 함</dd>
+													<dd>이러한 데이터는 일반적으로 정적 데이터로, 실시간으로 변경되지<br>않고 오프라인에서 장비의 구성 및 기능을 바꾼 경우에만 변경됨</dd>
+													<dd>그룹의 서비스 및 기능 검색의 목적은 DER 그룹이 제공하는 서비스 및 기능에 대한 파라미터를 판독/보고하는 것임</dd>
+												</dl>
+											</div>
+											<div id="tab07">
+												<dl>
+													<dt>DER 그룹 출력 예측</dt>
+													<dd>DER 그룹의 유효 전력 및 무효 전력의 가용성과 관련해 예측 정보를<br>교환할 수 있도록 함</dd>
+													<dd>예측을 결정하는 방식(예: 날씨 데이터, 스카이뷰 카메라 등)뿐만<br>아니라 개체 간에 이러한 정보를 교환할 수 있는 방식과는 관련이 없음</dd>
+													<dd>그룹 출력 예측의 목적은 DER 그룹 가용성에 대한 예측 데이터 교환을 지원하는 것임</dd>
+												</dl>
+											</div>
+											<div id="tab08">
+												<dl>
+													<dt>DER 그룹 과거 계량기 데이터 교환</dt>
+													<dd>DER 그룹의 집적 생성을 나타내는 구간 계량기 과거 데이터 및 예측<br>데이터를 교환할 수 있도록 함</dd>
+													<dd>그룹 과거 계량기 데이터 교환 기능의 주요 목적은 DER 그룹 운용을<br>위한 계획 및 예측을 위한 통계적 데이터 확보임</dd>
+												</dl>
+											</div>
+											<div id="tab09">
+												<dl>
+													<dt>DER 그룹 최대 유효 전력 제한</dt>
+													<dd>DER 그룹에서 발전 또는 소비될 전체 전력량에 대한 제한치를 설정<br>할 수 있도록 함</dd>
+													<dd>그룹 최대 유효 전력 제한의 목적은 설정한 만큼의 유효전력의 DER<br>그룹 단위로 발전 또는 소비하도록 제한하기 위한 것임</dd>
+												</dl>
+												<a href="sub01_0205_07.html" class="btn_more">상세설명 영상 보기</a>
+											</div>
+											<div id="tab10">
+												<dl>
+													<dt>DER 그룹 증감발률 한도 제어</dt>
+													<dd>DER 그룹 유효 전력 및 무효 전력 레벨이 증가 및 감소할 수 있는 비율에 대한 한도를 설정할 수 있도록 함</dd>
+													<dd>그룹 증감발률 한도 제어의 목적은 DER 그룹 레벨에서 최대 증감발률을 관리하는 것임</dd>
+												</dl>
+											</div>
+											<div id="tab11">
+												<dl>
+													<dt>DER 그룹 상(Phase) 균형 제한</dt>
+													<dd>DER 그룹 유효 전력 및 무효 전력의 상간 불균형에 대한 한도를 설정할 수 있도록 함</dd>
+													<dd>그룹 상(Phase) 균형 제한의 목적은 DER 그룹 관리 개체가 운전시 벗어나면 안되는 상간 균형 제한을 설정하는 것임</dd>
+												</dl>
+											</div>
+											<div id="tab12">
+												<dl>
+													<dt>DER 그룹 유효 전력 급전</dt>
+													<dd>DER 그룹으로 또는 DER 그룹에서 유효 전력을 급전하거나, 급전을<br>요청할 수 있도록 함</dd>
+													<dd>그룹 유효 전력 급전의 목적은 DER 그룹의 유효 전력을 요청/급전하는 것임</dd>
+												</dl>
+											</div>
+											<div id="tab13">
+												<dl>
+													<dt>DER 그룹 유효 전력 급전</dt>
+													<dd>DER 그룹으로 또는 DER 그룹에서 무효 전력을 급전하거나, 급전을<br>요청할 수 있도록 함</dd>
+													<dd>그룹 유효 전력 급전의 목적은 DER 그룹의 무효 전력을 요청/급전하는 것임</dd>
+												</dl>
+											</div>
+											<div id="tab14">
+												<dl>
+													<dt>DER 그룹 특성 곡선 설정</dt>
+													<dd>소프트웨어 개체가 DER의 논리적 그룹을 정의하고 다른 응용 프로그램 또는<br>비즈니스와 그룹에 대한 정의를 교환할 수 있도록 함</dd>
+													<dd>그룹 특성 곡선 설정 기능의 목적은 DER 그룹을 위한 곡선 유형<br>()Volt-Var(Watt 우선), Volt-Var(Var 우선), Freq-Watt, Volt-Watt,<br>PF-Watt)을 설정하고 곡선 기능을 그룹 멤버에 적용하는 데 사용<br>하는 운전 모드(모드1~모드5)를 설정함</dd>
+												</dl>
+												<table class="tbl_explain">
+													<colgroup>
+														<col style="width:25%">
+														<col>
+													</colgroup>
+													<thead>
+														<tr>
+															<th>DER 그룹 곡선<br>기능 모드 번호</th>
+															<th>설명</th>
+														</tr>
+													</thead>
+													<tbody>
+														<tr>
+															<td>1</td>
+															<td>Local Reference<br>지역 기준</td>
+														</tr>
+														<tr>
+															<td>2</td>
+															<td>Single Point Reference - Even Distribution<br>단일 기준점 - 균등 분산</td>
+														</tr>
+														<tr>
+															<td>3</td>
+															<td>Single Point Reference - Unspecified Distribution<br>단일 기준점 - 미지정 분산</td>
+														</tr>
+														<tr>
+															<td>4</td>
+															<td>Average Reference - Even Distribution<br>평균 기준 - 균등 분산</td>
+														</tr>
+														<tr>
+															<td>5</td>
+															<td>Average Reference - Unspecified Distribution<br>평균 기준 - 미지정 분산</td>
+														</tr>
+													</tbody>
+												</table>
+											</div>
+											<div id="tab15">
+												<dl>
+													<dt>DER 그룹 조정</dt>
+													<dd>DER 그룹에서 시스템 운영자가 조정 서비스를 제공할 수 있도록 함</dd>
+													<dd>그룹 조정 기능의 주요 목적은 DER 그룹의 주파수 조정을 위한 것임</dd>
+												</dl>
+											</div>
+											<div id="tab16">
+												<dl>
+													<dt>DER 그룹 가격 제공</dt>
+													<dd>DER 그룹에 (DERMS 또는 DER 관리 사업자를 통해) 에너지 가격 신호를 제공할 수 있도록 함</dd>
+													<dd>그룹 가격 제공의 주요 목적은 비용 기반의 에너지 서비스 관리 및 입찰을 위한 것임</dd>
+												</dl>
+											</div>
+											<div id="tab17">
+												<dl>
+													<dt>DER 그룹 전압 조정 설정</dt>
+													<dd>DER 그룹의 목표 전압 설정을 조정할 수 있도록 함</dd>
+													<dd>그룹 전압 조정 설정의 주요 목적은 전력계통의 전압을 목표하는 수준으로 조정하기 위한 DER 그룹의 전압 지원을 위한 것임</dd>
+												</dl>
+											</div>
+											<div id="tab18">
+												<dl>
+													<dt>DER 그룹 연결/차단</dt>
+													<dd>DER 그룹을 원격으로 계통에 연결 혹은 계통에서 차단할 수 있도록 함</dd>
+													<dd>그룹 연결/차단 제어의 주요 목적은 안정적 계통운영을 위한 DER 그룹의 계통 연결 혹은 차단을 위한 것임</dd>
+												</dl>
+												<a href="sub01_0205_06.html" class="btn_more">상세설명 영상 보기</a>
+											</div>
+										</td>
+									</tr>
+									<tr>
+										<td>2</td>
+										<td class="tit_tab"><a href="#tab02">DER 그룹 멤버 조회</a></td>
+									</tr>
+									<tr>
+										<td>3</td>
+										<td class="tit_tab"><a href="#tab03">DER 그룹 삭제</a></td>
+									</tr>
+									<tr>
+										<td>4</td>
+										<td class="tit_tab"><a href="#tab04">DER 그룹 유지관리</a></td>
+									</tr>
+									<tr>
+										<th scope="row" rowspan="4">DER 그룹용량 및 모니터링 기능</th>
+										<td>5</td>
+										<td class="tit_tab"><a href="#tab05">DER 그룹 상태 모니터링</a></td>
+									</tr>
+									<tr>
+										<td>6</td>
+										<td class="tit_tab"><a href="#tab06">DER 그룹 서비스 및 기능 검색</a></td>
+									</tr>
+									<tr>
+										<td>7</td>
+										<td class="tit_tab"><a href="#tab07">DER 그룹 출력 예측</a></td>
+									</tr>
+									<tr>
+										<td>8</td>
+										<td class="tit_tab"><a href="#tab08">DER 그룹 과거 계량기 데이터 교환</a></td>
+									</tr>
+									<tr>
+										<th scope="row" rowspan="3">DER 그룹 제한 및 운전 경계 기능</th>
+										<td>9</td>
+										<td class="tit_tab"><a href="#tab09">DER 그룹 최대 유효 전력 제한</a></td>
+									</tr>
+									<tr>
+										<td>10</td>
+										<td class="tit_tab"><a href="#tab10">DER 그룹 증감발률 한도 제어</a></td>
+									</tr>
+									<tr>
+										<td>11</td>
+										<td class="tit_tab"><a href="#tab11">DER 그룹 상(Phase) 균형 제한</a></td>
+									</tr>
+									<tr>
+										<th scope="row" rowspan="7">DER 그룹 제어 기능</th>
+										<td>12</td>
+										<td class="tit_tab"><a href="#tab12">DER 그룹 유효 전력 급전</a></td>
+									</tr>
+									<tr>
+										<td>13</td>
+										<td class="tit_tab"><a href="#tab13">DER 그룹 무효 전력 급전</a></td>
+									</tr>
+									<tr>
+										<td>14</td>
+										<td class="tit_tab"><a href="#tab14">DER 그룹 특성 곡선 설정</a></td>
+									</tr>
+									<tr>
+										<td>15</td>
+										<td class="tit_tab"><a href="#tab15">DER 그룹 조정</a></td>
+									</tr>
+									<tr>
+										<td>16</td>
+										<td class="tit_tab"><a href="#tab16">DER 그룹 가격 제공</a></td>
+									</tr>
+									<tr>
+										<td>17</td>
+										<td class="tit_tab"><a href="#tab17">DER 그룹 전압 조정 설정</a></td>
+									</tr>
+									<tr>
+										<td>18</td>
+										<td class="tit_tab"><a href="#tab18">DER 그룹 연결/차단</a></td>
+									</tr>
+								</tbody>
+							</table>
+						</dd>
+					</dl>
+				</section>
+		    </div>
+		</div>
+		<!--// contents e --> 
+	    <!-- footer 시작 -->
+	    <footer id="footer">
+	    	<div class="footer_cont">
+	    		<span class="address">서울시 송파구 양재대로 71길 20-18(방이동 188-8번지)</span>
+	        	<span class="copyright">Copyright(c) 2021 SmartGrid. All Rights Reserved</span>	
+	    	</div>
+	    </footer>
+	    <!-- //footer -->
+	</div>
+</body>
+</html>

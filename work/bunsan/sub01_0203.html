@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<title>분산전원 통합 정보 서비스센터</title>
+	<link rel="stylesheet" type="text/css" href="css/sub.css">
+	<link rel="stylesheet" type="text/css" href="css/slick.css">
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript" src="js/slick.js"></script>
+	<script type="text/javascript">
+		$(function(){
+		});
+	</script>
+</head>
+<body>
+	<div id="skipnavi">
+	    <a href="#container">▶본문 바로가기</a>
+	    <a href="#gnb_area">▶주메뉴 바로가기</a>
+	</div>
+	<div id="wrapper">
+	    <!-- header 시작 -->
+	    <header id="header">
+	    	<div class="gnb_bg js-gnb-bg"></div>
+	        <div class="header_box">
+	        	<h1 class="logo"><a href="index.html"><img src="images/common/logo.png" alt="로고"></a></h1>
+	        	<span class="util_right"><a href="#">스마트그리드 데이터 센터</a></span>
+	        	<!-- gnb -->
+	        	 <div id="gnb_area">
+		            <nav id="gnb">
+		                <ul class="gnb js-gnb clear">
+		                    <li>
+		                        <a href="#" class="gnb_m1">소개</a>
+		                        <div class="menuWrap js-menuWrap">
+		                            <ul>
+		                                <li><a href="sub01_01.html">DMS</a></li>
+		                                <li><a href="sub01_0201.html">DERMS</a></li>
+		                                <li><a href="sub01_03.html">DER</a></li>
+		                            </ul>
+		                        </div>
+		                    </li>
+		                    <li>
+		                        <a href="#" class="gnb_m2">시험인증</a>
+		                        <div class="menuWrap js-menuWrap">
+		                            <ul>
+		                                <li><a href="#">통신인터페이스</a></li>
+		                                <li><a href="#">시험인증방법</a></li>
+		                            </ul>
+		                        </div>
+		                    </li>
+		                    <li>
+		                        <a href="#" class="gnb_m3">정보마당</a>
+		                        <div class="menuWrap js-menuWrap">
+		                            <ul>
+		                                <li><a href="#">표준 및 보고서</a></li>
+		                                <li><a href="#">정책</a></li>
+		                                <li><a href="#">기술 및 제품</a></li>
+		                            </ul>
+		                        </div>
+		                    </li>
+		                </ul>
+		            </nav>
+		        </div>
+	        	<!--// gnb -->
+	        </div>
+	    </header>
+	    <!-- //header -->
+	    <!-- container 시작 -->
+	    <div id="container">
+	        <div class="sub_visual">
+	 			<strong class="sub_visual_tit">DERMS</strong>
+	 			<div class="location_area">
+	 				<span class="i_home"></span>
+	 				<span>소개</span>
+	 				<span>DERMS</span>
+	 			</div>
+	        </div>
+	        <div id="content">
+	        	<section class="left_cont">
+	        		<!-- 소개 lnb -->
+		 			<div class="lnb js-lnb">
+					    <h3 class="lnb_title">소개</h3>
+			    		<ul>
+					        <li><a href="sub01_01.html">DMS</a></li>
+					        <li class="has_sub depth1 open active"><a href="#">DERMS</a>
+					            <ul>
+					                <li><a href="sub01_0201.html">개요</a></li>
+					                <li><a href="sub01_0202.html">구분</a></li>
+					                <li class="on"><a href="sub01_0203.html">특성</a></li>
+					                <li><a href="sub01_0204.html">구조</a></li>
+					                <li><a href="sub01_0205.html">기능</a></li>
+					            </ul>
+					        </li>
+					        <li ><a href="sub01_03.html">DER</a></li>
+					    </ul>
+					</div>
+	        	</section>
+		        <!--// aside -->     
+				<!-- contents -->	
+				<section class="right_cont derms03">
+					<dl class="sub_contwrap">
+						<dt>DERMS 특성</dt>
+						<dd>집계(Aggregation)
+							<ul class="depth2_ul">
+								<li>DERMS는 변전소, 하부 피더, 변압기 등 전력망 구성요소와 일치하는 수준에서 제어 가능한 자원으로써 분산자원의 용량(capability)을 표현</li>
+							</ul>
+						</dd>
+						<dd>단순화(Simplication)
+							<ul class="depth2_ul">
+								<li>DERMS 단순화된 중개 서비스를 제공함</li>
+								<li>이때 서비스는 DER 중심이 아닌 전력 시스템을 중심으로 하며, DERMS가 제공하는 단순화된 서비스는 여러 업스트림 호출 주체(upstream<br>calling entity)의 기능도 지원해야 함</li>
+							</ul>
+						</dd>
+						<dd>최적화(Optimization)
+							<ul class="depth2_ul">
+								<li>DERMS는 최소 비용과 최대 전력 품질로 원하는 결과를 얻기 위해 다양한 그룹 내에서 분산자원의 사용을 최적해야 함</li>
+								<li>또한 그룹 내에서 이종(異種)의 다양한 유형의 분산자원을 관리하는 경우 DERMS는 특정 결과를 얻기 위해 개별 DER을 가장 잘 활용하는 방법<br>을 알아야 하며, 이것은 그룹의 모든 개별 분산자원에 요청을 균등하게 분산시키거나, 요청을 가장 잘 처리하는 방법을 결정하는 알고리즘을<br>보유하는 것을 포함할 수 있음</li>
+							</ul>
+						</dd>
+						<dd>변환(Translation)
+							<ul class="depth2_ul">
+								<li>개별 분산자원은 유형과 규모에 따라 다른 언어를 사용할 수 있음</li>
+								<li>이에 DERMS는 이러한 다양한 언어를 다루어야 하며, 업스트림 호출 주체(upstream calling entity)에 통일성있게 표시하여 정보는 전달해야 함</li>
+							</ul>
+						</dd>
+						<dd class="no_bul"><img src="images/sub/derms03.jpg" alt="DERMS 특성"></dd>
+					</dl>
+				</section>
+		    </div>
+		</div>
+		<!--// contents e --> 
+	    <!-- footer 시작 -->
+	    <footer id="footer">
+	    	<div class="footer_cont">
+	    		<span class="address">서울시 송파구 양재대로 71길 20-18(방이동 188-8번지)</span>
+	        	<span class="copyright">Copyright(c) 2021 SmartGrid. All Rights Reserved</span>	
+	    	</div>
+	    </footer>
+	    <!-- //footer -->
+	</div>
+</body>
+</html>

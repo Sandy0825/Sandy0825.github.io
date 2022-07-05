@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8">
+	<meta id="mobileMeta" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<meta name="mobile-web-app-capable" content="yes">
+	<meta name="format-detection" content="telephone=no">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<title>국립한글박물관</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/slick.css">
+	<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="js/common.js"></script>
+	<script type="text/javascript" src="js/slick.js"></script>
+	<script type="text/javascript" src="js/amplitude.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$(".js-tab-content").hide();
+		    $(".js-tab-content:first").show();
+		    $(".js-tab a").click(function(event) {
+		        event.preventDefault(); //주소에 #숨김
+		        $(this).parent().addClass("current");
+		        $(this).parent().siblings().removeClass("current");
+		        var tab = $(this).attr("href");
+		        $(".js-tab-content").not(tab).css("display", "none");
+		        $(tab).fadeIn();
+		    });
+		});
+	</script>
+</head>
+<body>
+	<div id="wrapper">
+	    <!-- header 시작 -->
+	    <header id="sub_header">
+	  		<h2 class="sub_tit">상설전시</h2>
+	  		<span class="home"><a href="#">home</a></span>
+	    </header>
+	    <!-- //header -->
+	    <!-- container 시작 -->
+	    <div id="sub_container">
+	    	<div class="permanent_wrap">
+	    		<!-- 탭메뉴 -->
+				<ul class="js-tab tab_menu">
+				    <li class="current"><a href="#tab01">목록</a></li>
+				    <li><a href="#tab02">번호</a></li>
+				</ul>
+				<!-- 탭 1 -->
+				<div id="tab01" class="tab_content js-tab-content">
+				    <p class="sel_txt">청취를 원하시는 제목을 선택해 주세요.</p>
+				    <ul class="permanent_list">
+				    	<li><a href="#">
+				    		<span class="img_poster"><img src="images/sub/poster1.jpg"></span>
+				    		<span class="tit">1. 한자로 우리말 읽고 쓰기</span>
+				    	</a></li>
+				    	<li><a href="#">
+				    		<span class="img_poster"><img src="images/sub/poster1.jpg"></span>
+				    		<span class="tit">2. 세종 창제 정신</span>
+				    	</a></li>
+				    	<li><a href="#">
+				    		<span class="img_poster"><img src="images/sub/poster1.jpg"></span>
+				    		<span class="tit">3. 백성을 가르치는 바른소리 『훈민정음』</span>
+				    	</a></li>
+				    	<li><a href="#">
+				    		<span class="img_poster"><img src="images/sub/poster1.jpg"></span>
+				    		<span class="tit">4. 유교의 이념을 쉽게 풀어낸 글</span>
+				    	</a></li>
+				    </ul>
+				</div>
+				<!-- 탭 2 -->
+				<div id="tab02" class="tab_content js-tab-content">
+				    <p class="dial_txt">유물에 표시되어 있는 <strong>숫자</strong>를 입력하신 후<br><strong>오디오 버튼</strong>을 선택해 주세요.</p>
+				    <div class="dial_wrap">
+				    	<span class="dial_num">5513</span>
+				    	<ul class="dial_list">
+				    		<li class="num">1</li>
+				    		<li class="num">2</li>
+				    		<li class="num">3</li>
+				    		<li class="num">4</li>
+				    		<li class="num">5</li>
+				    		<li class="num">6</li>
+				    		<li class="num">7</li>
+				    		<li class="num">8</li>
+				    		<li class="num">9</li>
+				    		<li class="cancel"></li>
+				    		<li class="num">0</li>
+				    		<li class="audio"></li>
+				    	</ul>
+				    </div>
+				</div>
+	    	</div>
+	    </div>
+	    <!-- //container -->
+	</div>
+					
+</body>
+</html>
