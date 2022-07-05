@@ -1,11 +1,8 @@
 $(function(){
     response();
-
     //**메인 시작**
     //메인 타이틀효과
-    $(window).load(function(){
-        $('.main_tit').addClass('active');
-    });
+    $('.main_tit').addClass('active');
     //메인 버튼효과
     $('.btn_in').hover(function(){
         $(this).css('animation','none');
@@ -15,7 +12,7 @@ $(function(){
     //클릭시 컨텐츠show
     $('.btn_in').on('click',function(){
         $('#wrapper').removeClass('black');
-        setTimeout(function(){AOS.init();workSlide2();},500);
+        setTimeout(function(){workSlide();},500);
         $('#content').addClass('on');
     });
 
@@ -86,112 +83,23 @@ function mHeight(){
 function workSlide(){
     gsap.registerPlugin(ScrollTrigger);
     ScrollTrigger.matchMedia({
-        "(min-width:1025px) and (max-width:1399px)":function(){
-
-          let tl = gsap.timeline({
-            scrollTrigger:{
-              trigger:'#work',
-              start:'top center',
-              scrub:true,
-              //markers:true,
-              end:'+=300'
-            }
-          }),
-          slide = [...document.querySelectorAll('.work_list > li')]
-          // tl.to('#work .cont_tit',{
-          //   scale:0.8,
-          //   duration:1,
-          //   ease:'slow'
-          // })
-
-          tl.to(slide,{
-            xPercent: -100 * (slide.length),
-            scrollTrigger: {
-                trigger: ".work_list",
-                start: "center center",
-                pin: true,
-                // horizontal: true,
-                // pinSpacing:false,
-                markers: true,
-                scrub: 1,
-                //snap: 1 / (slide.length - 1),
-                // base vertical scrolling on how wide the container is so it feels more natural.
-                // end: () => `+=${smallFactsContainer.offsetWidth}`
-                end: () => `+=11200`
-            }
-          });
-        },
-        "(min-width:1400px)":function(){
-            let tl = gsap.timeline({
-            scrollTrigger:{
-              trigger:'#work',
-              start:'top center',
-              scrub:true,
-              //markers:true,
-              end:'+=300'
-            }
-          }),
-          slide = [...document.querySelectorAll('.work_list > li')]
-          // tl.to('#work .cont_tit',{
-          //   scale:0.8,
-          //   duration:1,
-          //   ease:'slow'
-          // })
-
-          tl.to(slide,{
-            xPercent: -100 * (slide.length),
-            scrollTrigger: {
-                trigger: ".work_list",
-                start: "center center",
-                pin: true,
-                // horizontal: true,
-                // pinSpacing:false,
-                markers: true,
-                scrub: 1,
-                //snap: 1 / (slide.length - 1),
-                // base vertical scrolling on how wide the container is so it feels more natural.
-                // end: () => `+=${smallFactsContainer.offsetWidth}`
-                end: () => `+=18200`
-            }
-          });
-        }
-    });
-   
-}
-function workSlide2(){
-    gsap.registerPlugin(ScrollTrigger);
-    ScrollTrigger.matchMedia({
         "(min-width:1025px)":function(){
-
           let tl = gsap.timeline({
             scrollTrigger:{
               trigger:'#work',
               start:'top center',
               scrub:true,
-              //markers:true,
               end:'+=300'
             }
           }),
           slide = [...document.querySelectorAll('.work_list > li')]
-          // tl.to('#work .cont_tit',{
-          //   scale:0.8,
-          //   duration:1,
-          //   ease:'slow'
-          // })
-
           tl.to(slide,{
             xPercent: -100 * (slide.length),
             scrollTrigger: {
                 trigger: ".work_list",
                 start: "center center",
                 pin: true,
-                // horizontal: true,
-                // pinSpacing:false,
-                //markers: true,
                 scrub: 1,
-                //snap: 1 / (slide.length - 1),
-                // base vertical scrolling on how wide the container is so it feels more natural.
-                // end: () => `+=${smallFactsContainer.offsetWidth}`
                 end: () => `+=11200`
             }
           });
@@ -206,3 +114,14 @@ function mobileView(href){
     window.open(href,'_blank',options);
 }
 
+//popup
+function view_show(num) {
+  var left = (( $(window).width() - $("#display_view"+num).width()) / 2 );
+  var top = (( $(window).height() - $("#display_view"+num).height()) / 2 );
+  $("#display_view"+num).css({'position':'fixed','left':left,'top':top, display:'block'});
+  return false;
+}
+function view_hide(num) {
+  $("#display_view"+num).css({'display':'none'});
+  return false;
+}
