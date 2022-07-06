@@ -63,7 +63,7 @@
     #header .logo {position: absolute;top: 3rem;left: 4rem;width:4.5rem;height: 25rem;z-index: 12;}
     #header .logo a {display:inline-block;width: 100%;height: 100%;background: url(../images/common/logo_b.png) no-repeat;text-indent: -9999rem;}
     
-    .gnb_wrap {position:absolute;left: 3.5rem;bottom: 2rem;width: 5.6rem;height: 5.6rem;border: 0.1rem solid #000;transition: 0.3s ease;overflow: hidden;border-radius: 2.8rem;}
+    .gnb_wrap {position:absolute;left: 3.5rem;bottom: 2rem;width: 5.6rem;height: 5.6rem;border: 0.1rem solid #000;background:#fff;transition: 0.3s ease;overflow: hidden;border-radius: 2.8rem;}
     .btn_gnb {position: absolute;bottom: 0;padding: 1.8rem 1.2rem;width: 5.6rem;height: 5.6rem;margin: 0 auto;cursor: pointer;border-radius: 50%;transition:0.4s ease;z-index: 12;}
     .btn_gnb:hover {transform:rotate(360deg);}
     .btn_gnb > div {width: 3rem;height: 0.3rem;margin-bottom:0.6rem;background: #000;transition:0.2s ease;}
@@ -162,14 +162,14 @@
     /*contact*/
     section#contact {padding: 15rem 0;background: #000;color: #fff;}
     .contact_txt {margin: 3rem 0;font-size: 2rem;}
-    .contact_way {}
-    .contact_way li {display: inline-block;}
-    .contact_way li.mail {margin-right:3rem;}
+    .contact_way li {display: inline-block;margin-right:3rem;}
+    .contact_way li:last-child {margin-right:0;}
     .contact_way li a {position: relative;display: inline-block;padding-left: 3.2rem;font-size: 2.5rem;line-height: 1;z-index: 1;}
     .contact_way li a::before {content:'';position:absolute;bottom: 0;width: 0;height: 1rem;background: #ff0052;z-index: -1;transition: 0.3s ease;}
     .contact_way li:hover a::before {width: calc(100% - 3rem);}
     .contact_way li.mail a {background: url(../images/main/i_email.svg) no-repeat 0 100%;background-size: auto 100%;}
     .contact_way li.call a {background: url(../images/main/i_call.svg) no-repeat 0 100%;background-size: auto 100%;}
+    .contact_way li.career a {background: url(../images/main/i_career.svg) no-repeat 0 100%;background-size: auto 100%;}
 
     
     /*1025부터 1400까지*/
