@@ -34,6 +34,7 @@ function response(){
     }else{
     //mobile만        
         mMenu(); 
+        mHeight();
     }    
      
 }
