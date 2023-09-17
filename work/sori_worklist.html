@@ -1,0 +1,697 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>경력기술서</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-interactiveBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="29716e25-ac07-4937-a476-a6deec819367" class="page sans"><header><div class="page-header-icon undefined"><span class="icon">📄</span></div><h1 class="page-title">경력기술서</h1><p class="page-description"></p></header><div class="page-body"><p id="2c9a745c-544f-488c-bc98-9a7593fc19bf" class="">
+</p><p id="2d4d0b4f-3610-4d0c-8648-550ffc03f12a" class=""><mark class="highlight-blue"><strong>#퍼블리셔 #UI/UX #마크업개발자</strong></mark></p><p id="2e3ad503-e791-46cd-a0b3-dfa67cc1afb5" class="">
+</p><ul id="d669869a-cfc5-4092-b4fe-8d9f655df1b7" class="toggle"><li><details open=""><summary><strong>(주) 오픈노트</strong> 퍼블리셔 사원-대리 근무 (2018.10-2022.06)</summary><ul id="6621c873-f895-4b78-a123-83889df9f6f9" class="bulleted-list"><li style="list-style-type:disc">근무 : 2018.10 - 2022.06 (약 3년 9개월)</li></ul><ul id="adb445f5-50fd-4323-b99c-1ff7bcaea4f1" class="bulleted-list"><li style="list-style-type:disc">프로젝트<ol type="1" id="cbff537c-5336-4d21-92cd-7db332c61d83" class="numbered-list" start="1"><li><strong>한전 에너지마켓플레이스</strong> (2022.03-2022.06)<ul id="50d04be7-8d39-4f22-bae1-24d7a84673d6" class="bulleted-list"><li style="list-style-type:disc"><strong>KEPCO 에너지수비대 &amp; KEPCO 탄소지우개 </strong><ul id="d70e444b-f3bd-4e5b-aa00-1d500b5e12e1" class="bulleted-list"><li style="list-style-type:circle"><span style="border-bottom:0.05em solid">퍼블리싱 참여도 : 100%</span></li></ul><ul id="1f5fde5b-b650-42de-99c7-c8ef0f898d8b" class="bulleted-list"><li style="list-style-type:circle">PC, 모바일 사용을 고려한 반응형 퍼블리싱으로 진행</li></ul></li></ul><ul id="725e1617-ae14-4b1c-ac43-fb8fc81de171" class="bulleted-list"><li style="list-style-type:disc"><strong>에너지캐시백</strong><ul id="09b9c701-8a3e-4a81-8737-cf79dfc56435" class="bulleted-list"><li style="list-style-type:circle"><span style="border-bottom:0.05em solid">퍼블리싱 참여도 : 100%</span></li></ul><ul id="38c488cd-55b0-421c-b54e-42e1ad22e225" class="bulleted-list"><li style="list-style-type:circle">에너지마켓플레이스 추가된 메뉴로 이용안내, 서비스가입, 조회페이지 등 제작</li></ul><ul id="0dead69d-edda-474f-8bad-eebd9c63e84a" class="bulleted-list"><li style="list-style-type:circle">기존 에너지마켓플레이스 표준에 어긋나지 않게 고려하여 진행</li></ul></li></ul><p id="1b47aa16-ffb2-4f54-88cf-baa4d5e5d912" class="">
+</p></li></ol><ol type="1" id="20989760-16f7-4739-8f98-5580e5c5c525" class="numbered-list" start="2"><li><strong>국립한글박물관</strong> (2022.02 - 2022.03)<ul id="a8d31fda-75e0-4bbc-996a-6c0d839267e8" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">퍼블리싱 참여도 : 100%</span></li></ul><ul id="7fba8e65-f0d9-404d-99b4-c32f61db57e0" class="bulleted-list"><li style="list-style-type:disc">앱전용페이지로 하이브리드 웹앱을 고려하여 제작</li></ul><p id="36c14d6f-870c-4caa-9541-db09fba2debd" class="">
+</p></li></ol><ol type="1" id="02e0c4a1-612e-4e63-b5ac-d69cba2d12e7" class="numbered-list" start="3"><li><strong>예방점검 통합관리를 통한 ICT 위탁관리 시스템</strong> (2021.12 - 2022.03)<ul id="eb21235b-5b11-4139-b575-97e886c06546" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">퍼블리싱 참여도 : 100%</span></li></ul><ul id="e138685e-cf47-4f09-8802-57fe547e60f8" class="bulleted-list"><li style="list-style-type:disc">하이차트를 이용해 통계페이지 퍼블리싱 진행</li></ul><ul id="2036000b-671b-4087-aa1f-7a055e8be567" class="bulleted-list"><li style="list-style-type:disc">유지보수를 위한 표준가이드 제작</li></ul><p id="ac721b62-8b25-497a-9518-c42cedae7e35" class="">
+</p></li></ol><ol type="1" id="7f178eeb-109c-4240-af77-4894ad5afbdc" class="numbered-list" start="4"><li><strong>전파관리플랫폼 연계처리 시스템</strong> 구조개편 (2021.11 - 2021.12)<ul id="8384815b-f33c-4e72-be23-955bdd4fb6ee" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">퍼블리싱 참여도 : 80%</span></li></ul><ul id="0e88f4b4-8c94-47d7-b006-6ce8007c7d18" class="bulleted-list"><li style="list-style-type:disc">일정관리 기능코딩 및 하이차트를 이용한 통계페이지 퍼블리싱</li></ul><ul id="14b023b4-faf4-4abd-8896-f152d0c4ba0a" class="bulleted-list"><li style="list-style-type:disc">관리자에 의한 데이터 변화를 고려해 사이트 제작</li></ul><ul id="b57883cd-b2bd-4992-9869-b637686f03f3" class="bulleted-list"><li style="list-style-type:disc">기존 사이트를 활용해 표준에 맞는 퍼블리싱 진행</li></ul><p id="7df8f647-663f-4547-adac-ab017bdcc26e" class="">
+</p></li></ol><ol type="1" id="9696fad8-2808-4a19-8783-138693b162ad" class="numbered-list" start="5"><li><strong>한전KDN 분산전원관리시스템(DERMS) </strong>온라인서비스 가이드 구축 (2021.10 - 2021.11)<ul id="fc1f9973-b742-4527-aeb5-97b015b65acf" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">퍼블리싱 참여도 : 100%</span></li></ul><ul id="7da40891-7d26-4e12-898e-468feae45c53" class="bulleted-list"><li style="list-style-type:disc">PC 기준으로 제작되어 이미지맵과 슬라이드를 이용한 정보형페이지 제작</li></ul><p id="3a11df25-d99b-4356-bf52-ad5bbc4b774e" class="">
+</p></li></ol><ol type="1" id="0c8effd5-801c-4f21-87b6-7444e69ed7f1" class="numbered-list" start="6"><li><strong>전남콘텐츠기업지원센터 홈페이지 리뉴얼</strong> (2021.10 - 2021.10)<ul id="5fbf5e04-9a24-4dc6-bc32-ddce78780d86" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">퍼블리싱 참여도 : 90%</span></li></ul><ul id="d84930f6-40b3-48b4-83fe-9c175df1fe1f" class="bulleted-list"><li style="list-style-type:disc">반응형 페이지로 고려해 퍼블리싱 진행</li></ul><ul id="1d5fa98a-c619-4cb7-88ba-a5159d96ad69" class="bulleted-list"><li style="list-style-type:disc">캘린더 기능을 이용한 신청 페이지 등 제작</li></ul><p id="d03d86ca-d281-467b-8e60-f5bd2d6c9ab7" class="">
+</p></li></ol><ol type="1" id="85e12ae0-3d27-4d9b-a7db-16b26d176c16" class="numbered-list" start="7"><li><strong>한국전력KDN IT 업무지원 및 경영총무시스템 유지운영</strong> (2020.01 - 2021.09)<ul id="480c1a00-b649-457a-b247-16dc8c16b84f" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">퍼블리싱 참여도 : 100%</span></li></ul><ul id="d2da53aa-6108-4a06-8df0-981d8be9cd3c" class="bulleted-list"><li style="list-style-type:disc">퍼블리싱 담당으로 전지역 본부의 사이트 유지보수 및 내부 추가사이트 제작</li></ul><p id="9dcaba98-5fc3-4f24-ab0f-8ccff5e772d6" class="">
+</p></li></ol><ol type="1" id="fb71f64e-90f2-4ee9-a511-1c37382dd118" class="numbered-list" start="8"><li><strong>주파수 공동사용지원센터 홈페이지</strong> (2019.11 - 2019.12)<ul id="3963cfe8-6410-462e-980f-9c9e6f52c170" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">퍼블리싱 참여도 : 90%</span></li></ul><ul id="1c90a0e1-3723-488b-af53-a688ba53303a" class="bulleted-list"><li style="list-style-type:disc">실측데이터, 지형도 등은 네이버지도 페이지와 비슷한 레이아웃으로 진행</li></ul><p id="87f7386e-d7f9-444a-9c16-a8faac26e6b0" class="">
+</p></li></ol><ol type="1" id="f7b3b86f-0cb1-4d08-b781-456677fa4242" class="numbered-list" start="9"><li><strong>한전KDN VOC&amp;CS 시스템 홈페이지</strong> (2019.10 - 2019.12)<ul id="981224fe-19dd-4c3f-b643-58e0ff3595f1" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">퍼블리싱 참여도 : 100%</span></li></ul><ul id="d1e1d907-520b-4bf8-b4ff-ea543dddc267" class="bulleted-list"><li style="list-style-type:disc">하이차트를 이용한 통계페이지, 목록,상세,안내 페이지 등 퍼블리싱 진행</li></ul><ul id="1b868104-7b90-4860-9947-8323ede733d9" class="bulleted-list"><li style="list-style-type:disc">스크롤 없는 페이지로 제작되어 내부 테이블 스크롤 등 이용</li></ul><p id="322a0416-39e2-4f7e-bbef-b4e56ed7db9d" class="">
+</p></li></ol><ol type="1" id="996dda5d-5d86-4a24-8fc3-7f04a566cb43" class="numbered-list" start="10"><li><strong>한전 FMS 사외홈페이지</strong> (2019.08 - 2019.10)<ul id="bdd1bde6-4e1b-4d70-b802-ccd83b96a9f7" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">퍼블리싱 참여도 : 100%</span></li></ul><ul id="64669bdb-41a4-4598-bdd0-0412062b2463" class="bulleted-list"><li style="list-style-type:disc">반응형페이지로 pc, 테블릿, 모바일을 고려하여 퍼블리싱 진행</li></ul><ul id="ebb97eaa-de30-4ce4-85f3-a9da26521b5c" class="bulleted-list"><li style="list-style-type:disc">직원급여명세서 페이지는 PDF와 인쇄페이지를 동시 고려하여 퍼브리싱</li></ul><p id="816b3870-63c3-436d-9aed-e7ba41ed838d" class="">
+</p></li></ol><ol type="1" id="d5e2b7d8-acc6-4a3f-b440-507fc7530bca" class="numbered-list" start="11"><li><strong>한국전력거래소KPX 계통운영현황 모니터링 시스템</strong>페이지 (2019.07 - 2019.07)<ul id="599912ac-9de8-4587-b2b1-65c12ef16446" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">퍼블리싱 참여도 : 100%</span></li></ul><ul id="911669f6-76a5-48a1-838b-f4a7a7d31be2" class="bulleted-list"><li style="list-style-type:disc">대시보드용 페이지로 제작되어 PC 풀화면 기준으로 퍼블리싱 진행</li></ul><ul id="8840b154-85c9-44f4-a1db-f7562002f81e" class="bulleted-list"><li style="list-style-type:disc">tree기능의 메뉴관리 페이지 및 리스트,상세, 조회 페이지 등 제작</li></ul><p id="ec70f054-77c2-4d8f-935e-556c5916c607" class="">
+</p></li></ol><ol type="1" id="fc256adb-3dde-4d62-b8d7-b6b3b17e03c0" class="numbered-list" start="12"><li><strong>한전 MCS 사외홈페이지</strong> (2019.05 - 2019.07)<ul id="85bf6914-8414-45e5-9766-9a40ee51e8ff" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">퍼블리싱 참여도 : 80%</span></li></ul><ul id="ea00bd6f-c005-4c08-bdc5-fa9c62cabf5d" class="bulleted-list"><li style="list-style-type:disc">반응형 페이지로 제작</li></ul><ul id="5ed1f729-5ffd-41f7-9f2d-12a8838a4111" class="bulleted-list"><li style="list-style-type:disc">안개, 별똥별 등의 시각화 애니메이션 사용, 메인페이지는 fullpage로 제작</li></ul><p id="6ab7db2b-dcae-40da-bf4d-a101f1338ead" class="">
+</p></li></ol><ol type="1" id="1211efae-3ec6-4512-b186-37dc68bc3228" class="numbered-list" start="13"><li><strong>한전KDN 송변전통합정보시스템</strong> 페이지 (2019.04 - 2019.06)<ul id="3a042807-f5d0-4741-aeaa-479f66a43b0c" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">퍼블리싱 참여도 : 100%</span></li></ul><ul id="84897df1-f0ea-4ecb-b264-c2fd05a2e14f" class="bulleted-list"><li style="list-style-type:disc">메뉴 드래그기능을 jquery의 draggable과 droppable을 사용하여 조건에 맞는 코드 생성 및 퍼블리싱 진행</li></ul><ul id="2c0c40b7-c955-4c6d-8465-9527323f3885" class="bulleted-list"><li style="list-style-type:disc">계산기, 일정, 메모 등의 기능코딩과 목록,상세 페이지 등 퍼블리싱 진행</li></ul><p id="c2d49115-96e0-4903-a4c0-79ba2abe5b81" class="">
+</p></li></ol><ol type="1" id="4742c350-eb0e-427b-ae00-9b34dfe1ba14" class="numbered-list" start="14"><li><strong>한전KDN AMI 종합관리시스템</strong> 페이지 (2018.10 - 2019.04)<ul id="2d89922c-e7f2-4692-9c6d-dc79a4bf36e2" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">퍼블리싱 참여도 : 80%</span></li></ul><ul id="15c3cd45-5c13-4533-90d9-ab469dfcd815" class="bulleted-list"><li style="list-style-type:disc">하이브리드 웹앱으로 진행</li></ul><ul id="f1e8d02b-1ce5-4775-afd3-71dd51c62230" class="bulleted-list"><li style="list-style-type:disc">이미지맵을 이용해 지역에 따른 JS코드생성</li></ul><ul id="73b7e47a-5473-4e63-8066-cb94bd8018e6" class="bulleted-list"><li style="list-style-type:disc">외부 사용자를 위한 테블릿용 페이지를 따로 추가 퍼블리싱 진행</li></ul><p id="4bab37d6-2a13-4022-9ef0-7b3627be3340" class="">
+</p></li></ol><ol type="1" id="bfd24a7e-5236-4433-aa64-d3a57577fa1a" class="numbered-list" start="15"><li><strong>한국농어촌공사 농업용공공관정 관리지원시스템</strong> (2018.10 - 2018.11)<ul id="814b6a5f-a2db-41d1-a109-da9efc5a381b" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">퍼블리싱 참여도 : 40%</span></li></ul><ul id="eb14232d-b88d-4b35-bb70-e42139c31ecd" class="bulleted-list"><li style="list-style-type:disc">반응형 페이지로 제작, 메인페이지 퍼블리싱(100%)에 참여</li></ul><p id="d77d6dcf-82aa-48ce-bfd2-acd50b709ffe" class="">
+</p></li></ol></li></ul></details></li></ul><hr id="656c77f5-f975-4dee-8491-2f705a2363b6"/><ul id="a9c5d237-b96f-41ab-afc0-2efc3ba725f1" class="toggle"><li><details open=""><summary><strong>컬리</strong> 프리랜서 퍼블리셔  (2022.08.- 현재)</summary><ul id="0793a62d-25c6-4681-82fb-bea1013df834" class="bulleted-list"><li style="list-style-type:disc">근무 : 2022.08.29 - 2023.09 (약 1년 )</li></ul><ul id="ee00df75-db40-475f-81ce-c90364f0896b" class="bulleted-list"><li style="list-style-type:disc">프로젝트<ul id="c633ed8f-9b38-4633-ba26-85c196ce7bad" class="bulleted-list"><li style="list-style-type:circle">컬리 이벤트페이지 관리 및 화면 개발 퍼블리싱<ul id="8bc84ed7-8229-49f3-8aca-d83c3bc28c06" class="bulleted-list"><li style="list-style-type:square">React환경 기반에서의 컴포넌트 생성 및 활용</li></ul><ul id="7ce7b35b-5941-4f19-9bea-8c6a5707829a" class="bulleted-list"><li style="list-style-type:square">API 호출해 데이터 활용</li></ul><ul id="20f673a0-6929-4625-becc-72bcbb6e2f79" class="bulleted-list"><li style="list-style-type:square">Github으로 협업</li></ul></li></ul></li></ul></details></li></ul><hr id="39311793-8bcd-45e2-aca1-2841dbc79a1b"/><ul id="4020694f-d12e-460b-bc85-38e5bc2afe18" class="toggle"><li><details open=""><summary>기타 프리랜서 퍼블리셔</summary><ol type="1" id="d1f8eaaf-4941-4149-8dd7-d15afb4cfd28" class="numbered-list" start="1"><li><strong>K-POP 한류문화재단</strong> (2022.04 - 2022.05)<ul id="cf50f537-b477-475a-be48-996e4ddc9a34" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">퍼블리싱 참여도 : 100%</span></li></ul><ul id="c128c97a-f209-4a18-9b1d-2771cfcd6c82" class="bulleted-list"><li style="list-style-type:disc">랜딩페이지로 제작되어 반응형을 고려하여 퍼블리싱 진행</li></ul><p id="9d61efaa-a36d-4a3d-8f94-ed381d919368" class="">
+</p></li></ol><ol type="1" id="2f01c360-3253-4d27-b7b8-e37520ffcf45" class="numbered-list" start="2"><li><strong>충북농촌융복합산업지원센터</strong> (2021.11 - 2022.01)<ul id="a640bb32-3815-49c2-8ee6-60c95d701515" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">퍼블리싱 참여도 : 100%</span></li></ul><ul id="5d83d005-871e-4223-bec5-ba7824dd97b8" class="bulleted-list"><li style="list-style-type:disc">그누보드로 제작된 홈페이지 리뉴얼로 새로운 메인페이지 제작과 서브페이지 수정</li></ul><p id="993c9bc2-0dc8-4e80-b61b-39c8cadf5454" class="">
+</p></li></ol><ol type="1" id="57d1f3f1-a0fc-4367-8df4-746a04212079" class="numbered-list" start="3"><li><strong>온라인법인설립시스템</strong> (2020.06 - 2020.09)<ul id="d14f60c4-322f-4480-ad8a-f4dfddcc6329" class="bulleted-list"><li style="list-style-type:disc"><span style="border-bottom:0.05em solid">퍼블리싱 참여도 : 100%</span></li></ul><ul id="2a0649be-d125-4164-ab54-fddd1eff9932" class="bulleted-list"><li style="list-style-type:disc">풀페이지로 메인페이지 퍼블리싱 진행 및 서브페이지 신청 폼 수정 및 유지보수</li></ul></li></ol><p id="4c61d1b3-f3c5-4eda-aa94-679e19bb5284" class="">
+</p></details></li></ul><hr id="b6e9df65-0d59-488f-9855-d6a81cc64780"/><p id="9d5d9295-d022-4d63-bb19-c18b6538d168" class="">📄  참고 포트폴리오 사이트 : <a href="https://sandy0825.github.io/">https://sandy0825.github.io/</a></p><p id="81b57fe8-64bf-42f2-8495-b4c4157707da" class="">
+</p></div></article></body></html>
