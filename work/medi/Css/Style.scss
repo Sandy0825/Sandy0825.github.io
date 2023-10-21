@@ -1,0 +1,44 @@
+﻿@charset "utf-8";
+@import "Variables.scss";
+
+.complete_wrap{
+    background:var(--color-white);
+    padding:100px 0 120px;
+    text-align:center;
+    width:1060px;
+    margin:0 auto;
+    border-radius:10px;
+
+    .inner{
+        width:460px;
+        text-align:center;
+        margin:0 auto;
+
+        .title{
+            font-size:30px;
+            margin-top:20px;
+
+        }
+
+        .sub_title{
+            margin-top:20px;
+            color:var(--color-gray30);
+        }
+
+        >p{
+            font-size:15px;
+            color:var(--color-gray40);
+            margin-top:40px;
+        }
+
+        .btn_area{
+            margin-top:32px;
+            padding:32px 20px 0;
+            border-top:1px solid var(--color-border);
+
+            .btnType{
+                flex:1;
+            }
+        }
+    }
+}

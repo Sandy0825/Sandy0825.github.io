@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="20" height="14" viewBox="0 0 20 14">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #4a4a4a;
+      }
+    </style>
+  </defs>
+  <g id="그룹_98" data-name="그룹 98" transform="translate(-727 -58)">
+    <rect id="사각형_43" data-name="사각형 43" class="cls-1" width="20" height="2" transform="translate(727 58)"/>
+    <rect id="사각형_44" data-name="사각형 44" class="cls-1" width="20" height="2" transform="translate(727 64)"/>
+    <rect id="사각형_45" data-name="사각형 45" class="cls-1" width="20" height="2" transform="translate(727 70)"/>
+  </g>
+</svg>

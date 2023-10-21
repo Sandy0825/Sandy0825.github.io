@@ -1,0 +1,270 @@
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+
+    <title>Home Page</title>
+    <!-- <link href="../Css/Common.min.css?v=20230904" rel="stylesheet"> -->
+    <!-- <link href="../Css/Style.min.css?v=20230904" rel="stylesheet"> -->
+    <link rel="stylesheet" href="../Css/MobileReset.css">
+    <link rel="stylesheet" href="../Css/MobileMypage.css">
+
+    <script src="../Scripts/jquery-3.7.0.min.js"></script>
+    <script src="../Scripts/jquery.validate.min.js"></script>
+    <script src="../Scripts/common.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+    <!-- //swiper 슬라이드 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css"/>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js"></script>
+
+    <script>
+        $(function(){
+            mMenu();
+        })
+    </script>
+</head>
+
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="header_wrap">
+            <div class="header_top">
+                <div class="logo">
+                    <a href="#">
+                        <img src="../Images/Layout/logo.png" alt="메디플">
+                    </a>
+                </div>
+                <div class="util">
+                    <span class="btn_search">
+                        <span>검색</span>
+                    </span>
+                    <!-- s :조건에 따라 알람 유무 설정 -->
+                    <span class="btn_alarm">
+                        <span>알람</span>
+                    </span>
+                    <!-- e :조건에 따라 알람 유무 설정 -->
+                    <span class="btn_allmenu">
+                        <span>전체메뉴</span>
+                    </span>
+                </div>
+            </div>
+            <ul class="header_menu">
+                <li class="on"><a href="">홈</a></li>
+                <li><a href="">채용공고</a></li>
+                <li><a href="">이력서</a></li>
+            </ul>
+        </div>
+        <div class="allmenu_area">
+			<div class="allmenu_box">
+				<span class="menu_logo"></span>
+				<nav id="menu">
+	    			<ul class="depth1 clear type05">
+    					<li>
+							<a href="#">
+								<span>회사소개</span>
+							</a>
+							<ul class="depth2" style="display: none;">
+								<li>
+									<a href="hello.html">
+										<span>CEO인사말</span>
+									</a>
+								</li>
+								<li>
+									<a href="history.html">
+										<span>회사연혁</span>
+									</a>
+								</li>
+								<li>
+									<a href="group.html">
+										<span>조직도</span>
+									</a>
+								</li>
+								<li>
+									<a href="way.html">
+										<span>찾아오시는길</span>
+									</a>
+								</li>
+							</ul>
+						</li>
+    					<li>
+							<a href="#"><span>사업분야</span></a>
+							<ul class="depth2" style="display: none;">
+								<li>
+									<a href="business01.html">
+										<span>특수경비업</span>
+									</a>
+								</li>
+								<li>
+									<a href="business02.html">
+										<span>건물위생관리업</span>
+									</a>
+								</li>
+								<li>
+									<a href="business03.html">
+										<span>건물관리용역</span>
+									</a>
+								</li>
+							</ul>
+						</li>
+	    				<li>
+							<a href="#"><span>사업소 현황</span></a>
+							<ul class="depth2" style="display: none;">
+								<li>
+									<a href="office.html"><span>전국사업소 소개</span></a>
+								</li>
+							</ul>
+						</li>		    					
+    					<li>
+							<a href="#"><span>한전FMS소식</span></a>
+							<ul class="depth2" style="display: none;">
+								<li>
+									<a href="board.html">
+										<span>공지사항</span>
+									</a>
+								</li>
+								<li>
+									<a href="board.html">
+										<span>언론보도자료</span>
+									</a>
+								</li>
+								<li>
+									<a href="people.html">
+										<span>채용정보</span>
+									</a>
+								</li>
+							</ul>
+						</li>
+	    				<li>
+							<a href="#">
+								<span>고객센터</span>
+							</a>
+							<ul class="depth2" style="display: none;">
+								<li>
+									<a href="notice.html">
+										<span>고객문의</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span>전력정보</span>
+									</a>
+								</li>
+								<li>
+									<a href="#">
+										<span>전기상식</span>
+									</a>
+								</li>
+							</ul>
+						</li>
+		    		</ul>
+		    	</nav> 
+		    	<a href="#" class="btn btn_close"></a>
+			</div>
+		</div>
+    </header>
+    <!-- //HEADER -->
+    <!-- CONTAINER -->
+    <main>
+        <div class="container">
+            <div class="inner">
+                <div class="swiper propose_slide">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="cont">
+                                <a href="">
+                                    <div class="person">
+                                        <strong>김OO</strong>
+                                        간호사, 물리치료사, 코디네이터
+                                    </div>
+                                    <p class="career">경력 : 3년 2개월</p>
+                                    <p class="ellipsis">적극적인 마인드와 최선을 다하는 열정으로 임하겠습니다.</p>
+                                </a>
+                                <span class="bookmark"></span>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="cont">
+                                <a href="">
+                                    <div class="person">
+                                        <strong>김OO</strong>
+                                        간호사, 물리치료사, 코디네이터
+                                    </div>
+                                    <p class="career">경력 : 3년 2개월</p>
+                                    <p class="ellipsis">적극적인 마인드와 최선을 다하는 열정으로 임하겠습니다.</p>
+                                </a>
+                                <span class="bookmark"></span>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="cont">
+                                <a href="">
+                                    <div class="person">
+                                        <strong>김OO</strong>
+                                        간호사, 물리치료사, 코디네이터
+                                    </div>
+                                    <p class="career">경력 : 3년 2개월</p>
+                                    <p class="ellipsis">적극적인 마인드와 최선을 다하는 열정으로 임하겠습니다.</p>
+                                </a>
+                                <span class="bookmark"></span>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="cont">
+                                <a href="">
+                                    <div class="person">
+                                        <strong>김OO</strong>
+                                        간호사, 물리치료사, 코디네이터
+                                    </div>
+                                    <p class="career">경력 : 3년 2개월</p>
+                                    <p class="ellipsis">적극적인 마인드와 최선을 다하는 열정으로 임하겠습니다.</p>
+                                </a>
+                                <span class="bookmark"></span>
+                            </div>
+                        </div>
+                        <div class="swiper-slide">
+                            <div class="cont more">
+                                <strong>더 많은 추천 인재를 보고 싶으신가요?</strong>
+                                <span><a href="">추천 인재 더 보기 ></a></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-button-next"></div>
+                </div>
+                <div class="btnType round">
+                    <i></i>전체 채용공고 바로가기
+                </div>
+                <div class="positionbox">
+                    <p><strong class="mb10">&#9997;채용 공고를 작성하셨나요?</strong>채용공고를 작성하고 메디플의 추천 인재풀을 경험해 보세요!</p>
+                    <button class="btnType size_M color-primary round">채용공고 관리</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <!-- //CONTAINER -->
+    <!-- FOOTER -->
+    <footer>
+        <div class="top">
+            <ul class="links">
+                <li><a href="#">회사소개</a></li>
+                <li><a href="#">이용약관</a></li>
+                <li><a href="#">개인정보 처리방침</a></li>
+                <li><a href="#">고객센터</a></li>
+            </ul>
+        </div>
+        <div class="btm">
+            <p class="company">
+                서울특별시 강남구 테헤란로 63길 11 이노센스 빌딩 6층 (주)메디랩스  |  대표이사 : 정광범  |  사업자등록번호 211-88-66181
+                <br> |  통신판매업신고번호 : 제 2011-서울강남-02830호 직업정보제공사업 신고번호 : 서울강남 제2011-28호
+            </p>
+            <p class="mb30 mt20">Tel : 02-566-6670 | Fax : 02-566-2161 | help@mediple.kr</p>
+            <p class="copyright mt20">© MediLABS Corp.</p>
+        </div>
+    </footer>
+    <!-- //FOOTER -->
+</body>
+
+</html>

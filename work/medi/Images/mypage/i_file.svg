@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="21.49" height="22.222" viewBox="0 0 21.49 22.222">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#pattern);
+      }
+    </style>
+    <pattern id="pattern" preserveAspectRatio="xMidYMid slice" width="100%" height="100%" viewBox="0 0 24 24">
+      <image width="24" height="24" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAPlJREFUSEvtlNENwjAMRK+TAJMAkwCTAJMAkwCTAJugFznFjVqSfFT9qaWqVWPfnc9uG40czcj4mgmyDk9m0VIS1zor8ZfwkfSW9PA1fR0cJZ0qgH0qBFdJ5/gyJbhL2ljSLVWTIaXjnYk7GEZnTQGGAPVRQSwqaYga8i92X1HkO+AAknBgzxCWRsTq4HiCl1lCe0QE35YyWB44zCLUpQR+QLUE2MOC7A08bJMnAJCkaBGJtFsbfoYdggiYDpm5LApZ2DzsaSNdUxRDBMmzck17NaQEfpcLRQ+KDQdD/yKIsIYotaf9ev9ZVKs6mz/Z3zSrrDRh7iDr1BfcACgZr8o6TwAAAABJRU5ErkJggg=="/>
+    </pattern>
+  </defs>
+  <rect id="attachment_FILL0_wght400_GRAD0_opsz24" class="cls-1" width="17" height="15" transform="translate(8.5 22.222) rotate(-120)"/>
+</svg>

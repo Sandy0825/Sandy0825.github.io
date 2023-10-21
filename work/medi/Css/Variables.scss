@@ -1,0 +1,127 @@
+﻿/*----------------------------------------------------*/
+/* 각종 공통 변수 
+/*----------------------------------------------------*/
+
+// 컨텐트 최대 넓이
+$content-maxwidth: 1060px;
+
+// 컬러 정의
+$color-primary: #00CAD9; // mint
+$color-primary-hover: #00b1cb;
+$color-primary-opacity8: rgba(0, 202, 217, .8);
+$color-primary-opacity5: rgba(0, 202, 217, .5);
+$color-primary-opacity3: rgba(0, 202, 217, .3);
+$color-primary-opacity1: rgba(0, 202, 217, .1);
+$color-primary-opacity06: rgba(0, 202, 217, .06);
+
+
+
+$color-white: #FFF;
+$color-black: #000;
+$color-red: #FE4A49;
+$color-orange: #FF8811;
+$color-yellow: #FFC145;
+$color-green: #00DB79;
+$color-blue: #1B0FFF;
+$color-purple: #1B0FFF;
+
+$color-gray1: #171717;
+$color-gray3: #333;
+$color-gray4: #4A4A4A;
+$color-gray6: #6A6A6A;
+$color-gray8: #8A8A8A;
+$color-gray9: #999;
+$color-gray10: #CCC;
+$color-gray11: #E6E8F0;
+$color-gray12: #EDF1F6;
+
+$color-background: #F1F3F8;
+$color-border: #DEDFE2;
+$color-disabled: #F4F5F9;
+
+$color-button-gray: #F3F3F5;
+$color-button-gray-hover: #E7E8EB;
+$color-button-black: #343644;
+$color-button-black-hover: #1F2131;
+
+:root {
+    --color-primary: $color-primary; // mint
+    --color-primary-hover: $color-primary-hover;
+    --color-primary-opacity8: $color-primary-opacity8;
+    --color-primary-opacity5: $color-primary-opacity5;
+    --color-primary-opacity3: $color-primary-opacity3;
+    --color-primary-opacity1: $color-primary-opacity1;
+    --color-primary-opacity06: $color-primary-opacity06;
+    
+    --color-white: $color-white;
+    --color-black: $color-black;
+    --color-red: $color-red;
+    --color-orange: $color-orange;
+    --color-yellow: $color-yellow;
+    --color-green: $color-green;
+    --color-blue: $color-blue;
+    --color-purple: $color-purple;
+    --color-gray10: $color-gray1;
+    --color-gray30: $color-gray3;
+    --color-gray40: $color-gray4;
+    --color-gray60: $color-gray6;
+    --color-gray80: $color-gray8;
+    --color-gray90: $color-gray9;
+    --color-gray100: $color-gray10;
+    --color-gray110: $color-gray11;
+    --color-gray120: $color-gray12;
+    --color-background: $color-background;
+    --color-border: $color-border;
+    --color-disabled: $color-disabled;
+    --color-button-gray: $color-button-gray;
+    --color-button-gray-hoer: $color-button-gray-hover;
+    --color-button-black: $color-button-black;
+    --color-button-black-hover: $color-button-black-hover;
+}
+
+
+// MARGIN , PADDING 정의
+@function size($start, $end) {
+    $size: ();
+
+    @for $i from $start through $end {
+        $value: $i + 0;
+        $size: append($size, $value);
+    }
+
+    @return $size;
+}
+
+
+@function getPx($value) {
+    @if $value == 0 {
+        @return $value !important;
+    }
+    @else {
+        @return $value + 0px !important;
+    }
+}
+
+$size: size(0, 100);
+$position: ('l':'left', 'r':'right', 't':'top', 'b':'bottom');
+$nameMap: ('m':'margin', 'p':'padding');
+
+@mixin generate($nameMap: (), $position: (), $size: ()) {
+    @each $preKey, $preValue in $nameMap {
+        @each $px in $size {
+            .#{$preKey}#{$px} {
+                #{$preValue}: getPx($px);
+            }
+
+            @each $sufKey, $sufValue in $position {
+                .#{$preKey}#{$sufKey}#{$px} {
+                    #{$preValue}-#{$sufValue}: getPx($px);
+                }
+            }
+        }
+    }
+}
+
+@include generate($nameMap, $position, $size);
+
+
